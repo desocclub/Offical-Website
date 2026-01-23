@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import backgroundImage from '../assets/background.png';
+import backgroundImage from '../assets/bg.png';
 
 const Hero = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -76,14 +76,15 @@ const Hero = () => {
         <div className="flex items-center justify-start px-8 lg:px-16 py-16 lg:py-0">
           <div className="max-w-[480px]">
             {/* Main Heading */}
-            <h1 className="text-6xl lg:text-7xl font-extrabold text-white mb-6 tracking-widest">
+            <h1 className="text-10xl lg:text-11xl font-extrabold text-white mb-10 tracking-widest">
               DESOC
             </h1>
-
+            
             {/* Mission Statement Quote */}
             <p className="text-gray-300 text-lg lg:text-xl mb-8 leading-relaxed">
               "Inspiring a future where technology and design harmoniously advance society through innovation and creativity."
             </p>
+            
 
             {/* CTA Button */}
             <button className="group inline-flex items-center justify-center px-6 py-3 text-white font-medium bg-gray-800 hover:bg-gray-700 rounded-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-red-900/30">

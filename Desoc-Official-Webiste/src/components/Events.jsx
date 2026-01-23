@@ -6,7 +6,7 @@ const Events = () => {
       id: 1,
       title: "ECLIPSE - The Game Pitch Arena",
       tag: "Gaming Competition",
-      description: "Join us for an electrifying game pitch event where innovative gaming ideas come to life. Showcase your creativity, compete with talented developers, and get a chance to win amazing prizes. Whether you're a beginner or a pro, this event is for everyone passionate about game development.",
+      description: "Step into the spotlight at ECLIPSE, where aspiring game developers pitch their innovative game concepts to a panel of industry experts. This thrilling event offers a platform to showcase your creativity, receive valuable feedback, and potentially secure support to bring your game idea to life. Whether you're a solo developer or part of a team, ECLIPSE is your chance to shine in the gaming world.",
       image: "/src/assets/eclipse.jpeg",
       isLive: true
     },
@@ -14,7 +14,7 @@ const Events = () => {
       id: 2,
       title: "Cyber Sabha",
       tag: "Tech Debate",
-      description: "Engage in thought-provoking discussions on the latest cybersecurity trends, ethical hacking, and digital privacy. Cyber Sabha brings together experts and enthusiasts to debate critical issues shaping our digital future. Sharpen your communication skills and expand your knowledge.",
+      description: "Cyber Sabha is a Yuva Parliament–style discussion forum where teams represent leading organizations like Google, Meta, RBI, and Government bodies (MeitY). Participants debate and deliberate on critical issues related to technology, cybersecurity, digital governance, and policy-making, simulating real-world decision-making at the highest level.",
       image: "/src/assets/cybersabha.jpeg",
       isLive: false
     },
