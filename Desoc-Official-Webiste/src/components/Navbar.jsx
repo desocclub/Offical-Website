@@ -1,9 +1,27 @@
 import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
-  const menuItems = ['Home', 'Events', 'Alumni', 'Committee', 'Gallery', 'Contact Us'];
+  const menuItems = [
+    { name: 'Home', path: '/', type: 'route' },
+    { name: 'Events', path: '#events', type: 'hash' },
+    { name: 'Alumni', path: '#alumni', type: 'hash' },
+    { name: 'Committee', path: '/committee', type: 'route' },
+    { name: 'Gallery', path: '#gallery', type: 'hash' },
+    { name: 'Contact Us', path: '#contact', type: 'hash' }
+  ];
+
+  const handleNavClick = (item) => {
+    if (item.type === 'route') {
+      navigate(item.path);
+    } else {
+      window.location.href = item.path;
+    }
+    setIsMenuOpen(false);
+  };
 
   return (
     <nav className="sticky top-0 z-50 bg-black">
@@ -17,15 +35,27 @@ const Navbar = () => {
         {/* Desktop Menu - Red Background Section */}
         <div className="hidden md:flex items-center bg-red-700 h-full">
           {menuItems.map((item, index) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase().replace(' ', '-')}`}
-              className={`text-white hover:bg-red-800 transition-all duration-300 px-6 py-4 text-sm ${
-                index !== menuItems.length - 1 ? 'border-r border-red-800' : ''
-              }`}
-            >
-              {item}
-            </a>
+            item.type === 'route' ? (
+              <Link
+                key={item.name}
+                to={item.path}
+                className={`text-white hover:bg-red-800 transition-all duration-300 px-6 py-4 text-sm ${
+                  index !== menuItems.length - 1 ? 'border-r border-red-800' : ''
+                }`}
+              >
+                {item.name}
+              </Link>
+            ) : (
+              <a
+                key={item.name}
+                href={item.path}
+                className={`text-white hover:bg-red-800 transition-all duration-300 px-6 py-4 text-sm ${
+                  index !== menuItems.length - 1 ? 'border-r border-red-800' : ''
+                }`}
+              >
+                {item.name}
+              </a>
+            )
           ))}
         </div>
 
