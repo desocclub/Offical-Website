@@ -108,4 +108,6 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default Hero;w-full">
+            {/* Main Heading */}
+            <h1 className="font-extrabold text-white mb-10 tracking-wider" style={{ fontSize: 'clamp(6rem, 15vw, 16rem)' }}
