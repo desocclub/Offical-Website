@@ -15,15 +15,15 @@ const EventCard = ({ title, tag, description, image, isLive = false }) => {
       {/* Glow effect on hover */}
       <div className="absolute inset-0 bg-gradient-to-r from-red-600/0 via-purple-600/0 to-red-600/0 group-hover:from-red-600/5 group-hover:via-purple-600/5 group-hover:to-red-600/5 transition-all duration-500"></div>
       
-      <div className="relative flex flex-col md:flex-row">
+      <div className="relative flex flex-col md:flex-row md:items-center">
         {/* Image Section - Consistent 16:9 Aspect Ratio */}
-        <div className="md:w-80 lg:w-96 flex-shrink-0 relative overflow-hidden">
+        <div className="md:w-80 lg:w-96 flex-shrink-0 relative overflow-hidden md:self-center">
           {/* Image Container with Fixed 16:9 Aspect Ratio */}
           <div className="aspect-video w-full">
             <img
               src={image}
               alt={title}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              className="w-full h-full object-contain md:object-cover transition-transform duration-700 group-hover:scale-110"
             />
           </div>
           

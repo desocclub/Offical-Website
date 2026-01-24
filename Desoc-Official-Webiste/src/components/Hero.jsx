@@ -1,6 +1,6 @@
 import { useState } from 'react';
+import backgroundImage from '../assets/bg.png';
 import { Link } from 'react-router-dom';
-import backgroundImage from '../assets/background.png';
 
 const Hero = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -82,7 +82,7 @@ const Hero = () => {
       {/* Logo Text - Top Left */}
       <div className="absolute top-6 left-6 lg:left-12 z-50">
         <h1 className="text-white font-bold text-lg">Design Society</h1>
-        <p className="text-gray-400 text-xs">Department of Computer Science & Design</p>
+        <p className="text-gray-400 text-xs m-2">Department of Computer Science & Design</p>
       </div>
 
       {/* CSS Grid Two Column Layout */}
@@ -104,16 +104,17 @@ const Hero = () => {
 
         {/* Right Column - Content */}
         <div className="flex items-center justify-start px-8 lg:px-16 py-16 lg:py-0">
-          <div className="max-w-[480px]">
+          <div className="w-full">
             {/* Main Heading */}
-            <h1 className="text-6xl lg:text-7xl font-extrabold text-white mb-6 tracking-widest">
+            <h1 className="font-extrabold text-white mb-10 tracking-wider" style={{ fontSize: 'clamp(6rem, 15vw, 1rem)' }}>
               DESOC
             </h1>
-
+            
             {/* Mission Statement Quote */}
             <p className="text-gray-300 text-lg lg:text-xl mb-8 leading-relaxed">
               "Inspiring a future where technology and design harmoniously advance society through innovation and creativity."
             </p>
+            
 
             {/* CTA Button */}
             <button className="group inline-flex items-center justify-center px-6 py-3 text-white font-medium bg-gray-800 hover:bg-gray-700 rounded-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-red-900/30">
