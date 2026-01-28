@@ -25,7 +25,7 @@ import nehaImg from '../assets/members/neha.svg';
 import parthImg from '../assets/members/parth.svg';
 import sahilImg from '../assets/members/sahil.svg';
 import riyaImg from '../assets/members/riya.svg';
-import swaradaImg from '../assets/members/swardha.svg';
+import swaradaImg from '../assets/members/swarada.svg';
 import shravaniImg from '../assets/members/shravani.svg';
 import prashantImg from '../assets/members/prashant.svg';
 import siddharthImg from '../assets/members/siddharth.svg';
@@ -280,7 +280,7 @@ const CommitteePage = () => {
               </div>
               
               <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-                Meet the dedicated team driving innovation and excellence at the Design & Engineering Society
+                Meet the dedicated team driving innovation and excellence at the Design Society
               </p>
               
               <div 
@@ -319,7 +319,7 @@ const CommitteePage = () => {
                 className="w-16 h-px"
                 style={{ background: 'linear-gradient(to right, #dc2626, transparent)' }}
               />
-              <span className="text-gray-500 text-sm uppercase tracking-widest">Design & Engineering Society</span>
+              <span className="text-gray-500 text-sm uppercase tracking-widest">Design Society</span>
               <div 
                 className="w-16 h-px"
                 style={{ background: 'linear-gradient(to left, #dc2626, transparent)' }}
