@@ -11,6 +11,7 @@ const Navbar = () => {
     { name: 'Alumni', path: '/#alumni', type: 'hash' },
     { name: 'Committee', path: '/committee', type: 'route' },
     { name: 'Genesis', path: '/genesis', type: 'route' },
+    { name: 'CSD Department', path: '/csd-department', type: 'route' },
     { name: 'Gallery', path: '/#gallery', type: 'hash' },
     { name: 'Contact Us', path: '/#contact-us', type: 'hash' },
   ];

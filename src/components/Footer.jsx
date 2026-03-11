@@ -27,7 +27,7 @@ const Footer = () => {
       {/* Top red accent line */}
       <div className="h-[2px] bg-gradient-to-r from-transparent via-red-600 to-transparent"></div>
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
         {/* Top Section - Logo and Tagline */}
         <div className="mb-12">
           <div className="flex items-center gap-3 mb-3">

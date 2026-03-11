@@ -45,7 +45,7 @@ const EventCard = ({ title, tag, description, image, isLive = false }) => {
         </div>
 
         {/* Content Section */}
-        <div className="flex-1 p-6 md:p-8 flex flex-col justify-center">
+        <div className="flex-1 p-4 sm:p-6 md:p-8 flex flex-col justify-center">
           {/* Category Tag */}
           <div className="inline-flex items-center mb-4">
             <span className="px-4 py-1.5 text-xs font-semibold uppercase tracking-wider bg-gradient-to-r from-red-500/20 to-purple-500/20 text-transparent bg-clip-text border border-red-500/30 rounded-full">
@@ -56,12 +56,12 @@ const EventCard = ({ title, tag, description, image, isLive = false }) => {
           </div>
 
           {/* Title */}
-          <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight group-hover:text-red-400 transition-colors duration-300">
+          <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 sm:mb-4 leading-tight group-hover:text-red-400 transition-colors duration-300">
             {title}
           </h3>
 
           {/* Description */}
-          <p className="text-gray-400 text-sm md:text-base leading-relaxed line-clamp-3 mb-6">
+          <p className="text-gray-400 text-sm md:text-base leading-relaxed line-clamp-3 mb-4 sm:mb-6">
             {description}
           </p>
 

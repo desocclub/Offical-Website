@@ -191,9 +191,9 @@ const Committee = () => {
         {/* Previous Button */}
         <button
           onClick={handlePrev}
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 text-white hover:text-red-500 transition-colors duration-300"
+          className="absolute left-1 sm:left-4 top-1/2 -translate-y-1/2 z-20 text-white hover:text-red-500 transition-colors duration-300"
         >
-          <svg className="w-10 h-10" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="w-7 h-7 sm:w-10 sm:h-10" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
             <path d="M15 19l-7-7 7-7"></path>
           </svg>
         </button>
@@ -231,9 +231,9 @@ const Committee = () => {
         {/* Next Button */}
         <button
           onClick={handleNext}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 text-white hover:text-red-500 transition-colors duration-300"
+          className="absolute right-1 sm:right-4 top-1/2 -translate-y-1/2 z-20 text-white hover:text-red-500 transition-colors duration-300"
         >
-          <svg className="w-10 h-10" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="w-7 h-7 sm:w-10 sm:h-10" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
             <path d="M9 5l7 7-7 7"></path>
           </svg>
         </button>
@@ -256,7 +256,7 @@ const Committee = () => {
         </div>
 
         {/* View All Button */}
-        <div className="absolute bottom-8 right-16">
+        <div className="mt-6 flex justify-center sm:justify-end sm:pr-16">
           <button className="group inline-flex items-center justify-center px-6 py-2 text-white font-medium bg-red-700 hover:bg-red-600 rounded transition-all duration-300">
             View All
             <svg

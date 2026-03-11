@@ -1,21 +1,20 @@
 import backgroundImage from '../assets/bg.png';
 
 const Hero = () => {
-
   return (
     <section className="relative min-h-screen bg-black overflow-hidden">
 
       {/* Logo Text - Top Left */}
-      <div className="absolute top-6 left-6 lg:left-12 z-50">
-        <h1 className="text-white font-bold text-lg">Design Society</h1>
-        <p className="text-gray-400 text-l m-2">Department of Computer Science & Design, KKWIEER</p>
+      <div className="absolute top-6 left-6 lg:left-12 z-50 max-w-[60%] sm:max-w-none">
+        <h1 className="text-white font-bold text-base sm:text-lg">Design Society</h1>
+        <p className="text-gray-400 text-xs sm:text-sm mt-1">Department of Computer Science & Design, KKWIEER</p>
       </div>
 
       {/* CSS Grid Two Column Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-[45%_55%] min-h-screen">
         
         {/* Left Column - Background Image Only */}
-        <div className="relative">
+        <div className="relative min-h-[40vh] lg:min-h-0">
           {/* Background Image */}
           <div className="absolute inset-0">
             <img 
@@ -29,10 +28,10 @@ const Hero = () => {
         </div>
 
         {/* Right Column - Content */}
-        <div className="flex items-center justify-start px-8 lg:px-16 py-16 lg:py-0">
+        <div className="flex items-center justify-start px-6 sm:px-8 lg:px-16 py-12 lg:py-0">
           <div className="w-full">
             {/* Main Heading */}
-            <h1 className="font-extrabold text-white mb-10 tracking-wider" style={{ fontSize: 'clamp(6rem, 15vw, 1rem)' }}>
+            <h1 className="font-extrabold text-white mb-6 sm:mb-10 tracking-wider text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
               DESOC
             </h1>
             
