@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -11,7 +11,6 @@ const events = [
     category: 'Team Build Challenge',
     description: '24-hour intensive build challenge. Form a team, pick a problem statement, and ship a working prototype.',
     tag: 'Team · 2–4 Members',
-    posterGradient: 'linear-gradient(135deg, #3a0000 0%, #1a0010 50%, #0a0020 100%)',
     accentColor: '#ff4444',
   },
   {
@@ -21,7 +20,6 @@ const events = [
     category: 'Research & Innovation',
     description: 'Present your research or innovative ideas to a panel of judges. Showcase your technical writing and oration skills.',
     tag: 'Individual / Duo',
-    posterGradient: 'linear-gradient(135deg, #1a0040 0%, #0a0030 50%, #000a20 100%)',
     accentColor: '#aa66ff',
   },
   {
@@ -31,7 +29,6 @@ const events = [
     category: 'Design Sprint',
     description: 'Design intuitive and visually compelling user interfaces within a fixed time limit using provided briefs.',
     tag: 'Individual',
-    posterGradient: 'linear-gradient(135deg, #001a30 0%, #000a20 50%, #001010 100%)',
     accentColor: '#44aaff',
   },
   {
@@ -41,7 +38,6 @@ const events = [
     category: 'Knowledge Battle',
     description: 'Test your knowledge across CS fundamentals, algorithms, networking, and emerging tech domains.',
     tag: 'Team · 2 Members',
-    posterGradient: 'linear-gradient(135deg, #2a1a00 0%, #1a0a00 50%, #0a0800 100%)',
     accentColor: '#ffaa22',
   },
   {
@@ -51,18 +47,17 @@ const events = [
     category: 'Competitive Programming',
     description: 'Timed problem-solving contest on algorithmic and data structure challenges, from beginner to advanced.',
     tag: 'Individual',
-    posterGradient: 'linear-gradient(135deg, #001a10 0%, #000a08 50%, #001a00 100%)',
     accentColor: '#44ff88',
   },
 ];
 
 const highlights = [
-  { icon: '🏆', text: 'Cash prizes & merit certificates for top performers across all events' },
-  { icon: '🤝', text: 'Network with students and innovators from colleges across the region' },
-  { icon: '💡', text: 'Hands-on exposure to real-world problem solving and design thinking' },
-  { icon: '🎓', text: 'Participation certificates issued to every registered student' },
-  { icon: '🚀', text: 'Competitions aligned with cutting-edge industry domains and trends' },
-  { icon: '📢', text: 'Platform to showcase your work to faculty and industry professionals' },
+  { icon: '🏆', title: 'Cash Prizes', text: 'Cash prizes & merit certificates for top performers across all events' },
+  { icon: '🤝', title: 'Networking', text: 'Network with students and innovators from colleges across the region' },
+  { icon: '💡', title: 'Real-World Exposure', text: 'Hands-on exposure to real-world problem solving and design thinking' },
+  { icon: '🎓', title: 'Certificates', text: 'Participation certificates issued to every registered student' },
+  { icon: '🚀', title: 'Industry Aligned', text: 'Competitions aligned with cutting-edge industry domains and trends' },
+  { icon: '📢', title: 'Showcase Platform', text: 'Platform to showcase your work to faculty and industry professionals' },
 ];
 
 const schedule = [
@@ -119,284 +114,306 @@ const faqs = [
 
 const GenesisPage = () => {
   const [openFaq, setOpenFaq] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+    window.scrollTo(0, 0);
+  }, []);
+
+  /* ── Reusable glass card ── */
+  const GlassCard = ({ children, className = '', delay = 0 }) => (
+    <div
+      className={`
+        relative overflow-hidden rounded-2xl sm:rounded-3xl backdrop-blur-2xl border border-white/10
+        p-4 sm:p-6 md:p-10
+        transition-all duration-700 ease-out
+        ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
+        ${className}
+      `}
+      style={{
+        transitionDelay: `${delay}ms`,
+        background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)',
+        boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)',
+      }}
+    >
+      <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full blur-3xl" style={{ background: 'rgba(220,38,38,0.08)' }} />
+      <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full blur-3xl" style={{ background: 'rgba(127,29,29,0.08)' }} />
+      <div className="relative z-10">{children}</div>
+    </div>
+  );
+
+  /* ── Section title with red accent bar ── */
+  const SectionTitle = ({ children, sub }) => (
+    <div className="flex items-center mb-8 sm:mb-10">
+      <div
+        className="w-1 h-10 rounded-full mr-4 shrink-0"
+        style={{ background: 'linear-gradient(to bottom, #ef4444, #b91c1c)', boxShadow: '0 0 10px rgba(220,38,38,0.5)' }}
+      />
+      <div>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-wide">{children}</h2>
+        {sub && <p className="text-red-400 text-xs sm:text-sm mt-1 uppercase tracking-wider">{sub}</p>}
+      </div>
+    </div>
+  );
 
   return (
-    <div className="bg-[#0a0a0a] min-h-screen font-roboto-condensed">
+    <div className="min-h-screen bg-black">
       <Navbar />
 
-      {/* ── Top bar ── */}
-      <div className="border-b border-white/5 px-6 py-3 flex items-center justify-between">
-        <Link
-          to="/"
-          className="flex items-center gap-2 text-gray-400 hover:text-white text-sm transition-colors duration-200"
-        >
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-          </svg>
-          Back to Home
-        </Link>
-        <span className="text-gray-600 text-xs uppercase tracking-wider">Design Society</span>
-      </div>
+      {/* ===== Fixed background layers ===== */}
+      <div className="relative">
+        <div className="fixed inset-0 -z-10" style={{ background: 'linear-gradient(135deg, black, rgba(127,29,29,0.3) 50%, black)' }} />
+        <div className="fixed inset-0 -z-10" style={{ background: 'radial-gradient(ellipse at top right, rgba(127,29,29,0.15), transparent 50%)' }} />
+        <div className="fixed inset-0 -z-10" style={{ background: 'radial-gradient(ellipse at bottom left, rgba(153,27,27,0.1), transparent 50%)' }} />
+        <div className="fixed inset-0 opacity-5 -z-10" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)', backgroundSize: '50px 50px' }} />
 
-      {/* ── Hero ── */}
-      <section className="max-w-4xl mx-auto px-6 py-16 text-center">
-        {/* Badge */}
-        <div className="inline-flex items-center gap-2 bg-red-500/10 border border-red-500/20 rounded-full px-4 py-1.5 mb-8">
-          <span className="w-2 h-2 rounded-full bg-red-500"></span>
-          <span className="text-red-400 text-xs font-semibold uppercase tracking-widest">Flagship Technical Event</span>
-        </div>
+        {/* ===== Main Content ===== */}
+        <main className="relative px-4 sm:px-6 lg:px-8 pt-24 pb-16 max-w-7xl mx-auto">
 
-        {/* Title */}
-        <h1 className="text-white font-black uppercase leading-none mb-4" style={{ fontSize: 'clamp(3.5rem, 14vw, 10rem)' }}>
-          GENESIS
-        </h1>
+          {/* ==============================
+              HERO
+          ============================== */}
+          <header className={`text-center mb-12 sm:mb-16 md:mb-20 transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}>
+            <div className="relative inline-block">
+              {/* Top glow line */}
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-24 h-1 rounded-full" style={{ background: 'linear-gradient(to right, transparent, #ef4444, transparent)', boxShadow: '0 0 20px rgba(220,38,38,0.5)' }} />
 
-        {/* Subtitle */}
-        <p className="text-gray-300 text-lg md:text-xl mb-3 tracking-wide">
-          Design &amp; Innovation Showcase
-        </p>
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 bg-red-500/10 border border-red-500/20 rounded-full px-4 py-1.5 mb-6">
+                <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                <span className="text-red-400 text-xs font-semibold uppercase tracking-widest">Flagship Technical Event</span>
+              </div>
 
-        {/* Organizer */}
-        <p className="text-gray-500 text-sm mb-10">
-          Organized by{' '}
-          <span className="text-red-400 font-semibold">Design Society</span>
-          {' '}·{' '}
-          Department of Computer Science &amp; Design
-        </p>
+              {/* Title */}
+              <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-white uppercase leading-none mb-4 tracking-tight" style={{ textShadow: '0 0 80px rgba(220,38,38,0.3)' }}>
+                GENESIS
+              </h1>
 
-        {/* Description box */}
-        <div className="border border-white/10 rounded-xl p-6 md:p-8 text-left bg-white/[0.02] mb-10">
-          <p className="text-gray-300 text-sm md:text-base leading-relaxed">
-            Genesis is the flagship technical event of the Design Society, Department of Computer Science &amp; Design.
-            It is designed to be a high-energy platform that blends innovation, coding excellence, design thinking, and
-            collaborative problem-solving. Genesis brings together competitive technical events and creative challenges
-            to ensure both intellectual depth and wide campus participation. The event structure is scalable, professionally
-            managed, and aligned with current industry trends.
-          </p>
-        </div>
+              {/* Subtitle */}
+              <div className="flex items-center justify-center gap-3 mb-4">
+                <div className="h-px w-12" style={{ background: 'linear-gradient(to right, transparent, #ef4444)' }} />
+                <span className="text-red-400 text-lg sm:text-xl md:text-2xl font-light tracking-widest">Design &amp; Innovation Showcase</span>
+                <div className="h-px w-12" style={{ background: 'linear-gradient(to left, transparent, #ef4444)' }} />
+              </div>
 
-        {/* CTAs */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link
-            to="/genesis/register"
-            className="px-10 py-3.5 bg-gradient-to-r from-[#7a0000] to-[#b00000] text-white font-bold uppercase tracking-wider rounded-sm hover:from-[#9a0000] hover:to-[#cc0000] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-red-900/40"
-          >
-            Register Now
-          </Link>
-          <a
-            href="#events"
-            className="px-10 py-3.5 border border-white/15 text-gray-300 font-bold uppercase tracking-wider rounded-sm hover:border-red-500/40 hover:text-red-400 transition-all duration-300"
-          >
-            View Events
-          </a>
-        </div>
-      </section>
+              {/* Organizer */}
+              <p className="text-gray-500 text-sm mb-8">
+                Organized by <span className="text-red-400 font-semibold">Design Society</span> · Department of Computer Science &amp; Design
+              </p>
 
-      {/* ── Major Events ── */}
-      <section id="events" className="py-16 px-6">
-        <div className="max-w-6xl mx-auto">
-          {/* Section header */}
-          <div className="mb-2">
-            <h2 className="text-white text-3xl md:text-4xl font-black uppercase tracking-tight">Major Events</h2>
-            <p className="text-red-400 text-sm mt-1 uppercase tracking-wider">Under Genesis</p>
-          </div>
-          <div className="mt-4 h-px w-full bg-white/5 mb-10" />
+              {/* Description glass box */}
+              <div className="max-w-3xl mx-auto backdrop-blur-xl border border-white/10 rounded-2xl p-5 sm:p-8 mb-10 text-left" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)' }}>
+                <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+                  Genesis is the flagship technical event of the Design Society, Department of Computer Science &amp; Design.
+                  It is designed to be a high-energy platform that blends innovation, coding excellence, design thinking, and
+                  collaborative problem-solving. Genesis brings together competitive technical events and creative challenges
+                  to ensure both intellectual depth and wide campus participation.
+                </p>
+              </div>
 
-          {/* Event cards grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {events.map((ev) => (
-              <div
-                key={ev.name}
-                className="group flex flex-col rounded-xl overflow-hidden border border-white/8 hover:border-red-500/30 transition-all duration-400 hover:shadow-xl hover:shadow-red-900/10"
-              >
-                {/* Poster area */}
-                <div
-                  className="relative overflow-hidden"
-                  style={{
-                    background: ev.posterGradient,
-                    aspectRatio: '4 / 3',
-                  }}
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Link
+                  to="/genesis/register"
+                  className="px-8 sm:px-10 py-3.5 bg-linear-to-r from-red-700 to-red-600 text-white font-bold uppercase tracking-wider rounded-full hover:from-red-600 hover:to-red-500 transition-all duration-300 hover:scale-105"
+                  style={{ boxShadow: '0 0 30px rgba(220,38,38,0.3)' }}
                 >
-                  {/* Grid texture overlay */}
-                  <div
-                    className="absolute inset-0 opacity-10"
-                    style={{
-                      backgroundImage:
-                        'linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)',
-                      backgroundSize: '32px 32px',
-                    }}
-                  />
-                  {/* Top label */}
-                  <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
-                    <span className="text-white/40 text-[10px] font-bold uppercase tracking-[0.2em]">GENESIS</span>
-                    <span
-                      className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border"
-                      style={{ color: ev.accentColor, borderColor: `${ev.accentColor}40` }}
-                    >
-                      {ev.tag}
-                    </span>
-                  </div>
-                  {/* Center icon */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-7xl opacity-60 group-hover:opacity-90 group-hover:scale-110 transition-all duration-400">{ev.icon}</span>
-                  </div>
-                  {/* Bottom overlay with name */}
-                  <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
-                    <h3
-                      className="text-white font-black text-xl uppercase tracking-wide leading-tight"
-                      style={{ textShadow: `0 0 20px ${ev.accentColor}60` }}
-                    >
-                      {ev.name}
-                    </h3>
-                    <p className="text-xs font-semibold uppercase tracking-wider mt-0.5" style={{ color: ev.accentColor }}>
-                      {ev.category}
-                    </p>
-                  </div>
-                </div>
+                  Register Now
+                </Link>
+                <a
+                  href="#events"
+                  className="px-8 sm:px-10 py-3.5 border border-white/15 text-gray-300 font-bold uppercase tracking-wider rounded-full hover:border-red-500/40 hover:text-red-400 transition-all duration-300"
+                >
+                  View Events
+                </a>
+              </div>
 
-                {/* Card body */}
-                <div className="flex-1 flex flex-col p-5 bg-[#0f0f0f] border-t border-white/5">
-                  <div className="flex items-start gap-3 mb-3">
-                    <span className="text-2xl flex-shrink-0 mt-0.5">{ev.icon}</span>
-                    <div>
-                      <p className="text-white font-bold text-sm uppercase tracking-wide">{ev.name}</p>
-                      <p className="text-xs uppercase tracking-wider mt-0.5" style={{ color: ev.accentColor }}>
+              {/* Bottom glow */}
+              <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-40 h-1 rounded-full" style={{ background: 'linear-gradient(to right, transparent, rgba(220,38,38,0.5), transparent)' }} />
+            </div>
+          </header>
+
+          <div className="space-y-10 sm:space-y-14">
+
+            {/* ==============================
+                MAJOR EVENTS
+            ============================== */}
+            <GlassCard delay={100} id="events">
+              <div id="events" />
+              <SectionTitle sub="Under Genesis">Major Events</SectionTitle>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                {events.map((ev) => (
+                  <Link
+                    key={ev.name}
+                    to={`/genesis/events/${ev.slug}`}
+                    className="group flex flex-col rounded-2xl overflow-hidden border border-white/10 bg-white/5 hover:border-red-500/30 hover:bg-white/8 transition-all duration-500"
+                  >
+                    {/* Poster area */}
+                    <div className="relative flex items-center justify-center py-10 sm:py-14" style={{ background: 'linear-gradient(135deg, rgba(220,38,38,0.08) 0%, rgba(0,0,0,0.4) 100%)' }}>
+                      {/* Top labels */}
+                      <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
+                        <span className="text-white/30 text-[10px] font-bold uppercase tracking-[0.2em]">GENESIS</span>
+                        <span
+                          className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full border backdrop-blur-sm"
+                          style={{ color: ev.accentColor, borderColor: `${ev.accentColor}30`, background: `${ev.accentColor}10` }}
+                        >
+                          {ev.tag}
+                        </span>
+                      </div>
+                      {/* Icon */}
+                      <span className="text-6xl sm:text-7xl opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500">
+                        {ev.icon}
+                      </span>
+                    </div>
+
+                    {/* Body */}
+                    <div className="flex-1 flex flex-col p-4 sm:p-5 border-t border-white/5">
+                      <h3 className="text-white font-bold text-lg sm:text-xl mb-1 group-hover:text-red-400 transition-colors duration-300">
+                        {ev.name}
+                      </h3>
+                      <p className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: ev.accentColor }}>
                         {ev.category}
                       </p>
+                      <p className="text-gray-400 text-sm leading-relaxed flex-1 mb-4">
+                        {ev.description}
+                      </p>
+                      <span className="inline-flex items-center gap-1.5 text-red-400 text-sm font-medium group-hover:gap-2.5 transition-all duration-300">
+                        Learn More
+                        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                        </svg>
+                      </span>
                     </div>
-                  </div>
-                  <p className="text-gray-400 text-sm leading-relaxed flex-1 mb-4">{ev.description}</p>
-                  <Link
-                    to={`/genesis/events/${ev.slug}`}
-                    className="inline-flex items-center gap-1.5 text-red-400 hover:text-red-300 text-sm font-medium transition-colors duration-200 group/link"
-                  >
-                    Learn More
-                    <svg
-                      className="w-3.5 h-3.5 transition-transform duration-200 group-hover/link:translate-x-0.5"
-                      fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                    </svg>
                   </Link>
-                </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            </GlassCard>
 
-      {/* ── Why Attend ── */}
-      <section className="py-16 px-6 bg-gradient-to-b from-[#0a0a0a] via-[#0d0005] to-[#0a0a0a]">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-2">
-            <h2 className="text-white text-3xl md:text-4xl font-black uppercase tracking-tight">Why Attend Genesis?</h2>
-            <p className="text-gray-500 text-sm mt-1">Reasons to be part of the experience</p>
-          </div>
-          <div className="mt-4 h-px w-full bg-white/5 mb-10" />
+            {/* ==============================
+                WHY ATTEND
+            ============================== */}
+            <GlassCard delay={200}>
+              <SectionTitle sub="Reasons to be part of the experience">Why Attend Genesis?</SectionTitle>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {highlights.map((h, i) => (
-              <div
-                key={i}
-                className="flex items-start gap-4 p-5 rounded-xl border border-white/5 bg-white/[0.02] hover:border-red-500/20 hover:bg-white/[0.04] transition-all duration-300"
-              >
-                <span className="text-2xl flex-shrink-0">{h.icon}</span>
-                <p className="text-gray-300 text-sm leading-relaxed">{h.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Schedule ── */}
-      <section id="schedule" className="py-16 px-6">
-        <div className="max-w-4xl mx-auto">
-          <div className="mb-2">
-            <h2 className="text-white text-3xl md:text-4xl font-black uppercase tracking-tight">Schedule</h2>
-            <p className="text-gray-500 text-sm mt-1">Two days of back-to-back tech</p>
-          </div>
-          <div className="mt-4 h-px w-full bg-white/5 mb-10" />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {schedule.map((day) => (
-              <div key={day.day}>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="px-4 py-1.5 bg-gradient-to-r from-[#7a0000] to-[#b00000] text-white text-sm font-bold uppercase tracking-wider rounded-sm">
-                    {day.day}
-                  </div>
-                  <span className="text-gray-600 text-sm uppercase tracking-wider">{day.date}</span>
-                </div>
-                <div className="relative pl-6 border-l border-red-900/30">
-                  {day.slots.map((slot, i) => (
-                    <div key={i} className="relative mb-6 last:mb-0">
-                      <div className="absolute -left-[1.35rem] top-1 w-3 h-3 rounded-full bg-red-700 border-2 border-[#0a0a0a]" />
-                      <p className="text-red-400 text-xs font-semibold uppercase tracking-wider mb-1">{slot.time}</p>
-                      <p className="text-gray-200 text-sm">{slot.event}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── FAQs ── */}
-      <section id="faqs" className="py-16 px-6 bg-gradient-to-b from-[#0a0a0a] via-[#0d0005] to-[#0a0a0a]">
-        <div className="max-w-3xl mx-auto">
-          <div className="mb-2">
-            <h2 className="text-white text-3xl md:text-4xl font-black uppercase tracking-tight">FAQs</h2>
-            <p className="text-gray-500 text-sm mt-1">Got questions? We&apos;ve got answers.</p>
-          </div>
-          <div className="mt-4 h-px w-full bg-white/5 mb-10" />
-
-          <div className="space-y-2">
-            {faqs.map((faq, i) => (
-              <div
-                key={i}
-                className="border border-white/8 rounded-xl overflow-hidden hover:border-red-500/20 transition-colors duration-300"
-              >
-                <button
-                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="w-full flex items-center justify-between px-6 py-4 text-left bg-[#0f0f0f] hover:bg-white/[0.03] transition-all duration-200"
-                >
-                  <span className="text-gray-200 text-sm pr-4">{faq.q}</span>
-                  <span
-                    className={`text-red-400 text-lg transition-transform duration-300 flex-shrink-0 ${
-                      openFaq === i ? 'rotate-45' : ''
-                    }`}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+                {highlights.map((h, i) => (
+                  <div
+                    key={i}
+                    className="group flex items-start gap-4 p-4 sm:p-5 rounded-2xl border border-white/10 bg-white/5 hover:border-red-500/30 hover:bg-white/8 transition-all duration-500"
                   >
-                    +
-                  </span>
-                </button>
-                <div className={`overflow-hidden transition-all duration-300 ${openFaq === i ? 'max-h-40' : 'max-h-0'}`}>
-                  <p className="px-6 py-4 text-gray-400 text-sm leading-relaxed border-t border-white/5">{faq.a}</p>
-                </div>
+                    <span className="text-3xl shrink-0 group-hover:scale-110 transition-transform duration-300">{h.icon}</span>
+                    <div>
+                      <h4 className="text-white font-semibold text-sm mb-1">{h.title}</h4>
+                      <p className="text-gray-400 text-sm leading-relaxed">{h.text}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            </GlassCard>
 
-      {/* ── Closing CTA ── */}
-      <section className="py-16 px-6">
-        <div className="max-w-3xl mx-auto">
-          <div className="border border-white/8 rounded-xl p-8 md:p-10 bg-white/[0.02] text-center">
-            <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-8">
-              Genesis is designed not just as a college fest, but as a structured innovation platform that
-              encourages creativity, technical excellence, and real-world problem-solving. With diverse
-              competitions and strong student participation, Genesis offers every participant a chance to
-              grow, collaborate, and showcase their skills to a wider audience.
-            </p>
-            <Link
-              to="/genesis/register"
-              className="inline-block px-10 py-3.5 bg-gradient-to-r from-[#7a0000] to-[#b00000] text-white font-bold uppercase tracking-wider rounded-sm hover:from-[#9a0000] hover:to-[#cc0000] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-red-900/40"
-            >
-              Register for Genesis
-            </Link>
+            {/* ==============================
+                SCHEDULE
+            ============================== */}
+            <GlassCard delay={300}>
+              <SectionTitle sub="Two days of back-to-back tech">Schedule</SectionTitle>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+                {schedule.map((day) => (
+                  <div key={day.day} className="p-4 sm:p-6 rounded-2xl border border-white/10 bg-white/5">
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="px-4 py-1.5 bg-linear-to-r from-red-700 to-red-600 text-white text-sm font-bold uppercase tracking-wider rounded-full" style={{ boxShadow: '0 0 15px rgba(220,38,38,0.3)' }}>
+                        {day.day}
+                      </div>
+                      <span className="text-gray-500 text-sm uppercase tracking-wider">{day.date}</span>
+                    </div>
+
+                    <div className="relative pl-6 border-l-2 border-red-900/40">
+                      {day.slots.map((slot, i) => (
+                        <div key={i} className="relative mb-6 last:mb-0 group">
+                          <div className="absolute -left-[1.55rem] top-1 w-3 h-3 rounded-full bg-red-600 border-2 border-black group-hover:scale-125 transition-transform duration-300" style={{ boxShadow: '0 0 8px rgba(220,38,38,0.5)' }} />
+                          <p className="text-red-400 text-xs font-semibold uppercase tracking-wider mb-1">{slot.time}</p>
+                          <p className="text-gray-200 text-sm">{slot.event}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </GlassCard>
+
+            {/* ==============================
+                FAQs
+            ============================== */}
+            <GlassCard delay={400}>
+              <SectionTitle sub="Got questions? We've got answers.">FAQs</SectionTitle>
+
+              <div className="space-y-3 max-w-3xl">
+                {faqs.map((faq, i) => (
+                  <div
+                    key={i}
+                    className={`rounded-2xl border overflow-hidden transition-all duration-300 ${openFaq === i ? 'border-red-500/30 bg-white/6' : 'border-white/10 bg-white/3 hover:border-white/20'}`}
+                  >
+                    <button
+                      onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                      className="w-full flex items-center justify-between px-5 sm:px-6 py-4 text-left transition-all duration-200"
+                    >
+                      <span className="text-gray-200 text-sm sm:text-base pr-4 font-medium">{faq.q}</span>
+                      <span
+                        className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
+                          openFaq === i ? 'bg-red-600 rotate-45' : 'bg-white/10'
+                        }`}
+                      >
+                        <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+                        </svg>
+                      </span>
+                    </button>
+                    <div className={`overflow-hidden transition-all duration-300 ${openFaq === i ? 'max-h-40' : 'max-h-0'}`}>
+                      <p className="px-5 sm:px-6 pb-5 text-gray-400 text-sm leading-relaxed">{faq.a}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </GlassCard>
+
+            {/* ==============================
+                CLOSING CTA
+            ============================== */}
+            <GlassCard delay={500}>
+              <div className="text-center py-4 sm:py-8">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">Ready to Compete?</h2>
+                <p className="text-gray-400 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto mb-8">
+                  Genesis is designed not just as a college fest, but as a structured innovation platform that
+                  encourages creativity, technical excellence, and real-world problem-solving. Every participant
+                  gets a chance to grow, collaborate, and showcase their skills.
+                </p>
+                <Link
+                  to="/genesis/register"
+                  className="inline-block px-10 py-4 bg-linear-to-r from-red-700 to-red-600 text-white font-bold uppercase tracking-wider rounded-full hover:from-red-600 hover:to-red-500 transition-all duration-300 hover:scale-105"
+                  style={{ boxShadow: '0 0 40px rgba(220,38,38,0.3)' }}
+                >
+                  Register for Genesis
+                </Link>
+              </div>
+            </GlassCard>
+
           </div>
-        </div>
-      </section>
+
+          {/* Bottom decoration */}
+          <div className={`mt-16 sm:mt-20 flex justify-center transition-all duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`} style={{ transitionDelay: '1000ms' }}>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-red-600" style={{ boxShadow: '0 0 10px rgba(220,38,38,0.8)' }} />
+              <div className="w-16 h-px" style={{ background: 'linear-gradient(to right, #dc2626, transparent)' }} />
+              <span className="text-gray-500 text-sm uppercase tracking-widest">Genesis — DESOC</span>
+              <div className="w-16 h-px" style={{ background: 'linear-gradient(to left, #dc2626, transparent)' }} />
+              <div className="w-2 h-2 rounded-full bg-red-600" style={{ boxShadow: '0 0 10px rgba(220,38,38,0.8)' }} />
+            </div>
+          </div>
+
+        </main>
+      </div>
 
       <Footer />
     </div>

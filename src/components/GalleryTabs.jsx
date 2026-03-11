@@ -1,7 +1,7 @@
 const GalleryTabs = ({ categories, activeCategory, onCategoryChange }) => {
   return (
-    <div className="px-4 overflow-x-auto scrollbar-hide">
-      <div className="inline-flex flex-nowrap sm:flex-wrap sm:justify-center gap-1.5 sm:gap-2 bg-[#1a1a1a] p-2 rounded-2xl sm:rounded-full min-w-max sm:min-w-0 mx-auto sm:mx-auto">
+    <div className="px-4 overflow-x-auto scrollbar-hide text-center">
+      <div className="inline-flex flex-nowrap sm:flex-wrap sm:justify-center gap-1.5 sm:gap-2 bg-[#1a1a1a] p-2 rounded-2xl sm:rounded-full min-w-max sm:min-w-0">
         {categories.map((category) => (
           <button
             key={category.id}

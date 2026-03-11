@@ -156,17 +156,20 @@ const GenesisEventPage = () => {
 
   if (!event) {
     return (
-      <div className="bg-[#0a0a0a] min-h-screen font-roboto-condensed">
+      <div className="min-h-screen bg-black">
         <Navbar />
-        <div className="flex flex-col items-center justify-center min-h-[80vh] text-center px-4">
-          <h2 className="text-white text-3xl font-black mb-4">Event Not Found</h2>
-          <p className="text-gray-500 text-sm mb-8">The event you are looking for does not exist.</p>
-          <Link
-            to="/genesis"
-            className="px-6 py-3 border border-white/15 text-gray-300 text-sm font-bold uppercase tracking-wider rounded-sm hover:border-red-500/30 hover:text-red-400 transition-all duration-200"
-          >
-            Back to Genesis
-          </Link>
+        <div className="relative">
+          <div className="fixed inset-0 -z-10" style={{ background: 'linear-gradient(135deg, black, rgba(127,29,29,0.3) 50%, black)' }} />
+          <div className="flex flex-col items-center justify-center min-h-[80vh] text-center px-4">
+            <h2 className="text-white text-3xl font-bold mb-4">Event Not Found</h2>
+            <p className="text-gray-500 text-sm mb-8">The event you are looking for does not exist.</p>
+            <Link
+              to="/genesis"
+              className="px-6 py-3 border border-white/15 text-gray-300 text-sm font-bold uppercase tracking-wider rounded-full hover:border-red-500/30 hover:text-red-400 transition-all duration-200"
+            >
+              Back to Genesis
+            </Link>
+          </div>
         </div>
       </div>
     );
@@ -181,140 +184,163 @@ const GenesisEventPage = () => {
   ];
 
   return (
-    <div className="bg-[#0a0a0a] min-h-screen font-roboto-condensed">
+    <div className="min-h-screen bg-black">
       <Navbar />
 
-      {/* Top bar */}
-      <div className="border-b border-white/5 px-6 py-3 flex items-center justify-between">
-        <Link
-          to="/genesis"
-          className="flex items-center gap-2 text-gray-400 hover:text-white text-sm transition-colors duration-200"
-        >
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-          </svg>
-          Back to Genesis
-        </Link>
-        <span className="text-gray-600 text-xs uppercase tracking-wider">Design Society</span>
-      </div>
+      {/* ===== Fixed background layers ===== */}
+      <div className="relative">
+        <div className="fixed inset-0 -z-10" style={{ background: 'linear-gradient(135deg, black, rgba(127,29,29,0.3) 50%, black)' }} />
+        <div className="fixed inset-0 -z-10" style={{ background: 'radial-gradient(ellipse at top right, rgba(127,29,29,0.15), transparent 50%)' }} />
+        <div className="fixed inset-0 -z-10" style={{ background: 'radial-gradient(ellipse at bottom left, rgba(153,27,27,0.1), transparent 50%)' }} />
+        <div className="fixed inset-0 opacity-5 -z-10" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)', backgroundSize: '50px 50px' }} />
 
-      {/* Content column */}
-      <div className="max-w-2xl mx-auto px-6 py-10">
+        {/* ===== Main Content ===== */}
+        <main className="relative px-4 sm:px-6 lg:px-8 pt-24 pb-16 max-w-4xl mx-auto">
 
-        {/* Badge */}
-        <div className="flex justify-center mb-6">
-          <div
-            className="inline-flex items-center gap-2 border rounded-full px-4 py-1.5"
-            style={{ borderColor: `${event.accentColor}40`, background: `${event.accentColor}12` }}
-          >
-            <span className="w-1.5 h-1.5 rounded-full" style={{ background: event.accentColor }} />
-            <span className="text-xs font-bold uppercase tracking-[0.2em]" style={{ color: event.accentColor }}>
-              GENESIS
-            </span>
-          </div>
-        </div>
-
-        {/* Title */}
-        <h1
-          className="text-white font-black text-center leading-tight mb-2"
-          style={{ fontSize: 'clamp(2.2rem, 8vw, 3.5rem)' }}
-        >
-          {event.name}
-        </h1>
-        <p className="text-center font-bold text-lg mb-8 tracking-wide" style={{ color: event.accentColor }}>
-          {event.category}
-        </p>
-
-        {/* Banner */}
-        <div className="rounded-xl overflow-hidden mb-5 border border-white/5">
-          {/* Poster area */}
-          <div
-            className="relative flex items-center justify-center"
-            style={{ background: event.posterGradient, minHeight: '220px' }}
-          >
-            {/* Grid texture */}
-            <div
-              className="absolute inset-0 opacity-10"
-              style={{
-                backgroundImage:
-                  'linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)',
-                backgroundSize: '28px 28px',
-              }}
-            />
-            {/* Big icon */}
-            <span className="relative text-[96px] leading-none">{event.icon}</span>
+          {/* Breadcrumb */}
+          <div className="mb-8">
+            <Link
+              to="/genesis"
+              className="inline-flex items-center gap-2 text-gray-400 hover:text-red-400 text-sm transition-colors duration-200"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+              </svg>
+              Back to Genesis
+            </Link>
           </div>
 
-          {/* Feature tiles strip */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 border-t border-white/8">
-            {event.features.map((f, i) => (
+          {/* ── Hero Header ── */}
+          <header className="text-center mb-10">
+            {/* Badge */}
+            <div className="flex justify-center mb-6">
               <div
-                key={f.label}
-                className={`flex flex-col items-center gap-1.5 py-4 px-3 bg-[#0d0010]/50
-                  ${i < 3 ? 'border-r border-white/8' : ''}
-                  ${i < 2 ? 'border-b sm:border-b-0 border-white/8' : ''}`}
+                className="inline-flex items-center gap-2 border rounded-full px-4 py-1.5 backdrop-blur-sm"
+                style={{ borderColor: `${event.accentColor}30`, background: `${event.accentColor}10` }}
               >
-                <span className="text-xl">{f.icon}</span>
-                <span
-                  className="text-xs font-bold uppercase tracking-wide text-center leading-tight"
-                  style={{ color: event.accentColor }}
-                >
-                  {f.label}
+                <span className="w-1.5 h-1.5 rounded-full" style={{ background: event.accentColor }} />
+                <span className="text-xs font-bold uppercase tracking-[0.2em]" style={{ color: event.accentColor }}>
+                  GENESIS
                 </span>
-                <span className="text-gray-500 text-[11px] text-center leading-tight">{f.sub}</span>
               </div>
-            ))}
-          </div>
-        </div>
+            </div>
 
-        {/* Event Details card */}
-        <div className="border border-white/10 rounded-xl p-6 bg-[#0f0f0f] mb-4">
-          <h3 className="text-white font-bold text-lg mb-5">Event Details</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {detailItems.map((item) => (
-              <div key={item.label} className="flex items-start gap-3">
-                <span className="text-xl flex-shrink-0">{item.icon}</span>
-                <div>
-                  <p className="text-gray-500 text-xs uppercase tracking-wider mb-0.5">{item.label}</p>
-                  <p className="text-white text-sm font-medium">{item.value}</p>
+            {/* Title */}
+            <h1
+              className="text-white font-bold text-center leading-tight mb-2"
+              style={{ fontSize: 'clamp(2.2rem, 8vw, 3.5rem)' }}
+            >
+              {event.name}
+            </h1>
+            <p className="text-center font-bold text-lg mb-6 tracking-wide" style={{ color: event.accentColor }}>
+              {event.category}
+            </p>
+          </header>
+
+          <div className="space-y-5">
+
+            {/* ── Banner Card ── */}
+            <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl backdrop-blur-2xl border border-white/10" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)' }}>
+              {/* Poster area */}
+              <div
+                className="relative flex items-center justify-center py-12 sm:py-16"
+                style={{ background: `linear-gradient(135deg, rgba(220,38,38,0.08) 0%, rgba(0,0,0,0.4) 100%)` }}
+              >
+                <span className="relative text-[80px] sm:text-[96px] leading-none">{event.icon}</span>
+              </div>
+
+              {/* Feature tiles strip */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 border-t border-white/10">
+                {event.features.map((f, i) => (
+                  <div
+                    key={f.label}
+                    className={`flex flex-col items-center gap-1.5 py-5 px-3 bg-white/3
+                      ${i < event.features.length - 1 ? 'border-r border-white/10' : ''}
+                      ${i < 2 ? 'border-b sm:border-b-0 border-white/10' : ''}`}
+                  >
+                    <span className="text-xl">{f.icon}</span>
+                    <span className="text-xs font-bold uppercase tracking-wide text-center leading-tight" style={{ color: event.accentColor }}>
+                      {f.label}
+                    </span>
+                    <span className="text-gray-500 text-[11px] text-center leading-tight">{f.sub}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* ── Event Details Card ── */}
+            <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl backdrop-blur-2xl border border-white/10 p-5 sm:p-8" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)' }}>
+              <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full blur-3xl" style={{ background: 'rgba(220,38,38,0.06)' }} />
+              <div className="relative z-10">
+                <div className="flex items-center mb-6">
+                  <div className="w-1 h-8 rounded-full mr-3 shrink-0" style={{ background: 'linear-gradient(to bottom, #ef4444, #b91c1c)', boxShadow: '0 0 10px rgba(220,38,38,0.5)' }} />
+                  <h3 className="text-white font-bold text-xl">Event Details</h3>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  {detailItems.map((item) => (
+                    <div key={item.label} className="flex items-start gap-3 p-3 rounded-xl border border-white/5 bg-white/3 hover:border-red-500/20 transition-all duration-300">
+                      <span className="text-xl shrink-0">{item.icon}</span>
+                      <div>
+                        <p className="text-gray-500 text-xs uppercase tracking-wider mb-0.5">{item.label}</p>
+                        <p className="text-white text-sm font-medium">{item.value}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
+            </div>
 
-        {/* About the Event card */}
-        <div className="border border-white/10 rounded-xl p-6 bg-[#0f0f0f] mb-8">
-          <h3 className="text-white font-bold text-lg mb-3">About the Event</h3>
-          <p className="text-gray-400 text-sm leading-relaxed mb-6">{event.description}</p>
-          <div className="grid grid-cols-3 gap-4 border-t border-white/8 pt-5">
-            {event.highlights.map((h) => (
-              <div key={h.label}>
-                <p className="font-bold text-sm mb-1" style={{ color: event.accentColor }}>
-                  {h.label}
-                </p>
-                <p className="text-gray-500 text-xs">{h.sub}</p>
+            {/* ── About the Event Card ── */}
+            <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl backdrop-blur-2xl border border-white/10 p-5 sm:p-8" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)' }}>
+              <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full blur-3xl" style={{ background: 'rgba(127,29,29,0.06)' }} />
+              <div className="relative z-10">
+                <div className="flex items-center mb-6">
+                  <div className="w-1 h-8 rounded-full mr-3 shrink-0" style={{ background: 'linear-gradient(to bottom, #ef4444, #b91c1c)', boxShadow: '0 0 10px rgba(220,38,38,0.5)' }} />
+                  <h3 className="text-white font-bold text-xl">About the Event</h3>
+                </div>
+                <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-6">{event.description}</p>
+                <div className="grid grid-cols-3 gap-4 border-t border-white/10 pt-5">
+                  {event.highlights.map((h) => (
+                    <div key={h.label} className="text-center sm:text-left">
+                      <p className="font-bold text-sm mb-1" style={{ color: event.accentColor }}>{h.label}</p>
+                      <p className="text-gray-500 text-xs">{h.sub}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
-            ))}
+            </div>
+
+            {/* ── CTAs ── */}
+            <div className="flex flex-col sm:flex-row gap-3 pt-2">
+              <Link
+                to={`/genesis/register?event=${encodeURIComponent(event.registrationKey)}`}
+                className="flex-1 text-center px-6 py-4 bg-linear-to-r from-red-700 to-red-600 text-white font-bold uppercase tracking-wider rounded-full hover:from-red-600 hover:to-red-500 transition-all duration-300 hover:scale-[1.02]"
+                style={{ boxShadow: '0 0 30px rgba(220,38,38,0.3)' }}
+              >
+                Register Now
+              </Link>
+              <Link
+                to="/genesis"
+                className="flex-1 text-center px-6 py-4 border border-white/15 text-gray-300 font-bold uppercase tracking-wider rounded-full hover:border-red-500/40 hover:text-red-400 transition-all duration-300"
+              >
+                Back to Genesis
+              </Link>
+            </div>
+
           </div>
-        </div>
 
-        {/* CTAs */}
-        <div className="flex flex-col sm:flex-row gap-3">
-          <Link
-            to={`/genesis/register?event=${encodeURIComponent(event.registrationKey)}`}
-            className="flex-1 text-center px-6 py-3.5 bg-gradient-to-r from-[#7a0000] to-[#b00000] text-white font-bold uppercase tracking-wider rounded-sm hover:from-[#9a0000] hover:to-[#cc0000] transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-red-900/30"
-          >
-            Register Now
-          </Link>
-          <Link
-            to="/genesis"
-            className="flex-1 text-center px-6 py-3.5 border border-white/15 text-gray-300 font-bold uppercase tracking-wider rounded-sm hover:border-red-500/30 hover:text-red-400 transition-all duration-300"
-          >
-            Back to Genesis
-          </Link>
-        </div>
+          {/* Bottom decoration */}
+          <div className="mt-16 sm:mt-20 flex justify-center">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-red-600" style={{ boxShadow: '0 0 10px rgba(220,38,38,0.8)' }} />
+              <div className="w-16 h-px" style={{ background: 'linear-gradient(to right, #dc2626, transparent)' }} />
+              <span className="text-gray-500 text-sm uppercase tracking-widest">Genesis — DESOC</span>
+              <div className="w-16 h-px" style={{ background: 'linear-gradient(to left, #dc2626, transparent)' }} />
+              <div className="w-2 h-2 rounded-full bg-red-600" style={{ boxShadow: '0 0 10px rgba(220,38,38,0.8)' }} />
+            </div>
+          </div>
 
+        </main>
       </div>
 
       <Footer />

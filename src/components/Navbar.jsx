@@ -13,7 +13,7 @@ const Navbar = () => {
     { name: 'Genesis', path: '/genesis', type: 'route' },
     { name: 'CSD Department', path: '/csd-department', type: 'route' },
     { name: 'Gallery', path: '/#gallery', type: 'hash' },
-    { name: 'Contact Us', path: '/#contact-us', type: 'hash' },
+    { name: 'Contact Us', path: '/contact', type: 'route' },
   ];
 
   const isActive = (item) => item.type === 'route' && location.pathname === item.path;

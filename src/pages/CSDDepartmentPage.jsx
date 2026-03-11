@@ -3,13 +3,27 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import desocLogo from '../assets/desoc-logo.png';
 
-// Import lab images (reusing installation assets as lab photos)
-import lab1 from '../assets/install1.png';
-import lab2 from '../assets/install2.png';
-import lab3 from '../assets/install3.png';
-import lab4 from '../assets/install4.png';
-import lab5 from '../assets/install5.png';
-import lab6 from '../assets/install6.png';
+// Import department images
+import deptImg1 from '../assets/dept/csd_dept.jpg';
+import deptImg2 from '../assets/dept/csd_dept2.jpg';
+import labImg1 from '../assets/dept/csd_lab.jpg';
+import labImg2 from '../assets/dept/csd_lab2.jpg';
+import classroomImg from '../assets/dept/csd_classroom.jpg';
+
+// Import alumni photos
+import tanujaImg from '../assets/dept/alumni/tanuja_pagar.jpg';
+import satyamImg from '../assets/dept/alumni/satyam_kale.jpg';
+import pranavImg from '../assets/dept/alumni/pranav_shimpi.jpg';
+import omImg from '../assets/dept/alumni/om_malpure.jpg';
+import nayanImg from '../assets/dept/alumni/nayan_deshmuk.jpg';
+import mohanImg from '../assets/dept/alumni/mohan_mondhe.jpg';
+
+// Import faculty photos
+import bhiseMam from '../assets/dept/bhise_mam.jpg';
+import induMam from '../assets/dept/indu_mam.jpg';
+import vrushaliMam from '../assets/dept/vrushali_mam.webp';
+import mrunaliMam from '../assets/dept/mrunali_mam.webp';
+import reshmaMam from '../assets/dept/reshma_mam.jpg';
 
 const CSDDepartmentPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -21,32 +35,29 @@ const CSDDepartmentPage = () => {
   }, []);
 
   const facultyMembers = [
-    { name: 'Dr. Rajesh Kumar', designation: 'Head of Department', specialization: 'Human-Computer Interaction, UX Research', experience: '20+ years' },
-    { name: 'Prof. Sneha Patil', designation: 'Associate Professor', specialization: 'UI/UX Design, Design Thinking', experience: '15+ years' },
-    { name: 'Prof. Amit Deshmukh', designation: 'Associate Professor', specialization: 'Computer Graphics, Visualization', experience: '14+ years' },
-    { name: 'Prof. Priya Sharma', designation: 'Assistant Professor', specialization: 'Web Technologies, Frontend Development', experience: '10+ years' },
-    { name: 'Prof. Vikram Joshi', designation: 'Assistant Professor', specialization: 'Data Structures, Algorithms', experience: '8+ years' },
-    { name: 'Prof. Neeta Kulkarni', designation: 'Assistant Professor', specialization: 'Database Systems, Cloud Computing', experience: '9+ years' },
-    { name: 'Prof. Rahul More', designation: 'Assistant Professor', specialization: 'Machine Learning, AI in Design', experience: '7+ years' },
-    { name: 'Prof. Anita Gaikwad', designation: 'Assistant Professor', specialization: 'Software Engineering, Agile Methods', experience: '6+ years' },
+    { name: 'Dr. Y D Bhise', designation: 'Head of Department', specialization: 'Computer Science & Design', image: bhiseMam },
+    { name: 'Indu Seethanathan', designation: 'Assistant Professor', specialization: 'Computer Science & Design', image: induMam },
+    { name: 'Vrushali Chane', designation: 'Assistant Professor', specialization: 'Computer Science & Design', image: vrushaliMam },
+    { name: 'Mrunali Pawar', designation: 'Assistant Professor', specialization: 'Computer Science & Design', image: mrunaliMam },
+    { name: 'Reshma Dhurjad', designation: 'Assistant Professor', specialization: 'Computer Science & Design', image: reshmaMam },
   ];
 
   const laboratories = [
-    { name: 'Design Studio Lab', description: 'Equipped with high-end workstations, Wacom tablets, and professional design software for UI/UX prototyping and digital art creation.', image: lab1 },
-    { name: 'Computer Programming Lab', description: 'State-of-the-art computing lab with modern hardware for programming, data structures, and algorithm development.', image: lab2 },
-    { name: 'Multimedia & Graphics Lab', description: 'Dedicated space for 3D modeling, animation, video editing, and multimedia content creation with industry-standard tools.', image: lab3 },
-    { name: 'Networking & IoT Lab', description: 'Hands-on lab for networking fundamentals, IoT prototyping, and embedded systems development.', image: lab4 },
-    { name: 'Project Development Lab', description: 'Collaborative workspace for final year projects, hackathons, and team-based software development.', image: lab5 },
-    { name: 'Research & Innovation Lab', description: 'Research-focused environment supporting faculty and student research in HCI, AI, and design innovation.', image: lab6 },
+    { name: 'Design Studio Lab', description: 'Equipped with high-end workstations, Wacom tablets, and professional design software for UI/UX prototyping and digital art creation.', image: labImg1 },
+    { name: 'Computer Programming Lab', description: 'State-of-the-art computing lab with modern hardware for programming, data structures, and algorithm development.', image: labImg2 },
+    { name: 'Multimedia & Graphics Lab', description: 'Dedicated space for 3D modeling, animation, video editing, and multimedia content creation with industry-standard tools.', image: classroomImg },
+    { name: 'Networking & IoT Lab', description: 'Hands-on lab for networking fundamentals, IoT prototyping, and embedded systems development.', image: deptImg1 },
+    { name: 'Project Development Lab', description: 'Collaborative workspace for final year projects, hackathons, and team-based software development.', image: deptImg2 },
+    { name: 'Research & Innovation Lab', description: 'Research-focused environment supporting faculty and student research in HCI, AI, and design innovation.', image: labImg1 },
   ];
 
   const alumniData = [
-    { name: 'Aarav Mehta', batch: '2020', role: 'UX Designer at Google', testimonial: 'CSD gave me the perfect blend of technical skills and design thinking that set me apart in the industry.' },
-    { name: 'Snehal Pawar', batch: '2019', role: 'Product Designer at Microsoft', testimonial: 'The department\'s focus on both CS fundamentals and design prepared me for a career I truly love.' },
-    { name: 'Rohan Desai', batch: '2021', role: 'Frontend Engineer at Flipkart', testimonial: 'The hands-on lab experience and industry exposure were invaluable for my career growth.' },
-    { name: 'Priya Nair', batch: '2020', role: 'Design Lead at Zomato', testimonial: 'CSD taught me to think at the intersection of technology and human experience.' },
-    { name: 'Kunal Shah', batch: '2018', role: 'Co-founder, DesignTech Startup', testimonial: 'The entrepreneurial spirit and technical depth from CSD helped me build my own company.' },
-    { name: 'Ananya Joshi', batch: '2021', role: 'UI Engineer at Adobe', testimonial: 'From design principles to clean code — CSD covered it all. Forever grateful!' },
+    { name: 'Tanuja Pagar', batch: '2020', role: 'UX Designer at Google', testimonial: 'CSD gave me the perfect blend of technical skills and design thinking that set me apart in the industry.', image: tanujaImg },
+    { name: 'Satyam Kale', batch: '2019', role: 'Product Designer at Microsoft', testimonial: 'The department\'s focus on both CS fundamentals and design prepared me for a career I truly love.', image: satyamImg },
+    { name: 'Pranav Shimpi', batch: '2021', role: 'Frontend Engineer at Flipkart', testimonial: 'The hands-on lab experience and industry exposure were invaluable for my career growth.', image: pranavImg },
+    { name: 'Om Malpure', batch: '2020', role: 'Design Lead at Zomato', testimonial: 'CSD taught me to think at the intersection of technology and human experience.', image: omImg },
+    { name: 'Nayan Deshmukh', batch: '2018', role: 'Co-founder, DesignTech Startup', testimonial: 'The entrepreneurial spirit and technical depth from CSD helped me build my own company.', image: nayanImg },
+    { name: 'Mohan Mondhe', batch: '2021', role: 'UI Engineer at Adobe', testimonial: 'From design principles to clean code — CSD covered it all. Forever grateful!', image: mohanImg },
   ];
 
   // Glass card wrapper used throughout
@@ -236,17 +247,18 @@ const CSDDepartmentPage = () => {
                     key={index}
                     className="group relative p-4 sm:p-5 rounded-2xl border border-white/10 bg-white/5 hover:border-red-500/40 hover:bg-white/10 transition-all duration-500"
                   >
-                    {/* Avatar placeholder */}
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-red-600 to-red-900 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-500" style={{ boxShadow: '0 0 20px rgba(220,38,38,0.2)' }}>
-                      <span className="text-white text-xl sm:text-2xl font-bold">
-                        {faculty.name.split(' ').map(n => n[0]).join('')}
-                      </span>
+                    {/* Faculty photo */}
+                    <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden mx-auto mb-4 border-2 border-red-600/40 group-hover:border-red-500 group-hover:scale-110 transition-all duration-500" style={{ boxShadow: '0 0 20px rgba(220,38,38,0.2)' }}>
+                      <img
+                        src={faculty.image}
+                        alt={faculty.name}
+                        className="w-full h-full object-cover object-top"
+                      />
                     </div>
                     <div className="text-center">
                       <h3 className="text-white font-bold text-base sm:text-lg mb-1">{faculty.name}</h3>
                       <p className="text-red-400 text-xs sm:text-sm font-medium uppercase tracking-wider mb-2">{faculty.designation}</p>
                       <p className="text-gray-400 text-xs leading-relaxed">{faculty.specialization}</p>
-                      <p className="text-gray-500 text-xs mt-2">{faculty.experience} experience</p>
                     </div>
                   </div>
                 ))}
@@ -336,8 +348,8 @@ const CSDDepartmentPage = () => {
                     <p className="text-gray-300 text-sm leading-relaxed italic mb-4">"{alum.testimonial}"</p>
                     <div className="flex items-center gap-3">
                       {/* Avatar */}
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-red-600 to-red-900 flex items-center justify-center flex-shrink-0">
-                        <span className="text-white text-sm font-bold">{alum.name.split(' ').map(n => n[0]).join('')}</span>
+                      <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-red-600/40 flex-shrink-0">
+                        <img src={alum.image} alt={alum.name} className="w-full h-full object-cover object-top" />
                       </div>
                       <div>
                         <h4 className="text-white font-semibold text-sm">{alum.name}</h4>
