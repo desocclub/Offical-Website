@@ -6,92 +6,63 @@ const Navbar = () => {
   const location = useLocation();
 
   const menuItems = [
-    { name: 'Home', path: '/', isRoute: true },
-    { name: 'Events', path: '/#events', isRoute: false },
-    { name: 'Alumni', path: '/#alumni', isRoute: false },
-    { name: 'Committee', path: '/committee', isRoute: true },
-    { name: 'Gallery', path: '/#gallery', isRoute: false },
-    { name: 'Contact Us', path: '/#contact-us', isRoute: false },
+    { name: 'Home', path: '/', type: 'route' },
+    { name: 'Events', path: '/#events', type: 'hash' },
+    { name: 'Alumni', path: '/#alumni', type: 'hash' },
+    { name: 'Committee', path: '/committee', type: 'route' },
+    { name: 'Genesis', path: '/genesis', type: 'route' },
+    { name: 'Gallery', path: '/#gallery', type: 'hash' },
+    { name: 'Contact Us', path: '/#contact-us', type: 'hash' },
   ];
 
-  const isActive = (item) => item.isRoute && location.pathname === item.path;
+  const isActive = (item) => item.type === 'route' && location.pathname === item.path;
 
   return (
-    <nav className="sticky top-0 z-50 bg-black">
-      <div className="flex justify-between items-center">
-        {/* Logo Section */}
-        <div className="px-6 py-3">
-          <Link to="/">
-            <h1 className="text-white font-bold text-lg">Design Society</h1>
-            <p className="text-gray-400 text-xs">Department of Computer Science & Design</p>
-          </Link>
-        </div>
-
-        {/* Desktop Menu - Red Background Section */}
-        <div className="hidden md:flex items-center bg-red-700 h-full">
-          {menuItems.map((item, index) => (
-            item.isRoute ? (
-              <Link
-                key={item.name}
-                to={item.path}
-                className={`text-white hover:bg-red-800 transition-all duration-300 px-6 py-4 text-sm ${
-                  index !== menuItems.length - 1 ? 'border-r border-red-800' : ''
-                } ${isActive(item) ? 'bg-red-800' : ''}`}
-              >
-                {item.name}
-              </Link>
-            ) : (
-              <a
-                key={item.name}
-                href={item.path}
-                className={`text-white hover:bg-red-800 transition-all duration-300 px-6 py-4 text-sm ${
-                  index !== menuItems.length - 1 ? 'border-r border-red-800' : ''
-                }`}
-              >
-                {item.name}
-              </a>
-            )
-          ))}
-        </div>
-
-        {/* Mobile Hamburger */}
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden text-white px-6 focus:outline-none"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            {isMenuOpen ? (
-              <path d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
-        </button>
+    <nav className="fixed top-6 right-6 lg:right-12 z-50">
+      {/* Desktop Menu - Pill Container */}
+      <div className="hidden md:flex items-center bg-gradient-to-r from-[#7a0000] to-[#b00000] rounded-full px-2 py-1 shadow-lg">
+        {menuItems.map((item) => (
+          item.type === 'route' ? (
+            <Link
+              key={item.name}
+              to={item.path}
+              className={`text-white transition-all duration-300 px-4 py-2 text-sm font-medium rounded-full ${
+                isActive(item) ? 'bg-white/20' : 'hover:bg-white/10'
+              }`}
+            >
+              {item.name}
+            </Link>
+          ) : (
+            <a
+              key={item.name}
+              href={item.path}
+              className="text-white hover:bg-white/10 transition-all duration-300 px-4 py-2 text-sm font-medium rounded-full"
+            >
+              {item.name}
+            </a>
+          )
+        ))}
       </div>
 
-      {/* Mobile Menu */}
-      <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-        }`}
+      {/* Mobile Hamburger */}
+      <button
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        className="md:hidden text-white bg-gradient-to-r from-[#7a0000] to-[#b00000] p-3 rounded-full"
       >
-        <div className="bg-red-700">
+        <svg className="w-6 h-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+          {isMenuOpen ? <path d="M6 18L18 6M6 6l12 12" /> : <path d="M4 6h16M4 12h16M4 18h16" />}
+        </svg>
+      </button>
+
+      {/* Mobile Menu Dropdown */}
+      <div className={`md:hidden absolute right-0 top-14 overflow-hidden transition-all duration-300 ${isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+        <div className="bg-gradient-to-b from-[#7a0000] to-[#b00000] rounded-2xl py-2 min-w-48 shadow-xl">
           {menuItems.map((item) => (
-            item.isRoute ? (
+            item.type === 'route' ? (
               <Link
                 key={item.name}
                 to={item.path}
-                className={`block text-white hover:bg-red-800 px-6 py-3 border-b border-red-800 transition-all duration-300 ${
-                  isActive(item) ? 'bg-red-800' : ''
-                }`}
+                className={`block text-white hover:bg-white/10 px-6 py-3 text-sm ${isActive(item) ? 'bg-white/10' : ''}`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
@@ -100,7 +71,7 @@ const Navbar = () => {
               <a
                 key={item.name}
                 href={item.path}
-                className="block text-white hover:bg-red-800 px-6 py-3 border-b border-red-800 transition-all duration-300"
+                className="block text-white hover:bg-white/10 px-6 py-3 text-sm"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
