@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Navbar from '../components/Navbar';
+import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 
 // Import member images from assets/members
@@ -212,9 +212,87 @@ const CommitteePage = () => {
     </section>
   );
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const menuItems = [
+    { name: 'Home', path: '/', type: 'route' },
+    { name: 'Events', path: '#events', type: 'hash' },
+    { name: 'Alumni', path: '#alumni', type: 'hash' },
+    { name: 'Committee', path: '/committee', type: 'route' },
+    { name: 'Gallery', path: '#gallery', type: 'hash' },
+    { name: 'Contact Us', path: '#contact', type: 'hash' }
+  ];
+
   return (
     <div className="min-h-screen bg-black">
-      <Navbar />
+      {/* Floating Navbar - Pill Shape (same as Hero) */}
+      <nav className="absolute top-6 right-6 lg:right-12 z-50">
+        {/* Desktop Menu - Pill Container */}
+        <div className="hidden md:flex items-center bg-gradient-to-r from-[#7a0000] to-[#b00000] rounded-full px-2 py-1 shadow-lg">
+          {menuItems.map((item) => (
+            item.type === 'route' ? (
+              <Link
+                key={item.name}
+                to={item.path}
+                className="text-white hover:bg-white/10 transition-all duration-300 px-4 py-2 text-sm font-medium rounded-full"
+              >
+                {item.name}
+              </Link>
+            ) : (
+              <a
+                key={item.name}
+                href={item.path}
+                className="text-white hover:bg-white/10 transition-all duration-300 px-4 py-2 text-sm font-medium rounded-full"
+              >
+                {item.name}
+              </a>
+            )
+          ))}
+        </div>
+
+        {/* Mobile Hamburger */}
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="md:hidden text-white bg-gradient-to-r from-[#7a0000] to-[#b00000] p-3 rounded-full"
+        >
+          <svg className="w-6 h-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+            {isMenuOpen ? <path d="M6 18L18 6M6 6l12 12" /> : <path d="M4 6h16M4 12h16M4 18h16" />}
+          </svg>
+        </button>
+
+        {/* Mobile Menu Dropdown */}
+        <div className={`md:hidden absolute right-0 top-14 overflow-hidden transition-all duration-300 ${isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+          <div className="bg-gradient-to-b from-[#7a0000] to-[#b00000] rounded-2xl py-2 min-w-48 shadow-xl">
+            {menuItems.map((item) => (
+              item.type === 'route' ? (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  className="block text-white hover:bg-white/10 px-6 py-3 text-sm"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ) : (
+                <a
+                  key={item.name}
+                  href={item.path}
+                  className="block text-white hover:bg-white/10 px-6 py-3 text-sm"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.name}
+                </a>
+              )
+            ))}
+          </div>
+        </div>
+      </nav>
+
+      {/* Logo Text - Top Left (same as Hero) */}
+      <div className="absolute top-6 left-6 lg:left-12 z-50">
+        <h1 className="text-white font-bold text-lg">Design Society</h1>
+        <p className="text-gray-400 text-l m-2">Department of Computer Science & Design, KKWIEER</p>
+      </div>
       
       {/* Background with gradient */}
       <div className="relative">
@@ -243,7 +321,7 @@ const CommitteePage = () => {
         />
 
         {/* Main Content */}
-        <main className="relative px-4 sm:px-6 lg:px-8 py-16 max-w-7xl mx-auto">
+        <main className="relative px-4 sm:px-6 lg:px-8 pt-24 pb-16 max-w-7xl mx-auto">
           {/* Page Header */}
           <header 
             className={`
