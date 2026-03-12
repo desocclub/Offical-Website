@@ -8,6 +8,7 @@ import GenesisEventPage from './pages/GenesisEventPage';
 import RegistrationPage from './pages/RegistrationPage';
 import CSDDepartmentPage from './pages/CSDDepartmentPage';
 import ContactPage from './pages/ContactPage';
+import AlumniPage from './pages/AlumniPage';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -29,6 +30,7 @@ function App() {
       <Route path="/genesis/register" element={<RegistrationPage />} />
       <Route path="/csd-department" element={<CSDDepartmentPage />} />
       <Route path="/contact" element={<ContactPage />} />
+      <Route path="/alumni" element={<AlumniPage />} />
     </Routes>
     </>
   );

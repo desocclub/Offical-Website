@@ -8,7 +8,7 @@ const Navbar = () => {
   const menuItems = [
     { name: 'Home', path: '/', type: 'route' },
     { name: 'Events', path: '/#events', type: 'hash' },
-    { name: 'Alumni', path: '/#alumni', type: 'hash' },
+    { name: 'Alumni', path: '/alumni', type: 'route' },
     { name: 'Committee', path: '/committee', type: 'route' },
     { name: 'Genesis', path: '/genesis', type: 'route' },
     { name: 'CSD Department', path: '/csd-department', type: 'route' },
