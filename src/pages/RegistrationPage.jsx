@@ -97,13 +97,24 @@ const RegistrationPage = () => {
     try {
       const payload = new FormData();
       Object.entries(formData).forEach(([k, v]) => {
-        if (k === 'paymentScreenshot') payload.append(k, v);
+        if (k === 'paymentScreenshot' && v) payload.append(k, v);
         else if (k === 'members') payload.append(k, JSON.stringify(v));
-        else payload.append(k, v);
+        else if (v !== null && v !== undefined) payload.append(k, v);
       });
-      await fetch('https://api.example.com/genesis/register', { method: 'POST', body: payload });
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/genesis/register`,
+        { method: 'POST', body: payload }
+      );
+      const data = await res.json();
+      if (!res.ok) {
+        setErrors(data.errors || { general: data.error || 'Registration failed. Please try again.' });
+        setIsSubmitting(false);
+        return;
+      }
     } catch {
-      // Backend not yet configured
+      setErrors({ general: 'Network error. Please check your connection and try again.' });
+      setIsSubmitting(false);
+      return;
     }
     setIsSubmitting(false);
     setIsSubmitted(true);
@@ -554,7 +565,13 @@ const RegistrationPage = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between mt-8">
+                {errors.general && (
+                  <div className="mt-6 border border-red-500/30 bg-red-500/5 rounded-lg p-3">
+                    <p className="text-red-400 text-sm">{errors.general}</p>
+                  </div>
+                )}
+
+                <div className="flex items-center justify-between mt-6">
                   <button
                     onClick={prevStep}
                     className="px-6 py-3 bg-[#1a1a2e] border border-white/15 text-gray-300 font-bold uppercase tracking-wider rounded-lg hover:border-white/30 hover:text-white transition-all duration-200"
