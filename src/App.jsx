@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import './App.css'
 import Home from './pages/Home';
 import PastEventsPage from './pages/PastEventsPage';
@@ -16,7 +16,6 @@ import CSDDepartmentPage from './pages/CSDDepartmentPage';
 import ContactPage from './pages/ContactPage';
 import AlumniPage from './pages/AlumniPage';
 import AboutPage from './pages/AboutPage';
-import RecruitmentPage from './pages/RecruitmentPage';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -25,6 +24,7 @@ function ScrollToTop() {
   }, [pathname]);
   return null;
 }
+
 
 function App() {
   return (
@@ -46,7 +46,7 @@ function App() {
       <Route path="/about" element={<AboutPage />} />
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/alumni" element={<AlumniPage />} />
-      <Route path="/recruitment" element={<RecruitmentPage />} />
+      <Route path="/recruitment" element={<Navigate to="/" replace />} />
     </Routes>
     </>
   );
