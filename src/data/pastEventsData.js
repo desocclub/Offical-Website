@@ -87,7 +87,85 @@ import game4 from '../assets/gda/game4.jpeg';
 import game5 from '../assets/gda/game5.jpeg';
 import game6 from '../assets/gda/game6.jpeg';
 
+import bidnbuild1 from '../assets/genesis/bidnbuild1.jpg';
+import bidnbuild2 from '../assets/genesis/bidnbuild2.jpg';
+import bidnbuild3 from '../assets/genesis/bidnbuild3.jpg';
+import bidnbuild4 from '../assets/genesis/bidnbuild4.jpg';
+import bidnbuild5 from '../assets/genesis/bidnbuild5.jpg';
+import bidnbuild6 from '../assets/genesis/bidnbuild6.jpg';
+
+import escape1 from '../assets/genesis/escape1.jpg';
+import escape2 from '../assets/genesis/escape2.jpg';
+import escape3 from '../assets/genesis/escape3.jpg';
+import escape4 from '../assets/genesis/escape4.jpg';
+import escape5 from '../assets/genesis/escape5.jpg';
+import escape6 from '../assets/genesis/escape6.jpg';
+
+import sharkverse1 from '../assets/genesis/sharkverse1.jpg';
+import sharkverse2 from '../assets/genesis/sharkverse2.jpg';
+import sharkverse3 from '../assets/genesis/sharkverse3.jpg';
+import sharkverse4 from '../assets/genesis/sharkverse4.jpg';
+import sharkverse5 from '../assets/genesis/sharkverse5.jpg';
+import sharkverse6 from '../assets/genesis/sharkverse6.jpg';
+
 export const pastEvents = [
+  {
+    id: 'sharkverse-2026',
+    title: 'Sharkverse - Genesis 2026',
+    date: '28 March 2026',
+    time: '10:00 AM - 3:00 PM',
+    shortDescription:
+    'Simulated startup pitch arena where innovation meets strategy and investor-style decision making.',
+    description:
+      'Sharkverse is a one of the event under the Genesis 2026 Departmental Fest. where participants present innovative business ideas to a panel of judges acting as "Sharks". Each team pitches their startup concept and attempts to secure virtual investment by convincing the judges about the viability, scalability, and impact of their idea. The event simulates real-world startup pitching, negotiation, and investor decision-making while encouraging entrepreneurship, innovation, and persuasive communication skills.',
+    coverImage: sharkverse1,
+    gallery: [
+      sharkverse1,
+      sharkverse2,
+      sharkverse3,
+      sharkverse4,
+      sharkverse5,
+      sharkverse6,
+    ],
+  },
+  {
+    id: 'escape-2026',
+    title: 'Esacpe The Matrix - Genesis 2026',
+    date: '27 March 2026',
+    time: '10:00 AM - 3:00 PM',
+    shortDescription:
+      'A simulation-style mission where participants play as trapped programs and complete linked challenges to escape the Matrix.',
+    description:
+      'Escape The Matrix is a one of the event under the Genesis 2026 Departmental Fest. Where Participants are programs trapped inside the Matrix and must solve 4 challenges to escape the simulation.Each round reveals the next location through riddles, requiring teams to decode clues quickly and coordinate their moves. The event concludes when a team returns with proof of completion after clearing every checkpoint and unlocking the final prize.',
+      coverImage: escape1,
+      gallery: [
+      escape1,
+      escape2,
+      escape3,
+      escape4,
+      escape5,
+      escape6,
+    ],
+  },
+  {
+    id: 'bidnbuild-2026',
+    title: 'Bid & Build - Genesis 2026',
+    date: '28 March 2026',
+    time: '10:00 AM - 3:00 PM',
+    shortDescription:
+      'A strategy-driven creative arena where teams manage coins, compete in auctions, and convert constrained assets into standout design outcomes.',
+    description:
+      'Bid & Build is a one of the event under the Genesis 2026 Departmental Fest. Where Partcipants plays in a team and design impactful designs by spend coins wisely in auctions, negotiate smart trades in the Black Market, and execute a coherent design within fixed time.',
+    coverImage: bidnbuild1,
+    gallery: [
+      bidnbuild1,
+      bidnbuild2,
+      bidnbuild3,
+      bidnbuild4,
+      bidnbuild5,
+      bidnbuild6,
+    ],
+  },
   {
     id: 'installation-ceremony-2025',
     title: 'DESOC Installation Ceremony',
