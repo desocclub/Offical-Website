@@ -211,13 +211,13 @@ const GenesisPage = () => {
 
               {/* CTAs */}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <button
+                {/* <button
                   type="button"
                   disabled
                   className="px-8 sm:px-10 py-3.5 bg-gray-700/60 text-gray-200 font-bold uppercase tracking-wider rounded-full cursor-not-allowed border border-gray-500/50"
                 >
                   Registrations Closed
-                </button>
+                </button> */}
                 <a
                   href="#events"
                   className="px-8 sm:px-10 py-3.5 border border-white/15 text-gray-300 font-bold uppercase tracking-wider rounded-full hover:border-red-500/40 hover:text-red-400 transition-all duration-300"
@@ -430,7 +430,7 @@ const GenesisPage = () => {
             {/* ==============================
                 CLOSING CTA
             ============================== */}
-            <GlassCard delay={500}>
+            {/* <GlassCard delay={500}>
               <div className="text-center py-4 sm:py-8">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">Ready to Compete?</h2>
                 <p className="text-gray-400 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto mb-8">
@@ -446,7 +446,7 @@ const GenesisPage = () => {
                   Registrations Closed
                 </button>
               </div>
-            </GlassCard>
+            </GlassCard> */}
 
           </div>
 

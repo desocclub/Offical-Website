@@ -2,36 +2,48 @@ import EventCard from './EventCard';
 import sharkverseImg from '../assets/genesis/sharkverse.jpeg';
 import escapeMatrixImg from '../assets/genesis/escape.jpeg';
 import bidnBuild from '../assets/genesis/bidnbuild.jpeg';
+import cybersabha from '../assets/cybersabha.jpeg';
 
 const Events = () => {
   const eventsData = [
+    // {
+    //   id: 1,
+    //   slug: "sharkverse",
+    //   title: "Sharkverse",
+    //   tag: "Startup Pitch Arena",
+    //   description: "Pitch. Persuade. Prosper. Enter Sharkverse and pitch your startup vision to a panel of evaluators. Present your idea, defend your business model, and compete to prove why your concept deserves the spotlight.",
+    //   image: sharkverseImg,
+    //   isLive: true,
+    //   comingSoon: false
+    // },
+    // {
+    //   id: 2,
+    //   slug: "escape-the-matrix",
+    //   title: "Escape The Matrix",
+    //   tag: "Treasure Hunt + Escape Room",
+    //   description: "Crack the code. Break free. Enter a Matrix-themed challenge where teams solve connected riddles across multiple rooms, unlock locations one by one, and race to complete all four stages.",
+    //   image: escapeMatrixImg,
+    //   isLive: true,
+    //   comingSoon: false
+    // },
+    // {
+    //   id: 3,
+    //   slug: "bid-and-build",
+    //   title: "Bid & Build",
+    //   tag: "Strategy + Design + Auction",
+    //   description: "Bid Smart. Design Bold. A strategy-based creative showdown where teams bid for design assets with virtual coins, trade in a black market, and build a final solution under time pressure.",
+    //   image: bidnBuild,
+    //   isLive: true,
+    //   comingSoon: false
+    // },
+
     {
-      id: 1,
-      slug: "sharkverse",
-      title: "Sharkverse",
-      tag: "Startup Pitch Arena",
-      description: "Pitch. Persuade. Prosper. Enter Sharkverse and pitch your startup vision to a panel of evaluators. Present your idea, defend your business model, and compete to prove why your concept deserves the spotlight.",
-      image: sharkverseImg,
-      isLive: true,
-      comingSoon: false
-    },
-    {
-      id: 2,
-      slug: "escape-the-matrix",
-      title: "Escape The Matrix",
-      tag: "Treasure Hunt + Escape Room",
-      description: "Crack the code. Break free. Enter a Matrix-themed challenge where teams solve connected riddles across multiple rooms, unlock locations one by one, and race to complete all four stages.",
-      image: escapeMatrixImg,
-      isLive: true,
-      comingSoon: false
-    },
-    {
-      id: 3,
-      slug: "bid-and-build",
-      title: "Bid & Build",
-      tag: "Strategy + Design + Auction",
-      description: "Bid Smart. Design Bold. A strategy-based creative showdown where teams bid for design assets with virtual coins, trade in a black market, and build a final solution under time pressure.",
-      image: bidnBuild,
+      id: 4,
+      slug: "cyber-sabha",
+      title: "Cyber Sabha 2.0",
+      tag: "Digital Governance + Debate + Policy Making",
+      description: "A dynamic MUN-style cybersecurity debate exploring digital governance, cyber policy, and international tech diplomacy.",
+      image: cybersabha,
       isLive: true,
       comingSoon: false
     }
