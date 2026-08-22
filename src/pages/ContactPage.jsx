@@ -226,7 +226,7 @@ const ContactPage = () => {
                         href="tel:+912532382084"
                         className="text-red-400 hover:text-red-300 text-sm font-medium transition-colors duration-200"
                       >
-                        +91 70585 26857
+                        +91 8767471737
                       </a>
                       <p className="text-gray-500 text-xs mt-2">Mon – Sat, 9:00 AM – 5:00 PM IST</p>
                     </div>
@@ -291,7 +291,7 @@ const ContactPage = () => {
                           required
                           value={formData.name}
                           onChange={handleChange}
-                          placeholder="John Doe"
+                          placeholder=""
                           className="w-full px-4 py-3 rounded-xl border border-white/10 bg-white/5 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-red-500/50 focus:ring-1 focus:ring-red-500/30 transition-all duration-300"
                         />
                       </div>
@@ -306,7 +306,7 @@ const ContactPage = () => {
                           required
                           value={formData.email}
                           onChange={handleChange}
-                          placeholder="john@example.com"
+                          placeholder=""
                           className="w-full px-4 py-3 rounded-xl border border-white/10 bg-white/5 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-red-500/50 focus:ring-1 focus:ring-red-500/30 transition-all duration-300"
                         />
                       </div>

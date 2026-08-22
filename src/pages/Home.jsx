@@ -4,6 +4,7 @@ import Events from '../components/Events';
 import Committee from '../components/Commitee';
 import Gallery from '../components/Gallery';
 import Footer from '../components/Footer';
+import CommitteeReveal from '../components/CommitteeReveal';
 
 const Home = () => {
   return (
@@ -11,7 +12,7 @@ const Home = () => {
       <Navbar />
       <Hero />
       <Events />
-      <Committee />
+      <CommitteeReveal />
       <Gallery />
       <Footer />
     </div>
