@@ -1,114 +1,99 @@
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+/* Hero Custom Styles */
+
+.font-editorial-sans {
+  font-family: var(--font-editorial-sans, 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif);
+}
+
+.font-editorial-serif {
+  font-family: var(--font-editorial-serif, 'Instrument Serif', Georgia, serif);
+}
+
+.font-editorial-mono {
+  font-family: var(--font-editorial-mono, 'JetBrains Mono', monospace);
+}
+
+/* Outlined Stroke Text */
+.hero-stroke-text {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+@media (max-width: 640px) {
+  .hero-stroke-text {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.9);
   }
-  to {
+}
+
+.hero-stroke-text:hover {
+  -webkit-text-stroke: 1.5px #ff3366;
+  text-shadow: 0 0 20px rgba(255, 51, 102, 0.4);
+}
+
+/* Figma Corner Handles */
+.figma-handle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background-color: #ff3366;
+  border: 1px solid #ffffff;
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .figma-handle {
+    width: 3.5px;
+    height: 3.5px;
+    border-width: 0.5px;
+  }
+}
+
+.figma-handle-white {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .figma-handle-white {
+    width: 3.5px;
+    height: 3.5px;
+    border-width: 0.5px;
+  }
+}
+
+/* CTA Subtle Pulse Glow */
+.cta-editorial {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cta-editorial:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 0 30px 4px rgba(255, 51, 102, 0.25);
+}
+
+/* Mouse Scroll Animation */
+@keyframes scrollWheel {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.2;
+    transform: translateY(6px);
+  }
+  100% {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes rollDown {
-  from {
-    opacity: 0;
-    transform: rotateX(-90deg) translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: rotateX(0) translateY(0);
-  }
-}
-
-/* CTA Float */
-@keyframes ctaFloat {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-5px); }
-}
-
-/* CTA Glow Pulse */
-@keyframes ctaGlow {
-  0%, 100% {
-    box-shadow:
-      0 0 12px 2px rgba(151,2,51,0.45),
-      0 0 24px 4px rgba(216,27,96,0.25),
-      0 4px 20px rgba(0,0,0,0.5);
-  }
-  50% {
-    box-shadow:
-      0 0 28px 8px rgba(151,2,51,0.80),
-      0 0 52px 14px rgba(216,27,96,0.50),
-      0 4px 30px rgba(0,0,0,0.5);
-  }
-}
-
-/* CTA Shine sweep */
-@keyframes ctaShine {
-  0%   { left: -75%; }
-  100% { left: 125%; }
-}
-
-/* ---- Utility classes ---- */
-
-.animate-fadeInUp {
-  animation: fadeInUp 0.8s ease-out forwards;
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.6s ease-out forwards;
-}
-
-.animate-rollDown {
-  animation: rollDown 0.8s ease-out forwards;
-}
-
-/* Primary CTA */
-.cta-primary {
-  position: relative;
-  overflow: hidden;
-  animation:
-    ctaFloat 2.8s ease-in-out infinite,
-    ctaGlow  2.8s ease-in-out infinite;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
-}
-
-.cta-primary:hover {
-  animation-play-state: paused;
-  transform: scale(1.06) !important;
-  filter: brightness(1.12);
-  box-shadow:
-    0 0 32px 10px rgba(151,2,51,0.85),
-    0 0 64px 18px rgba(216,27,96,0.55),
-    0 6px 36px rgba(0,0,0,0.55) !important;
-}
-
-/* Shine pseudo-element */
-.cta-primary::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -75%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent 20%,
-    rgba(255,255,255,0.22) 50%,
-    transparent 80%
-  );
-  transform: skewX(-20deg);
-  pointer-events: none;
-}
-
-.cta-primary:hover::after {
-  animation: ctaShine 0.55s ease-out forwards;
+.animate-scroll-wheel {
+  animation: scrollWheel 2s ease-in-out infinite;
 }
