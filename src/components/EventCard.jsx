@@ -1,10 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 
-const EventCard = ({ title, tag, description, image, isLive = false, eventSlug, comingSoon = false }) => {
+const EventCard = ({ title, tag, description, image, eventSlug, learnMoreTo, comingSoon = false }) => {
   const navigate = useNavigate();
 
   const handleLearnMore = () => {
-    if (eventSlug) {
+    if (learnMoreTo) {
+      navigate(learnMoreTo);
+    } else if (eventSlug) {
       navigate(`/genesis/events/${eventSlug}`);
     }
   };
