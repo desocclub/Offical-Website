@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import PastEventsPage from './pages/PastEventsPage';
 import PastEventDetailPage from './pages/PastEventDetailPage';
 import CommitteePage from './pages/CommitteePage';
+import Committee2025Page from './pages/Committee2025Page';
 import GenesisPage from './pages/GenesisPage';
 import GenesisEventPage from './pages/GenesisEventPage';
 import SharkverseEventPage from './pages/SharkverseEventPage';
@@ -16,6 +17,7 @@ import CSDDepartmentPage from './pages/CSDDepartmentPage';
 import ContactPage from './pages/ContactPage';
 import AlumniPage from './pages/AlumniPage';
 import AboutPage from './pages/AboutPage';
+import CyberSabhaPage from './pages/CyberSabhaPage';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -35,6 +37,8 @@ function App() {
       <Route path="/events" element={<PastEventsPage />} />
       <Route path="/events/:eventId" element={<PastEventDetailPage />} />
       <Route path="/committee" element={<CommitteePage />} />
+      <Route path="/committee/2025-26" element={<Committee2025Page />} />
+      <Route path="/committee/2026-27" element={<CommitteePage />} />
       <Route path="/genesis" element={<GenesisPage />} />
       <Route path="/genesis/events/sharkverse" element={<SharkverseEventPage />} />
       <Route path="/genesis/events/bid-and-build" element={<BidAndBuildEventPage />} />
@@ -46,6 +50,7 @@ function App() {
       <Route path="/about" element={<AboutPage />} />
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/alumni" element={<AlumniPage />} />
+      <Route path="/cybersabha" element={<CyberSabhaPage />} />
       <Route path="/recruitment" element={<Navigate to="/" replace />} />
     </Routes>
     </>

@@ -1,7 +1,4 @@
 import EventCard from './EventCard';
-import sharkverseImg from '../assets/genesis/sharkverse.jpeg';
-import escapeMatrixImg from '../assets/genesis/escape.jpeg';
-import bidnBuild from '../assets/genesis/bidnbuild.jpeg';
 import cybersabha from '../assets/cybersabha.jpeg';
 
 const Events = () => {
@@ -40,11 +37,11 @@ const Events = () => {
     {
       id: 4,
       slug: "cyber-sabha",
-      title: "Cyber Sabha 2.0",
+      title: "CYBERSABHA",
       tag: "Digital Governance + Debate + Policy Making",
       description: "A dynamic MUN-style cybersecurity debate exploring digital governance, cyber policy, and international tech diplomacy.",
       image: cybersabha,
-      isLive: true,
+      learnMoreTo: '/cybersabha',
       comingSoon: false
     }
   ];
@@ -77,7 +74,7 @@ const Events = () => {
             <div className="h-1 w-20 bg-gradient-to-r from-[#bc0034] via-purple-500 to-[#bc0034] rounded-full"></div>
             <div className="h-[2px] w-12 bg-gradient-to-l from-transparent to-[#bc0034]"></div>
           </div>
-          <p className="text-gray-400 mt-6 text-lg uppercase tracking-widest">Upcoming & Live</p>
+          <p className="text-gray-400 mt-6 text-lg uppercase tracking-widest">Featured Experiences</p>
         </div>
 
         {/* Events List */}
@@ -93,8 +90,8 @@ const Events = () => {
                 tag={event.tag}
                 description={event.description}
                 image={event.image}
-                isLive={event.isLive}
                 eventSlug={event.slug}
+                learnMoreTo={event.learnMoreTo}
                 comingSoon={event.comingSoon}
               />
             </div>
