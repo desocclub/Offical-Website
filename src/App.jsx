@@ -16,6 +16,7 @@ import CSDDepartmentPage from './pages/CSDDepartmentPage';
 import ContactPage from './pages/ContactPage';
 import AlumniPage from './pages/AlumniPage';
 import AboutPage from './pages/AboutPage';
+import CustomCursor from './components/CustomCursor';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -29,6 +30,7 @@ function ScrollToTop() {
 function App() {
   return (
     <>
+    <CustomCursor />
     <ScrollToTop />
     <Routes>
       <Route path="/" element={<Home />} />

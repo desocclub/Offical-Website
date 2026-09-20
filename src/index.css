@@ -6,6 +6,7 @@
   --font-editorial-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-editorial-serif: 'Instrument Serif', Georgia, serif;
   --font-editorial-mono: 'JetBrains Mono', monospace;
+  --foreground: #ffffff;
   line-height: 1.5;
   font-weight: 400;
 
@@ -41,6 +42,13 @@ body {
   background-color: #000;
   overflow-y: scroll;
   scrollbar-gutter: stable;
+}
+
+/* Custom Designer Cursor - hide native OS cursor everywhere on desktop */
+@media (hover: hover) and (pointer: fine) {
+  *, *::before, *::after {
+    cursor: none !important;
+  }
 }
 
 /* Removed global h1 font-size override - let Tailwind handle sizing */

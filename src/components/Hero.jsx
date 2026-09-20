@@ -15,23 +15,18 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative w-full min-h-screen max-w-full bg-black text-white flex flex-col justify-between items-center overflow-hidden pt-20 sm:pt-24 pb-5 sm:pb-8 px-3 sm:px-6 select-none font-editorial-sans">
+    <section
+      className="relative w-full min-h-screen max-w-full bg-black text-white flex flex-col justify-between items-center overflow-hidden pt-20 sm:pt-24 pb-5 sm:pb-8 px-3 sm:px-6 select-none font-editorial-sans"
+    >
       {/* Interactive Dotted Particle Shader Canvas */}
       <ParticleHeroBackground />
 
-      {/* Top Left Static Coordinates Annotation (Desktop / Tablet only) */}
-      <div className="absolute top-24 left-6 sm:left-10 lg:left-16 hidden md:flex items-center gap-2 text-[11px] text-white/40 font-editorial-mono z-10 pointer-events-none">
-        <span className="text-white/60">⌀</span>
-        <span>x: 128.4</span>
-        <span className="ml-1">y: 86.7</span>
-      </div>
-
       {/* Main Editorial Headline & Content Area */}
       <div className="relative z-10 my-auto flex flex-col items-center justify-center text-center max-w-5xl mx-auto w-full px-2 sm:px-4 pt-3 pb-2">
-        
+
         {/* Editorial Headline */}
         <h1 className="text-[26px] min-[360px]:text-[29px] min-[390px]:text-[32px] min-[430px]:text-[35px] sm:text-[50px] md:text-[66px] lg:text-[78px] xl:text-[84px] font-semibold tracking-[-0.035em] leading-[1.15] sm:leading-[1.08] text-white flex flex-col items-center w-full max-w-full">
-          
+
           {/* LINE 1: "We design" */}
           <div className="relative inline-flex items-center justify-center flex-wrap max-w-full">
             <span className="mr-1.5 sm:mr-3.5">We</span>
@@ -45,35 +40,23 @@ const Hero = () => {
               <span className="figma-handle -bottom-[2.5px] sm:-bottom-[3px] -right-[2.5px] sm:-right-[3px]" />
 
               {/* Dimension measurement ticks above box */}
-              <div className="absolute -top-4 sm:-top-5.5 left-0 right-0 flex justify-between px-0.5 text-[8px] sm:text-[10px] text-[#ff3366] font-editorial-mono pointer-events-none">
-                <span className="flex flex-col items-center leading-none">
-                  <span className="h-1 sm:h-1.5 w-[1px] bg-[#ff3366] mb-0.5" />
-                  248px
+              <div className="absolute -top-5 sm:-top-6.5 left-0 right-0 flex justify-between px-0.5 text-[8px] sm:text-[10px] text-[#ff3366] font-editorial-mono pointer-events-none">
+                <span className="flex flex-col items-center leading-none tracking-normal">
+                  <span className="h-1.5 sm:h-2 w-[1px] bg-[#ff3366] mb-1" />
+                  28px
                 </span>
-                <span className="flex flex-col items-center leading-none">
-                  <span className="h-1 sm:h-1.5 w-[1px] bg-[#ff3366] mb-0.5" />
-                  248px
+                <span className="flex flex-col items-center leading-none tracking-normal">
+                  <span className="h-1.5 sm:h-2 w-[1px] bg-[#ff3366] mb-1" />
+                  28px
                 </span>
               </div>
 
               <span>design</span>
             </div>
-
-            {/* Right font metadata annotation (Desktop only) */}
-            <div className="hidden lg:inline-flex flex-col text-left text-[10px] text-white/40 font-editorial-mono leading-tight pl-4 border-l border-dotted border-white/20 ml-3 pointer-events-none">
-              <span>font: Satoshi</span>
-              <span>weight: 500.</span>
-            </div>
           </div>
 
           {/* LINE 2: "ideas, build" */}
           <div className="relative inline-flex items-center justify-center flex-wrap max-w-full mt-0.5">
-            {/* Left stroke metadata annotation (Desktop only) */}
-            <div className="hidden lg:inline-flex flex-col text-right text-[10px] text-white/40 font-editorial-mono leading-tight pr-4 border-r border-dotted border-white/20 mr-3 pointer-events-none">
-              <span>stroke: 1px</span>
-              <span>opacity: 80%</span>
-            </div>
-
             {/* Outlined text "ideas," */}
             <span className="hero-stroke-text mr-1.5 sm:mr-3.5 tracking-tight cursor-default">
               ideas,
@@ -91,15 +74,6 @@ const Hero = () => {
 
           {/* LINE 4: "and create together." */}
           <div className="relative inline-flex items-center justify-center flex-wrap max-w-full mt-0.5">
-            {/* Left leading annotation (Desktop only) */}
-            <div className="hidden lg:inline-flex items-center text-[10px] text-white/40 font-editorial-mono leading-tight pr-4 border-r border-white/20 mr-3 pointer-events-none">
-              <span className="text-white/60 mr-1.5">I</span>
-              <div className="flex flex-col text-left">
-                <span>leading</span>
-                <span>1.2</span>
-              </div>
-            </div>
-
             <span className="mr-1.5 sm:mr-3">and</span>
 
             {/* Italic Serif "create" */}

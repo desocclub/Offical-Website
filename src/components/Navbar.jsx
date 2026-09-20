@@ -120,24 +120,26 @@ const Navbar = ({ topOffset = 0 }) => {
             );
           })}
 
-          {/* More Dropdown */}
+          {/* Menu Dropdown (reusing mobile 6-dot menu icon) */}
           <div className="relative" ref={moreDropdownRef}>
             <button
               onClick={() => setIsMoreOpen(!isMoreOpen)}
-              className={`relative inline-flex items-center gap-1.5 py-1 text-[13px] lg:text-sm font-medium tracking-wide transition-colors duration-200 cursor-pointer ${
-                isMoreActive ? 'text-white' : 'text-neutral-300 hover:text-white'
-              }`}
+              className="relative flex items-center justify-center w-8 h-8 rounded-full text-neutral-300 hover:text-white focus:outline-none transition-all group cursor-pointer"
+              aria-label="Toggle navigation menu"
+              title="More"
             >
-              <span>More</span>
-              <svg
-                className={`w-3.5 h-3.5 transition-transform duration-200 ${isMoreOpen ? 'rotate-180' : ''}`}
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
+              <div
+                className={`grid grid-cols-3 gap-[3px] p-1 transition-transform duration-300 ${
+                  isMoreOpen ? 'rotate-90 scale-90' : 'group-hover:scale-105'
+                }`}
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-              </svg>
+                <span className={`w-1 h-1 rounded-full transition-colors duration-200 ${isMoreOpen || isMoreActive ? 'bg-[#ff3366]' : 'bg-neutral-300 group-hover:bg-white'}`} />
+                <span className={`w-1 h-1 rounded-full transition-colors duration-200 ${isMoreOpen || isMoreActive ? 'bg-[#ff3366]' : 'bg-neutral-300 group-hover:bg-white'}`} />
+                <span className={`w-1 h-1 rounded-full transition-colors duration-200 ${isMoreOpen || isMoreActive ? 'bg-[#ff3366]' : 'bg-neutral-300 group-hover:bg-white'}`} />
+                <span className={`w-1 h-1 rounded-full transition-colors duration-200 ${isMoreOpen || isMoreActive ? 'bg-[#ff3366]' : 'bg-neutral-300 group-hover:bg-white'}`} />
+                <span className={`w-1 h-1 rounded-full transition-colors duration-200 ${isMoreOpen || isMoreActive ? 'bg-[#ff3366]' : 'bg-neutral-300 group-hover:bg-white'}`} />
+                <span className={`w-1 h-1 rounded-full transition-colors duration-200 ${isMoreOpen || isMoreActive ? 'bg-[#ff3366]' : 'bg-neutral-300 group-hover:bg-white'}`} />
+              </div>
               {isMoreActive && (
                 <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#ff3366] shadow-[0_0_8px_#ff3366]" />
               )}

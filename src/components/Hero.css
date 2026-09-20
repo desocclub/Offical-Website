@@ -12,6 +12,7 @@
   font-family: var(--font-editorial-mono, 'JetBrains Mono', monospace);
 }
 
+
 /* Outlined Stroke Text */
 .hero-stroke-text {
   color: transparent;
