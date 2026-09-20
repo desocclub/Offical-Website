@@ -72,13 +72,13 @@ const EscapeTheMatrixEventPage = () => {
           <header className="text-center mb-10 sm:mb-12">
             <div className="inline-flex items-center gap-2 border border-red-500/30 bg-red-500/10 rounded-full px-4 py-1.5 mb-5">
               <span className="w-2 h-2 rounded-full bg-red-500" />
-              <span className="text-red-400 text-xs font-bold uppercase tracking-[0.2em]">Genesis Event</span>
+              <span className="text-red-400 text-xs uppercase tracking-[0.2em]" style={{ fontWeight: 'var(--font-weight-medium)' }}>Genesis Event</span>
             </div>
-            <h1 className="text-white font-black uppercase tracking-tight leading-none mb-3" style={{ fontSize: 'clamp(2.2rem, 8vw, 4rem)' }}>
+            <h1 className="heading-title-6 text-primary uppercase mb-3">
               Escape The Matrix
             </h1>
-            <p className="text-red-300 text-base sm:text-lg font-semibold mb-3">Crack the code. Break free.</p>
-            <p className="text-gray-400 text-sm sm:text-base max-w-3xl mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
+            <p className="text-red-300 text-base sm:text-lg mb-3" style={{ fontWeight: 'var(--font-weight-medium)' }}>Crack the code. Break free.</p>
+            <p className="text-tertiary text-sm sm:text-base max-w-3xl mx-auto">
               A simulation-style mission where participants play as trapped programs and complete linked challenges to escape the Matrix.
             </p>
           </header>
@@ -95,7 +95,7 @@ const EscapeTheMatrixEventPage = () => {
 
             <section className={sectionClass}>
               <SectionTitle>Event Description</SectionTitle>
-              <div className="max-w-3xl text-gray-300 text-sm sm:text-base leading-relaxed space-y-4" style={{ fontFamily: 'Inter, sans-serif' }}>
+              <div className="max-w-3xl text-secondary text-sm sm:text-base leading-relaxed space-y-4">
                 <p>
                   Participants are programs trapped inside the Matrix and must solve 4 challenges to escape the simulation.
                 </p>

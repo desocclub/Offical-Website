@@ -82,13 +82,13 @@ const SharkverseEventPage = () => {
           <header className="text-center mb-10 sm:mb-12">
             <div className="inline-flex items-center gap-2 border border-red-500/30 bg-red-500/10 rounded-full px-4 py-1.5 mb-5">
               <span className="w-2 h-2 rounded-full bg-red-500" />
-              <span className="text-red-400 text-xs font-bold uppercase tracking-[0.2em]">Genesis Event</span>
+              <span className="text-red-400 text-xs uppercase tracking-[0.2em]" style={{ fontWeight: 'var(--font-weight-medium)' }}>Genesis Event</span>
             </div>
-            <h1 className="text-white font-black uppercase tracking-tight leading-none mb-3" style={{ fontSize: 'clamp(2.2rem, 8vw, 4rem)' }}>
+            <h1 className="heading-title-6 text-primary uppercase mb-3">
               Sharkverse
             </h1>
             
-            <p className="text-gray-400 text-sm sm:text-base max-w-3xl mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
+            <p className="text-tertiary text-sm sm:text-base max-w-3xl mx-auto">
               Simulated startup pitch arena where innovation meets strategy and investor-style decision making.
             </p>
           </header>
@@ -106,7 +106,7 @@ const SharkverseEventPage = () => {
 
             <section className={sectionClass}>
               <SectionTitle>Event Overview</SectionTitle>
-              <div className="max-w-3xl text-gray-300 text-sm sm:text-base leading-relaxed space-y-4" style={{ fontFamily: 'Inter, sans-serif' }}>
+              <div className="max-w-3xl text-secondary text-sm sm:text-base leading-relaxed space-y-4">
                 <p>
                   Sharkverse is a simulated startup pitch competition where participants present innovative business ideas to a panel of judges acting as "Sharks".
                 </p>

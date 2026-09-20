@@ -97,8 +97,8 @@ const SectionTitle = ({ children, sub }) => (
   <div className="mb-8 flex items-center sm:mb-10">
     <div className="mr-4 h-10 w-1 shrink-0 rounded-full bg-gradient-to-b from-[#bc0034] to-[#7a001f] shadow-[0_0_10px_rgba(188,0,52,0.5)]" />
     <div>
-      <h2 className="text-2xl font-bold tracking-wide text-white sm:text-3xl md:text-4xl">{children}</h2>
-      {sub && <p className="mt-1 text-xs uppercase tracking-wider text-[#e32b5c] sm:text-sm">{sub}</p>}
+      <h2 className="heading-h2 text-primary">{children}</h2>
+      {sub && <p className="mt-1 text-xs uppercase tracking-wider text-[#e32b5c] sm:text-sm" style={{ fontWeight: 'var(--font-weight-medium)' }}>{sub}</p>}
     </div>
   </div>
 );
@@ -109,8 +109,8 @@ const CommitteeAlumniCard = ({ member }) => (
       <img src={member.image} alt={member.name} loading="lazy" className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105" />
     </div>
     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/90 to-transparent px-4 pb-4 pt-12">
-      <h3 className="text-base font-bold leading-tight text-white">{member.name}</h3>
-      <p className="mt-1 text-xs font-medium uppercase tracking-wider text-[#ef3b67]">{member.role}</p>
+      <h3 className="text-base text-primary leading-tight" style={{ fontWeight: 'var(--font-weight-medium)', letterSpacing: '-0.015em' }}>{member.name}</h3>
+      <p className="mt-1 text-xs uppercase tracking-wider text-[#ef3b67]" style={{ fontWeight: 'var(--font-weight-medium)' }}>{member.role}</p>
     </div>
   </article>
 );
@@ -128,13 +128,13 @@ const AlumniPage = () => {
 
         <main className="relative mx-auto max-w-7xl px-4 pb-16 pt-24 sm:px-6 lg:px-8">
           <header className={`mb-12 text-center transition-all duration-1000 sm:mb-16 md:mb-20 ${isLoaded ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}`}>
-            <h1 className="mb-4 text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">DESOC Alumni</h1>
+            <h1 className="heading-title-6 text-primary mb-4">DESOC Alumni</h1>
             <div className="mb-6 flex items-center justify-center gap-3">
               <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#bc0034]" />
               <span className="text-lg font-light tracking-widest text-[#e32b5c] sm:text-xl md:text-2xl">Our Legacy, Our Community</span>
               <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#bc0034]" />
             </div>
-            <p className="mx-auto max-w-2xl text-base leading-relaxed text-gray-400 sm:text-lg">
+            <p className="mx-auto max-w-2xl text-base leading-relaxed text-secondary sm:text-lg">
               Celebrating the people who shaped DESOC and continue to carry its spirit beyond campus.
             </p>
 

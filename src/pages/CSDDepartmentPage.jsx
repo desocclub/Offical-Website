@@ -95,7 +95,7 @@ const CSDDepartmentPage = () => {
           boxShadow: '0 0 10px rgba(220,38,38,0.5)'
         }}
       />
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-wide">{children}</h2>
+      <h2 className="heading-h2 text-primary">{children}</h2>
     </div>
   );
 
@@ -116,10 +116,10 @@ const CSDDepartmentPage = () => {
           {/* ===== Page Header ===== */}
           <header className={`text-center mb-12 sm:mb-16 md:mb-20 transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}>
             <div className="relative inline-block">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight mb-4">
+              <h1 className="heading-title-6 text-primary mb-4">
                 Department of Computer Science & Design
               </h1>
-              <p className="text-gray-400 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed">
+              <p className="text-secondary text-base sm:text-lg max-w-3xl mx-auto leading-relaxed">
                 Shaping the future at the intersection of Computer Science and Design — nurturing innovators, creators, and technology leaders since inception.
               </p>
             </div>

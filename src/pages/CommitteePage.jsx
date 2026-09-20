@@ -22,10 +22,14 @@ const CommitteePage = () => {
             The next chapter is loading
           </div>
 
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-gray-500 sm:text-sm">Design Society · KKWIEER</p>
-          <h1 className="text-5xl font-black uppercase leading-[0.9] tracking-tight sm:text-7xl md:text-8xl lg:text-9xl">
-            <span className="block text-white">Committee</span>
-            <span className="mt-2 block bg-gradient-to-r from-[#ff4d77] via-[#bc0034] to-[#ff7b3d] bg-clip-text text-transparent">2026–27</span>
+          {/* Society */}
+          <p className="mb-4 text-xs uppercase tracking-[0.35em] text-tertiary sm:text-sm" style={{ fontWeight: 'var(--font-weight-medium)' }}>Design Society · KKWIEER</p>
+          <h1 
+            className="text-5xl uppercase leading-[0.9] sm:text-7xl md:text-8xl lg:text-9xl"
+            style={{ letterSpacing: 'var(--title-6-letter-spacing)' }}
+          >
+            <span className="block text-primary" style={{ fontWeight: 'var(--font-weight-semibold)' }}>Committee</span>
+            <span className="mt-2 block bg-gradient-to-r from-[#ff4d77] via-[#bc0034] to-[#ff7b3d] bg-clip-text text-transparent font-bold">2026–27</span>
           </h1>
 
           <div className="mx-auto mt-7 flex max-w-xl items-center justify-center gap-3">
@@ -34,7 +38,7 @@ const CommitteePage = () => {
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#bc0034]" />
           </div>
 
-          <p className="mx-auto mt-7 max-w-2xl text-base leading-relaxed text-gray-400 sm:text-lg">
+          <p className="mx-auto mt-7 max-w-2xl text-base leading-relaxed text-secondary sm:text-lg">
             A new group of creators, builders, and leaders is preparing to take the stage. Meet the team that will shape the next year of DESOC—very soon.
           </p>
 
@@ -46,8 +50,8 @@ const CommitteePage = () => {
             ].map(([title, description], index) => (
               <div key={title} className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.045] p-5 backdrop-blur-xl transition-transform duration-300 hover:-translate-y-1 hover:border-[#bc0034]/50">
                 <span className="absolute right-4 top-3 text-4xl font-black text-[#bc0034]/20">0{index + 1}</span>
-                <h2 className="relative text-lg font-bold text-white">{title}</h2>
-                <p className="relative mt-2 text-sm leading-relaxed text-gray-400">{description}</p>
+                <h2 className="relative text-lg text-primary" style={{ fontWeight: 'var(--font-weight-medium)' }}>{title}</h2>
+                <p className="relative mt-2 text-sm leading-relaxed text-tertiary">{description}</p>
               </div>
             ))}
           </div>
@@ -56,7 +60,8 @@ const CommitteePage = () => {
             href="https://www.instagram.com/desoc.kkwieer/"
             target="_blank"
             rel="noopener noreferrer"
-            className="group mt-10 inline-flex items-center gap-3 rounded-full border border-[#bc0034]/50 bg-[#bc0034]/15 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:border-[#ef3b67] hover:bg-[#bc0034]/30 hover:shadow-[0_0_28px_rgba(188,0,52,0.35)]"
+            style={{ fontWeight: 'var(--font-weight-medium)' }}
+            className="group mt-10 inline-flex items-center gap-3 rounded-full border border-[#bc0034]/50 bg-[#bc0034]/15 px-6 py-3 text-sm text-primary transition-all duration-300 hover:border-[#ef3b67] hover:bg-[#bc0034]/30 hover:shadow-[0_0_28px_rgba(188,0,52,0.35)]"
           >
             Follow the reveal
             <svg className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">

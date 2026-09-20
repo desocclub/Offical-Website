@@ -312,8 +312,8 @@ const BidAndBuildPage = () => {
           </div>
 
           <section className="rounded-3xl border border-white/10 bg-black/40 backdrop-blur-xl p-5 sm:p-7 mb-8 shadow-[0_18px_40px_rgba(0,0,0,0.5),0_0_20px_rgba(220,38,38,0.12)]">
-            <h1 className="text-white text-3xl sm:text-5xl font-black uppercase tracking-tight mb-2">Bid & Build Arena</h1>
-            <p className="text-gray-400 text-sm sm:text-base max-w-3xl">
+            <h1 className="heading-title-6 text-primary font-medium-510 uppercase tracking-[-0.022em] mb-2">Bid & Build Arena</h1>
+            <p className="text-tertiary text-sm sm:text-base max-w-3xl">
               Teams start with 1000 coins. Bid strategically on each asset, win what you need, and submit your final design after the auction closes.
             </p>
           </section>
@@ -321,8 +321,8 @@ const BidAndBuildPage = () => {
           {!team && (
             <section className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
               <div className="rounded-2xl border border-red-500/20 bg-red-950/20 p-5 sm:p-6">
-                <h2 className="text-white text-xl font-bold mb-2">Team Access Validation</h2>
-                <p className="text-gray-400 text-sm mb-5">
+                <h2 className="heading-h2 text-primary font-medium-510 text-xl tracking-[-0.022em] mb-2">Team Access Validation</h2>
+                <p className="text-tertiary text-sm mb-5">
                   Only registered Bid & Build teams can enter. Validate using team email or team name.
                 </p>
                 <form onSubmit={handleValidateTeam} className="space-y-4">

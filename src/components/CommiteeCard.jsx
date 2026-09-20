@@ -35,28 +35,31 @@ const CommitteeCard = ({ name, role, image, isActive = false }) => {
       {/* Name and Role at Bottom */}
       <div className="absolute bottom-4 left-4 right-4">
         <h3 
+          style={{ fontWeight: 'var(--font-weight-medium)', letterSpacing: '-0.015em' }}
           className={`
-            font-bold text-lg uppercase tracking-wide leading-tight
+            text-lg uppercase leading-tight
             transition-colors duration-400
-            ${isActive ? 'text-white' : 'text-white/60'}
+            ${isActive ? 'text-primary' : 'text-tertiary'}
           `}
         >
           {firstLine}
         </h3>
         <h3 
+          style={{ fontWeight: 'var(--font-weight-medium)', letterSpacing: '-0.015em' }}
           className={`
-            font-bold text-lg uppercase tracking-wide leading-tight
+            text-lg uppercase leading-tight
             transition-colors duration-400
-            ${isActive ? 'text-white' : 'text-white/60'}
+            ${isActive ? 'text-primary' : 'text-tertiary'}
           `}
         >
           {secondLine}
         </h3>
         <p 
+          style={{ fontWeight: 'var(--font-weight-medium)' }}
           className={`
-            text-sm font-medium mt-1 uppercase
+            text-sm mt-1 uppercase
             transition-colors duration-400
-            ${isActive ? 'text-[#bc0034]' : 'text-[#bc0034]/45'}
+            ${isActive ? 'text-[#bc0034]' : 'text-[#bc0034]/70'}
           `}
         >
           {role}

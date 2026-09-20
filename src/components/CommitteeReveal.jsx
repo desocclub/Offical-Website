@@ -44,15 +44,18 @@ const CommitteeReveal = () => {
         </div>
 
         {/* Society */}
-        <p className="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-gray-500 sm:text-sm">
+        <p className="mb-4 text-xs uppercase tracking-[0.35em] text-tertiary sm:text-sm" style={{ fontWeight: 'var(--font-weight-medium)' }}>
           Design Society · KKWIEER
         </p>
 
         {/* Heading */}
-        <h1 className="text-5xl font-black uppercase leading-[0.9] tracking-tight sm:text-7xl md:text-8xl lg:text-9xl">
-          <span className="block text-white">Committee</span>
+        <h1 
+          className="text-5xl uppercase leading-[0.9] sm:text-7xl md:text-8xl lg:text-9xl"
+          style={{ letterSpacing: 'var(--title-6-letter-spacing)' }}
+        >
+          <span className="block text-primary" style={{ fontWeight: 'var(--font-weight-semibold)' }}>Committee</span>
 
-          <span className="mt-2 block bg-gradient-to-r from-[#ff4d77] via-[#bc0034] to-[#ff7b3d] bg-clip-text text-transparent">
+          <span className="mt-2 block bg-gradient-to-r from-[#ff4d77] via-[#bc0034] to-[#ff7b3d] bg-clip-text text-transparent font-bold">
             2026–27
           </span>
         </h1>
@@ -69,7 +72,7 @@ const CommitteeReveal = () => {
         </div>
 
         {/* Description */}
-        <p className="mx-auto mt-7 max-w-2xl text-base leading-relaxed text-gray-400 sm:text-lg">
+        <p className="mx-auto mt-7 max-w-2xl text-base leading-relaxed text-secondary sm:text-lg">
           A new group of creators, builders, and leaders is preparing to take
           the stage. Meet the team that will shape the next year of DESOC—very
           soon.
@@ -86,11 +89,11 @@ const CommitteeReveal = () => {
                 0{index + 1}
               </span>
 
-              <h2 className="relative text-lg font-bold text-white">
+              <h2 className="relative text-lg text-primary" style={{ fontWeight: 'var(--font-weight-medium)' }}>
                 {title}
               </h2>
 
-              <p className="relative mt-2 text-sm leading-relaxed text-gray-400">
+              <p className="relative mt-2 text-sm leading-relaxed text-tertiary">
                 {description}
               </p>
             </div>
@@ -102,7 +105,8 @@ const CommitteeReveal = () => {
           href="https://www.instagram.com/desoc.kkwieer/"
           target="_blank"
           rel="noopener noreferrer"
-          className="group mt-10 inline-flex items-center gap-3 rounded-full border border-[#bc0034]/50 bg-[#bc0034]/15 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:border-[#ef3b67] hover:bg-[#bc0034]/30 hover:shadow-[0_0_28px_rgba(188,0,52,0.35)]"
+          style={{ fontWeight: 'var(--font-weight-medium)' }}
+          className="group mt-10 inline-flex items-center gap-3 rounded-full border border-[#bc0034]/50 bg-[#bc0034]/15 px-6 py-3 text-sm text-primary transition-all duration-300 hover:border-[#ef3b67] hover:bg-[#bc0034]/30 hover:shadow-[0_0_28px_rgba(188,0,52,0.35)]"
         >
           Follow the reveal
 
@@ -123,7 +127,7 @@ const CommitteeReveal = () => {
       </section>
 
       {/* Bottom text */}
-      <p className="pointer-events-none absolute bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap text-[10px] uppercase tracking-[0.3em] text-gray-600 sm:text-xs">
+      <p className="pointer-events-none absolute bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap text-[10px] uppercase tracking-[0.3em] text-muted sm:text-xs">
         Watch this space
       </p>
     </main>

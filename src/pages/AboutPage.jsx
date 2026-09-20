@@ -38,9 +38,9 @@ const SectionTitle = ({ title, subtitle }) => (
       }}
     />
     <div>
-      <h2 className="text-2xl sm:text-3xl md:text-4xl text-white font-bold tracking-wide">{title}</h2>
+      <h2 className="heading-h2 text-primary">{title}</h2>
       {subtitle ? (
-        <p className="text-red-400 text-xs sm:text-sm mt-1 uppercase tracking-wider">{subtitle}</p>
+        <p className="text-red-400 text-xs sm:text-sm mt-1 uppercase tracking-wider" style={{ fontWeight: 'var(--font-weight-medium)' }}>{subtitle}</p>
       ) : null}
     </div>
   </div>
@@ -48,7 +48,7 @@ const SectionTitle = ({ title, subtitle }) => (
 
 const AboutPage = () => {
   return (
-    <div className="min-h-screen bg-black" style={{ fontFamily: 'Inter, sans-serif' }}>
+    <div className="min-h-screen bg-black">
       <Navbar />
 
       <div className="relative">
@@ -69,7 +69,7 @@ const AboutPage = () => {
             <div className="relative inline-block max-w-4xl">
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-28 h-1 rounded-full" style={{ background: 'linear-gradient(to right, transparent, #ef4444, transparent)', boxShadow: '0 0 20px rgba(220,38,38,0.45)' }} />
 
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-4">
+              <h1 className="heading-title-6 text-primary mb-4">
                 About DESOC
               </h1>
 
@@ -81,7 +81,7 @@ const AboutPage = () => {
                 <div className="h-px w-12" style={{ background: 'linear-gradient(to left, transparent, #ef4444)' }} />
               </div>
 
-              <p className="text-gray-300 text-base sm:text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+              <p className="text-secondary text-base sm:text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
                 Designing ideas, creating experiences, and shaping innovation.
               </p>
 
@@ -96,7 +96,7 @@ const AboutPage = () => {
           <div className="space-y-10 sm:space-y-14">
             <section className={sectionCardClass} style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)' }}>
               <SectionTitle title="About DESOC" subtitle="Design Society" />
-              <div className="max-w-4xl space-y-4 text-gray-300 text-sm sm:text-base leading-relaxed">
+              <div className="max-w-4xl space-y-4 text-secondary text-sm sm:text-base leading-relaxed">
                 <p>
                   DESOC (Design Society) is the official design and innovation club of the Computer Science and Design (CSD) Department at K. K. Wagh Institute of Engineering Education and Research (KKWIEER).
                 </p>
@@ -111,7 +111,7 @@ const AboutPage = () => {
 
             <section className={sectionCardClass} style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.02) 100%)', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)' }}>
               <SectionTitle title="Our Mission" subtitle="Purpose" />
-              <p className="max-w-4xl text-gray-300 text-sm sm:text-base leading-relaxed">
+              <p className="max-w-4xl text-secondary text-sm sm:text-base leading-relaxed">
                 To inspire students to think creatively and use design as a powerful tool to solve problems, communicate ideas, and create meaningful digital experiences.
               </p>
             </section>
@@ -124,10 +124,10 @@ const AboutPage = () => {
                     key={activity.title}
                     className="group p-4 sm:p-5 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/8 hover:border-red-500/35 transition-all duration-300"
                   >
-                    <h3 className="text-white text-lg font-semibold mb-2 group-hover:text-red-200 transition-colors duration-300">
+                    <h3 className="text-primary text-lg mb-2 group-hover:text-red-200 transition-colors duration-300" style={{ fontWeight: 'var(--font-weight-medium)', letterSpacing: '-0.015em' }}>
                       {activity.title}
                     </h3>
-                    <p className="text-gray-400 text-sm leading-relaxed">{activity.description}</p>
+                    <p className="text-tertiary text-sm leading-relaxed">{activity.description}</p>
                   </article>
                 ))}
               </div>
@@ -135,7 +135,7 @@ const AboutPage = () => {
 
             <section className={sectionCardClass} style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.02) 100%)', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)' }}>
               <SectionTitle title="Vision" subtitle="Long-Term Goal" />
-              <p className="max-w-4xl text-gray-300 text-sm sm:text-base leading-relaxed">
+              <p className="max-w-4xl text-secondary text-sm sm:text-base leading-relaxed">
                 To build a strong student design community that nurtures creativity, encourages innovation, and prepares students to become future designers and creative problem-solvers.
               </p>
             </section>
@@ -147,14 +147,15 @@ const AboutPage = () => {
                 boxShadow: '0 22px 50px -12px rgba(220,38,38,0.22)',
               }}
             >
-              <h2 className="text-white text-2xl sm:text-3xl font-bold mb-3">Join DESOC</h2>
-              <p className="text-gray-200 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed mb-6">
+              <h2 className="heading-h2 text-primary mb-3">Join DESOC</h2>
+              <p className="text-secondary text-sm sm:text-base max-w-2xl mx-auto leading-relaxed mb-6">
                 Become part of a community that celebrates creativity, design thinking, and innovation.
               </p>
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center px-8 sm:px-10 py-3.5 bg-linear-to-r from-red-700 to-red-600 text-white font-bold uppercase tracking-wider rounded-full hover:from-red-600 hover:to-red-500 transition-all duration-300 hover:scale-105"
-                style={{ boxShadow: '0 0 30px rgba(220,38,38,0.35)' }}
+                style={{ fontWeight: 'var(--font-weight-medium)' }}
+                className="inline-flex items-center justify-center px-8 sm:px-10 py-3.5 bg-linear-to-r from-red-700 to-red-600 text-primary uppercase tracking-wider rounded-full hover:from-red-600 hover:to-red-500 transition-all duration-300 hover:scale-105"
+                style={{ boxShadow: '0 0 30px rgba(220,38,38,0.35)', fontWeight: 'var(--font-weight-medium)' }}
               >
                 Join DESOC
               </Link>

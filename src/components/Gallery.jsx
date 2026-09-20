@@ -150,12 +150,7 @@ const Gallery = () => {
     <section id="gallery" className="relative py-16 bg-black overflow-hidden">
       {/* Section Title */}
       <div className="text-center mb-10">
-        <h2 
-          className="
-            text-3xl sm:text-4xl md:text-5xl font-bold text-white 
-            uppercase tracking-[0.25em]
-          "
-        >
+        <h2 className="heading-title-6 uppercase">
           Gallery
         </h2>
         {/* Decorative underline */}

@@ -151,7 +151,7 @@ const GenesisPage = () => {
         style={{ background: 'linear-gradient(to bottom, #ef4444, #b91c1c)', boxShadow: '0 0 10px rgba(220,38,38,0.5)' }}
       />
       <div>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-wide">{children}</h2>
+        <h2 className="heading-h2 text-2xl sm:text-3xl md:text-4xl font-medium-510 text-primary tracking-[-0.022em]">{children}</h2>
         {sub && <p className="text-red-400 text-xs sm:text-sm mt-1 uppercase tracking-wider">{sub}</p>}
       </div>
     </div>
@@ -201,7 +201,7 @@ const GenesisPage = () => {
 
               {/* Description glass box */}
               <div className="max-w-3xl mx-auto backdrop-blur-xl border border-white/10 rounded-2xl p-5 sm:p-8 mb-10 text-left" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)' }}>
-                <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+                <p className="text-secondary text-sm sm:text-base leading-relaxed">
                   Genesis is the flagship technical event of the Design Society, Department of Computer Science &amp; Design.
                   It is designed to be a high-energy platform that blends innovation, coding excellence, design thinking, and
                   collaborative problem-solving. Genesis brings together competitive technical events and creative challenges
@@ -220,7 +220,7 @@ const GenesisPage = () => {
                 </button> */}
                 <a
                   href="#events"
-                  className="px-8 sm:px-10 py-3.5 border border-white/15 text-gray-300 font-bold uppercase tracking-wider rounded-full hover:border-red-500/40 hover:text-red-400 transition-all duration-300"
+                  className="px-8 sm:px-10 py-3.5 border border-white/15 text-secondary font-medium-510 uppercase tracking-wider rounded-full hover:border-red-500/40 hover:text-red-400 transition-all duration-300"
                 >
                   View Events
                 </a>
@@ -262,7 +262,7 @@ const GenesisPage = () => {
                       loading="lazy"
                     />
 
-                    <h3 className="text-white text-xl sm:text-2xl font-bold text-center tracking-wide">{event.title}</h3>
+                    <h3 className="heading-h3 text-xl sm:text-2xl font-medium-510 text-primary tracking-[-0.022em] text-center">{event.title}</h3>
                     {event.tagline && (
                       <p className="text-red-300 text-center text-sm sm:text-base font-medium mt-1 mb-4">{event.tagline}</p>
                     )}
@@ -285,8 +285,7 @@ const GenesisPage = () => {
                     </div>
 
                     <p
-                      className="mx-auto max-w-175 text-center text-gray-400 text-sm sm:text-base leading-relaxed mb-6"
-                      style={{ fontFamily: 'Inter, sans-serif' }}
+                      className="mx-auto max-w-175 text-center text-tertiary text-sm sm:text-base leading-relaxed mb-6"
                     >
                       {event.description}
                     </p>
@@ -350,8 +349,8 @@ const GenesisPage = () => {
                   >
                     <span className="text-3xl shrink-0 group-hover:scale-110 transition-transform duration-300">{h.icon}</span>
                     <div>
-                      <h4 className="text-white font-semibold text-sm mb-1">{h.title}</h4>
-                      <p className="text-gray-400 text-sm leading-relaxed">{h.text}</p>
+                      <h4 className="text-primary font-medium-510 text-sm mb-1">{h.title}</h4>
+                      <p className="text-tertiary text-sm leading-relaxed">{h.text}</p>
                     </div>
                   </div>
                 ))}
@@ -368,10 +367,10 @@ const GenesisPage = () => {
                 {schedule.map((day) => (
                   <div key={day.day} className="p-4 sm:p-6 rounded-2xl border border-white/10 bg-white/5">
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="px-4 py-1.5 bg-linear-to-r from-red-700 to-red-600 text-white text-sm font-bold uppercase tracking-wider rounded-full" style={{ boxShadow: '0 0 15px rgba(220,38,38,0.3)' }}>
+                      <div className="px-4 py-1.5 bg-linear-to-r from-red-700 to-red-600 text-white text-sm font-medium-510 uppercase tracking-wider rounded-full" style={{ boxShadow: '0 0 15px rgba(220,38,38,0.3)' }}>
                         {day.day}
                       </div>
-                      <span className="text-gray-500 text-sm uppercase tracking-wider">{day.date}</span>
+                      <span className="text-tertiary text-sm uppercase tracking-wider">{day.date}</span>
                     </div>
 
                     <div className="relative pl-6 border-l-2 border-red-900/40">
@@ -379,7 +378,7 @@ const GenesisPage = () => {
                         <div key={i} className="relative mb-6 last:mb-0 group">
                           <div className="absolute -left-[1.55rem] top-1 w-3 h-3 rounded-full bg-red-600 border-2 border-black group-hover:scale-125 transition-transform duration-300" style={{ boxShadow: '0 0 8px rgba(220,38,38,0.5)' }} />
                           <p className="text-red-400 text-xs font-semibold uppercase tracking-wider mb-1">{slot.time}</p>
-                          <p className="text-gray-200 text-sm">{slot.event}</p>
+                          <p className="text-secondary text-sm">{slot.event}</p>
                         </div>
                       ))}
                     </div>
@@ -408,7 +407,7 @@ const GenesisPage = () => {
                       }}
                       className="w-full flex items-center justify-between px-5 sm:px-6 py-4 text-left transition-all duration-200"
                     >
-                      <span className="text-gray-200 text-sm sm:text-base pr-4 font-medium">{faq.q}</span>
+                      <span className="text-primary text-sm sm:text-base pr-4 font-medium-510">{faq.q}</span>
                       <span
                         className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
                           openFaq === i ? 'bg-red-600 rotate-45' : 'bg-white/10'
@@ -420,7 +419,7 @@ const GenesisPage = () => {
                       </span>
                     </button>
                     <div className={`overflow-hidden transition-all duration-300 ${openFaq === i ? 'max-h-40' : 'max-h-0'}`}>
-                      <p className="px-5 sm:px-6 pb-5 text-gray-400 text-sm leading-relaxed">{faq.a}</p>
+                      <p className="px-5 sm:px-6 pb-5 text-tertiary text-sm leading-relaxed">{faq.a}</p>
                     </div>
                   </div>
                 ))}

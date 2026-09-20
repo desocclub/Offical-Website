@@ -60,7 +60,7 @@ const Navbar = ({ topOffset = 0 }) => {
       {/* ========================================================================= */}
       <nav
         className="hidden md:flex items-center justify-between h-11 lg:h-12 bg-black/70 hover:bg-black/85 backdrop-blur-2xl border border-white/10 hover:border-white/20 rounded-full px-6 lg:px-8 shadow-[0_8px_32px_rgba(0,0,0,0.7)] transition-all duration-300 pointer-events-auto relative overflow-visible"
-        style={{ fontFamily: "'Plus Jakarta Sans', -apple-system, sans-serif" }}
+        style={{ fontFamily: "var(--font-sans)" }}
       >
         {/* Left Links */}
         <div className="flex items-center gap-5 lg:gap-7 pr-2">
@@ -70,8 +70,9 @@ const Navbar = ({ topOffset = 0 }) => {
               <Link
                 key={item.name}
                 to={item.path}
-                className={`relative py-1 text-[13px] lg:text-sm font-medium tracking-wide transition-colors duration-200 ${
-                  active ? 'text-white font-semibold' : 'text-neutral-300 hover:text-white'
+                style={{ fontWeight: active ? 'var(--font-weight-semibold)' : 'var(--font-weight-medium)' }}
+                className={`relative py-1 text-[13px] lg:text-sm tracking-wide transition-colors duration-200 ${
+                  active ? 'text-primary' : 'text-tertiary hover:text-primary'
                 }`}
               >
                 {item.name}
@@ -108,8 +109,9 @@ const Navbar = ({ topOffset = 0 }) => {
               <Link
                 key={item.name}
                 to={item.path}
-                className={`relative py-1 text-[13px] lg:text-sm font-medium tracking-wide transition-colors duration-200 ${
-                  active ? 'text-white font-semibold' : 'text-neutral-300 hover:text-white'
+                style={{ fontWeight: active ? 'var(--font-weight-semibold)' : 'var(--font-weight-medium)' }}
+                className={`relative py-1 text-[13px] lg:text-sm tracking-wide transition-colors duration-200 ${
+                  active ? 'text-primary' : 'text-tertiary hover:text-primary'
                 }`}
               >
                 {item.name}
@@ -124,7 +126,7 @@ const Navbar = ({ topOffset = 0 }) => {
           <div className="relative" ref={moreDropdownRef}>
             <button
               onClick={() => setIsMoreOpen(!isMoreOpen)}
-              className="relative flex items-center justify-center w-8 h-8 rounded-full text-neutral-300 hover:text-white focus:outline-none transition-all group cursor-pointer"
+              className="relative flex items-center justify-center w-8 h-8 rounded-full text-tertiary hover:text-primary focus:outline-none transition-all group cursor-pointer"
               aria-label="Toggle navigation menu"
               title="More"
             >
@@ -133,12 +135,12 @@ const Navbar = ({ topOffset = 0 }) => {
                   isMoreOpen ? 'rotate-90 scale-90' : 'group-hover:scale-105'
                 }`}
               >
-                <span className={`w-1 h-1 rounded-full transition-colors duration-200 ${isMoreOpen || isMoreActive ? 'bg-[#ff3366]' : 'bg-neutral-300 group-hover:bg-white'}`} />
-                <span className={`w-1 h-1 rounded-full transition-colors duration-200 ${isMoreOpen || isMoreActive ? 'bg-[#ff3366]' : 'bg-neutral-300 group-hover:bg-white'}`} />
-                <span className={`w-1 h-1 rounded-full transition-colors duration-200 ${isMoreOpen || isMoreActive ? 'bg-[#ff3366]' : 'bg-neutral-300 group-hover:bg-white'}`} />
-                <span className={`w-1 h-1 rounded-full transition-colors duration-200 ${isMoreOpen || isMoreActive ? 'bg-[#ff3366]' : 'bg-neutral-300 group-hover:bg-white'}`} />
-                <span className={`w-1 h-1 rounded-full transition-colors duration-200 ${isMoreOpen || isMoreActive ? 'bg-[#ff3366]' : 'bg-neutral-300 group-hover:bg-white'}`} />
-                <span className={`w-1 h-1 rounded-full transition-colors duration-200 ${isMoreOpen || isMoreActive ? 'bg-[#ff3366]' : 'bg-neutral-300 group-hover:bg-white'}`} />
+                <span className={`w-1 h-1 rounded-full transition-colors duration-200 ${isMoreOpen || isMoreActive ? 'bg-[#ff3366]' : 'bg-neutral-400 group-hover:bg-white'}`} />
+                <span className={`w-1 h-1 rounded-full transition-colors duration-200 ${isMoreOpen || isMoreActive ? 'bg-[#ff3366]' : 'bg-neutral-400 group-hover:bg-white'}`} />
+                <span className={`w-1 h-1 rounded-full transition-colors duration-200 ${isMoreOpen || isMoreActive ? 'bg-[#ff3366]' : 'bg-neutral-400 group-hover:bg-white'}`} />
+                <span className={`w-1 h-1 rounded-full transition-colors duration-200 ${isMoreOpen || isMoreActive ? 'bg-[#ff3366]' : 'bg-neutral-400 group-hover:bg-white'}`} />
+                <span className={`w-1 h-1 rounded-full transition-colors duration-200 ${isMoreOpen || isMoreActive ? 'bg-[#ff3366]' : 'bg-neutral-400 group-hover:bg-white'}`} />
+                <span className={`w-1 h-1 rounded-full transition-colors duration-200 ${isMoreOpen || isMoreActive ? 'bg-[#ff3366]' : 'bg-neutral-400 group-hover:bg-white'}`} />
               </div>
               {isMoreActive && (
                 <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#ff3366] shadow-[0_0_8px_#ff3366]" />
@@ -154,8 +156,9 @@ const Navbar = ({ topOffset = 0 }) => {
                       key={item.name}
                       to={item.path}
                       onClick={() => setIsMoreOpen(false)}
+                      style={{ fontWeight: isActive(item) ? 'var(--font-weight-semibold)' : 'var(--font-weight-medium)' }}
                       className={`block px-4 py-2 text-xs lg:text-sm transition-colors ${
-                        isActive(item) ? 'text-white bg-white/10 font-semibold' : 'text-neutral-300 hover:text-white hover:bg-white/5'
+                        isActive(item) ? 'text-primary bg-white/10' : 'text-tertiary hover:text-primary hover:bg-white/5'
                       }`}
                     >
                       {item.name}
@@ -165,7 +168,8 @@ const Navbar = ({ topOffset = 0 }) => {
                       key={item.name}
                       href={item.path}
                       onClick={() => setIsMoreOpen(false)}
-                      className="block px-4 py-2 text-xs lg:text-sm text-neutral-300 hover:text-white hover:bg-white/5 transition-colors"
+                      style={{ fontWeight: 'var(--font-weight-medium)' }}
+                      className="block px-4 py-2 text-xs lg:text-sm text-tertiary hover:text-primary hover:bg-white/5 transition-colors"
                     >
                       {item.name}
                     </a>
@@ -180,12 +184,16 @@ const Navbar = ({ topOffset = 0 }) => {
       {/* ========================================================================= */}
       {/* MOBILE NAVBAR (<md) - Perfectly Centered, 0 Overflow, 6-Dot Menu          */}
       {/* ========================================================================= */}
-      <div className="md:hidden w-[calc(100%-2rem)] max-w-[340px] sm:max-w-sm h-11 bg-black/80 backdrop-blur-2xl border border-white/12 rounded-full px-4 flex items-center justify-between shadow-[0_6px_24px_rgba(0,0,0,0.8)] pointer-events-auto relative overflow-visible mx-auto">
+      <div 
+        className="md:hidden w-[calc(100%-2rem)] max-w-[340px] sm:max-w-sm h-11 bg-black/80 backdrop-blur-2xl border border-white/12 rounded-full px-4 flex items-center justify-between shadow-[0_6px_24px_rgba(0,0,0,0.8)] pointer-events-auto relative overflow-visible mx-auto"
+        style={{ fontFamily: 'var(--font-sans)' }}
+      >
         
         {/* LEFT: Compact DESOC Wordmark */}
         <Link
           to="/"
-          className="text-white font-semibold text-xs tracking-wider hover:text-[#ff3366] transition-colors py-1.5 focus:outline-none z-40"
+          style={{ fontWeight: 'var(--font-weight-semibold)' }}
+          className="text-primary text-xs tracking-wider hover:text-[#ff3366] transition-colors py-1.5 focus:outline-none z-40"
         >
           DESOC
         </Link>
@@ -208,7 +216,7 @@ const Navbar = ({ topOffset = 0 }) => {
         {/* RIGHT: Custom Six-Dot Menu Button (2 rows of 3 dots) */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="flex items-center justify-center w-8 h-8 -mr-1 rounded-full text-neutral-300 hover:text-white focus:outline-none transition-all active:scale-90 group cursor-pointer z-40"
+          className="flex items-center justify-center w-8 h-8 -mr-1 rounded-full text-tertiary hover:text-primary focus:outline-none transition-all active:scale-90 group cursor-pointer z-40"
           aria-label="Toggle navigation menu"
         >
           <div
@@ -216,29 +224,33 @@ const Navbar = ({ topOffset = 0 }) => {
               isMenuOpen ? 'rotate-90 scale-90' : 'group-hover:scale-105'
             }`}
           >
-            <span className={`w-1 h-1 rounded-full transition-colors duration-200 ${isMenuOpen ? 'bg-[#ff3366]' : 'bg-neutral-300 group-hover:bg-white'}`} />
-            <span className={`w-1 h-1 rounded-full transition-colors duration-200 ${isMenuOpen ? 'bg-[#ff3366]' : 'bg-neutral-300 group-hover:bg-white'}`} />
-            <span className={`w-1 h-1 rounded-full transition-colors duration-200 ${isMenuOpen ? 'bg-[#ff3366]' : 'bg-neutral-300 group-hover:bg-white'}`} />
-            <span className={`w-1 h-1 rounded-full transition-colors duration-200 ${isMenuOpen ? 'bg-[#ff3366]' : 'bg-neutral-300 group-hover:bg-white'}`} />
-            <span className={`w-1 h-1 rounded-full transition-colors duration-200 ${isMenuOpen ? 'bg-[#ff3366]' : 'bg-neutral-300 group-hover:bg-white'}`} />
-            <span className={`w-1 h-1 rounded-full transition-colors duration-200 ${isMenuOpen ? 'bg-[#ff3366]' : 'bg-neutral-300 group-hover:bg-white'}`} />
+            <span className={`w-1 h-1 rounded-full transition-colors duration-200 ${isMenuOpen ? 'bg-[#ff3366]' : 'bg-neutral-400 group-hover:bg-white'}`} />
+            <span className={`w-1 h-1 rounded-full transition-colors duration-200 ${isMenuOpen ? 'bg-[#ff3366]' : 'bg-neutral-400 group-hover:bg-white'}`} />
+            <span className={`w-1 h-1 rounded-full transition-colors duration-200 ${isMenuOpen ? 'bg-[#ff3366]' : 'bg-neutral-400 group-hover:bg-white'}`} />
+            <span className={`w-1 h-1 rounded-full transition-colors duration-200 ${isMenuOpen ? 'bg-[#ff3366]' : 'bg-neutral-400 group-hover:bg-white'}`} />
+            <span className={`w-1 h-1 rounded-full transition-colors duration-200 ${isMenuOpen ? 'bg-[#ff3366]' : 'bg-neutral-400 group-hover:bg-white'}`} />
+            <span className={`w-1 h-1 rounded-full transition-colors duration-200 ${isMenuOpen ? 'bg-[#ff3366]' : 'bg-neutral-400 group-hover:bg-white'}`} />
           </div>
         </button>
       </div>
 
       {/* Mobile Menu Dropdown Panel */}
       {isMenuOpen && (
-        <div className="md:hidden fixed top-16 left-4 right-4 max-w-[340px] sm:max-w-sm mx-auto bg-black/95 backdrop-blur-2xl border border-white/12 rounded-2xl p-4 shadow-2xl z-50 pointer-events-auto animate-fadeIn">
+        <div 
+          className="md:hidden fixed top-16 left-4 right-4 max-w-[340px] sm:max-w-sm mx-auto bg-black/95 backdrop-blur-2xl border border-white/12 rounded-2xl p-4 shadow-2xl z-50 pointer-events-auto animate-fadeIn"
+          style={{ fontFamily: 'var(--font-sans)' }}
+        >
           <div className="grid grid-cols-2 gap-2">
             {allNavItems.map((item) =>
               item.type === 'route' ? (
                 <Link
                   key={item.name}
                   to={item.path}
+                  style={{ fontWeight: isActive(item) ? 'var(--font-weight-semibold)' : 'var(--font-weight-medium)' }}
                   className={`block px-3 py-2.5 text-xs rounded-xl transition-all ${
                     isActive(item)
-                      ? 'bg-[#ff3366]/20 text-white font-semibold border border-[#ff3366]/40'
-                      : 'text-neutral-300 hover:text-white hover:bg-white/8'
+                      ? 'bg-[#ff3366]/20 text-primary border border-[#ff3366]/40'
+                      : 'text-tertiary hover:text-primary hover:bg-white/8'
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -248,7 +260,8 @@ const Navbar = ({ topOffset = 0 }) => {
                 <a
                   key={item.name}
                   href={item.path}
-                  className="block px-3 py-2.5 text-xs text-neutral-300 hover:text-white hover:bg-white/8 rounded-xl transition-all"
+                  style={{ fontWeight: 'var(--font-weight-medium)' }}
+                  className="block px-3 py-2.5 text-xs text-tertiary hover:text-primary hover:bg-white/8 rounded-xl transition-all"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}

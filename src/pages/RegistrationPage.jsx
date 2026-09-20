@@ -1,4 +1,4 @@
-﻿import { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -197,7 +197,7 @@ const RegistrationPage = () => {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-black" style={{ fontFamily: 'Inter, sans-serif' }}>
+      <div className="min-h-screen bg-black">
         <Navbar />
         <div className="flex flex-col items-center justify-center min-h-[80vh] px-4 text-center">
           <div className="w-24 h-24 rounded-full bg-green-500/10 border-2 border-green-500/40 flex items-center justify-center mb-8">
@@ -205,20 +205,20 @@ const RegistrationPage = () => {
               <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h2 className="text-white text-4xl font-bold uppercase tracking-wider mb-4">Registration Complete</h2>
-          <p className="text-gray-400 text-sm mb-2">
-            Thank you, <span className="text-white font-semibold">{formData.teamLeaderName}</span>
+          <h2 className="heading-h2 text-primary uppercase tracking-wider mb-4">Registration Complete</h2>
+          <p className="text-tertiary text-sm mb-2">
+            Thank you, <span className="text-primary font-semibold">{formData.teamLeaderName}</span>
           </p>
-          <p className="text-gray-400 text-sm mb-2">
-            Event: <span className="text-white font-semibold">{formData.event || 'DESOC Event'}</span>
+          <p className="text-tertiary text-sm mb-2">
+            Event: <span className="text-primary font-semibold">{formData.event || 'DESOC Event'}</span>
           </p>
-          <p className="text-gray-500 text-xs mt-4 mb-10">
-            A confirmation email will be sent to <span className="text-gray-300">{formData.email}</span> within 24 hours.
+          <p className="text-muted text-xs mt-4 mb-10">
+            A confirmation email will be sent to <span className="text-secondary">{formData.email}</span> within 24 hours.
           </p>
           <Link
             to="/genesis"
-            className="px-8 py-3 bg-linear-to-r from-red-700 to-red-600 text-white font-bold uppercase tracking-wider rounded-full hover:from-red-600 hover:to-red-500 transition-all duration-300"
-            style={{ boxShadow: '0 0 30px rgba(220,38,38,0.3)' }}
+            style={{ fontWeight: 'var(--font-weight-medium)', boxShadow: '0 0 30px rgba(220,38,38,0.3)' }}
+            className="px-8 py-3 bg-linear-to-r from-red-700 to-red-600 text-primary uppercase tracking-wider rounded-full hover:from-red-600 hover:to-red-500 transition-all duration-300"
           >
             Back to Genesis
           </Link>
@@ -229,7 +229,7 @@ const RegistrationPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-black" style={{ fontFamily: 'Inter, sans-serif' }}>
+    <div className="min-h-screen bg-black">
       <Navbar />
 
       <div className="relative">

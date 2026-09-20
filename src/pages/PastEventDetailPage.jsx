@@ -33,7 +33,7 @@ const PastEventDetailPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-black" style={{ fontFamily: 'Inter, sans-serif' }}>
+    <div className="min-h-screen bg-black">
       <Navbar />
 
       <main className="relative overflow-hidden px-4 sm:px-6 lg:px-8 pt-24 pb-16">
@@ -45,6 +45,7 @@ const PastEventDetailPage = () => {
         <div className="relative mx-auto max-w-6xl">
           <Link
             to="/events"
+            style={{ fontWeight: 'var(--font-weight-medium)' }}
             className="mb-8 inline-flex items-center gap-2 text-sm text-red-300 transition hover:text-red-200"
           >
             <span>←</span>
@@ -57,9 +58,9 @@ const PastEventDetailPage = () => {
                 <img src={event.coverImage} alt={event.title} className="h-full w-full object-cover min-h-72" />
               </div>
               <div className="p-6 sm:p-8 lg:p-10">
-                <p className="text-xs uppercase tracking-[0.2em] text-red-300">DESOC Archive</p>
-                <h1 className="mt-3 text-3xl sm:text-4xl font-bold text-white leading-tight">{event.title}</h1>
-                <p className="mt-5 text-gray-300 leading-relaxed">{event.description}</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-red-300" style={{ fontWeight: 'var(--font-weight-medium)' }}>DESOC Archive</p>
+                <h1 className="mt-3 text-3xl sm:text-4xl text-primary leading-tight" style={{ fontWeight: 'var(--font-weight-medium)', letterSpacing: '-0.02em' }}>{event.title}</h1>
+                <p className="mt-5 text-secondary leading-relaxed">{event.description}</p>
 
                 <div className="mt-7 flex flex-wrap gap-3">
                   {event.date && <InfoPill label="Date" value={event.date} />}
@@ -73,7 +74,7 @@ const PastEventDetailPage = () => {
           </div>
 
           <section className="mt-10">
-            <h2 className="text-2xl sm:text-3xl font-semibold text-white">Image Gallery</h2>
+            <h2 className="heading-h2 text-primary">Image Gallery</h2>
             <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {event.gallery.map((img, index) => (
                 <div

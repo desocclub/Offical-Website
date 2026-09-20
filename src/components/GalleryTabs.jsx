@@ -6,12 +6,13 @@ const GalleryTabs = ({ categories, activeCategory, onCategoryChange }) => {
           <button
             key={category.id}
             onClick={() => onCategoryChange(category.id)}
+            style={{ fontWeight: 'var(--font-weight-medium)' }}
             className={`
-              px-3 sm:px-6 py-2 text-[11px] sm:text-sm font-medium uppercase tracking-wider
+              px-3 sm:px-6 py-2 text-[11px] sm:text-sm uppercase tracking-wider
               rounded-full transition-all duration-300 ease-out whitespace-nowrap
               ${activeCategory === category.id
-                ? 'bg-red-700 text-white shadow-lg shadow-red-700/30'
-                : 'bg-transparent text-white hover:bg-white/10'
+                ? 'bg-red-700 text-primary shadow-lg shadow-red-700/30'
+                : 'bg-transparent text-tertiary hover:text-primary hover:bg-white/10'
               }
             `}
           >

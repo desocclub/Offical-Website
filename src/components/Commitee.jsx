@@ -227,13 +227,7 @@ const Committee = () => {
     <section id="committee" className="relative py-16 bg-gradient-to-b from-black via-[#0a0a0a] to-[#1a1a1a] overflow-hidden">
       {/* Section Title */}
       <div className="text-center mb-12">
-        <h2 
-          className="
-            text-3xl sm:text-4xl md:text-5xl font-bold text-white 
-            uppercase tracking-[0.25em] 
-            drop-shadow-[0_0_30px_rgba(220,38,38,0.3)]
-          "
-        >
+        <h2 className="heading-title-6 uppercase drop-shadow-[0_0_30px_rgba(220,38,38,0.3)]">
           Committee <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#bc0034] to-orange-500">2025-26</span>
         </h2>
         {/* Decorative underline */}
@@ -325,7 +319,7 @@ const Committee = () => {
 
         {/* View All Button */}
         <div className="mt-6 flex justify-center sm:justify-end sm:pr-16">
-          <Link to="/committee" className="group inline-flex items-center justify-center px-6 py-2 text-white font-medium bg-[#bc0034] hover:bg-[#a00030] rounded transition-all duration-300">
+          <Link to="/committee" style={{ fontWeight: 'var(--font-weight-medium)' }} className="group inline-flex items-center justify-center px-6 py-2 text-primary bg-[#bc0034] hover:bg-[#a00030] rounded transition-all duration-300">
             View All
             <svg
               className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300"

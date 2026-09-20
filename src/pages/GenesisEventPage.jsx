@@ -230,12 +230,11 @@ const GenesisEventPage = () => {
 
             {/* Title */}
             <h1
-              className="text-white font-bold text-center leading-tight mb-2"
-              style={{ fontSize: 'clamp(2.2rem, 8vw, 3.5rem)' }}
+              className="heading-title-6 text-primary font-medium-510 text-center leading-tight mb-2"
             >
               {event.name}
             </h1>
-            <p className="text-center font-bold text-lg mb-6 tracking-wide" style={{ color: event.accentColor }}>
+            <p className="text-center font-medium-510 text-lg mb-6 tracking-wide" style={{ color: event.accentColor }}>
               {event.category}
             </p>
             <div className="flex justify-center mb-1">
@@ -289,15 +288,15 @@ const GenesisEventPage = () => {
               <div className="relative z-10">
                 <div className="flex items-center mb-6">
                   <div className="w-1 h-8 rounded-full mr-3 shrink-0" style={{ background: 'linear-gradient(to bottom, #ef4444, #b91c1c)', boxShadow: '0 0 10px rgba(220,38,38,0.5)' }} />
-                  <h3 className="text-white font-bold text-xl">Event Details</h3>
+                  <h3 className="heading-h3 text-primary font-medium-510 text-xl tracking-[-0.022em]">Event Details</h3>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   {detailItems.map((item) => (
                     <div key={item.label} className="flex items-start gap-3 p-3 rounded-xl border border-white/5 bg-white/3 hover:border-red-500/20 transition-all duration-300">
                       <span className="text-xl shrink-0">{item.icon}</span>
                       <div>
-                        <p className="text-gray-500 text-xs uppercase tracking-wider mb-0.5">{item.label}</p>
-                        <p className="text-white text-sm font-medium">{item.value}</p>
+                        <p className="text-muted text-xs uppercase tracking-wider mb-0.5">{item.label}</p>
+                        <p className="text-primary text-sm font-medium-510">{item.value}</p>
                       </div>
                     </div>
                   ))}
@@ -311,14 +310,14 @@ const GenesisEventPage = () => {
               <div className="relative z-10">
                 <div className="flex items-center mb-6">
                   <div className="w-1 h-8 rounded-full mr-3 shrink-0" style={{ background: 'linear-gradient(to bottom, #ef4444, #b91c1c)', boxShadow: '0 0 10px rgba(220,38,38,0.5)' }} />
-                  <h3 className="text-white font-bold text-xl">About the Event</h3>
+                  <h3 className="heading-h3 text-primary font-medium-510 text-xl tracking-[-0.022em]">About the Event</h3>
                 </div>
-                <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-6">{event.description}</p>
+                <p className="text-tertiary text-sm sm:text-base leading-relaxed mb-6">{event.description}</p>
                 <div className="grid grid-cols-3 gap-4 border-t border-white/10 pt-5">
                   {event.highlights.map((h) => (
                     <div key={h.label} className="text-center sm:text-left">
-                      <p className="font-bold text-sm mb-1" style={{ color: event.accentColor }}>{h.label}</p>
-                      <p className="text-gray-500 text-xs">{h.sub}</p>
+                      <p className="font-medium-510 text-sm mb-1" style={{ color: event.accentColor }}>{h.label}</p>
+                      <p className="text-muted text-xs">{h.sub}</p>
                     </div>
                   ))}
                 </div>
