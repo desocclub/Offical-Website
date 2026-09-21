@@ -31,7 +31,6 @@ body {
   min-height: 100vh;
   background-color: #000;
   overflow-y: scroll;
-  scrollbar-gutter: stable;
 }
 
 /* Removed global h1 font-size override - let Tailwind handle sizing */

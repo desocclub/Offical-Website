@@ -95,10 +95,10 @@ const Navbar = ({ topOffset = 0, hideOnHeroScroll = false }) => {
         })}
       </div>
 
-      <button type="button" onClick={() => setIsMenuOpen((open) => !open)} aria-label="Toggle navigation menu" aria-expanded={isMenuOpen} className="rounded-full bg-[#970233] p-3 text-white md:hidden">
-        <svg className="h-5 w-5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
-          {isMenuOpen ? <path d="M6 18L18 6M6 6l12 12" /> : <path d="M4 6h16M4 12h16M4 18h16" />}
-        </svg>
+      <button type="button" onClick={() => setIsMenuOpen((open) => !open)} aria-label="Toggle navigation menu" aria-expanded={isMenuOpen} className="group flex h-12 w-12 flex-col items-center justify-center gap-1.5 rounded-full border border-white/10 bg-[#970233] text-white shadow-[0_8px_20px_rgba(79,0,25,0.35)] transition-all duration-300 hover:bg-[#b50040] active:scale-95 md:hidden">
+        <span className={`h-0.5 w-5 rounded-full bg-white transition-all duration-300 ${isMenuOpen ? 'translate-y-2 rotate-45' : ''}`} />
+        <span className={`h-0.5 w-5 rounded-full bg-white transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`} />
+        <span className={`h-0.5 w-5 rounded-full bg-white transition-all duration-300 ${isMenuOpen ? '-translate-y-2 -rotate-45' : ''}`} />
       </button>
 
       <div className={`absolute right-0 top-14 overflow-hidden transition-all duration-300 md:hidden ${isMenuOpen ? 'max-h-[36rem] opacity-100' : 'max-h-0 opacity-0'}`}>
