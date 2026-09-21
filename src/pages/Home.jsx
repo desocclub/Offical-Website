@@ -8,7 +8,7 @@ import CommitteeReveal from '../components/CommitteeReveal';
 
 const Home = () => {
   return (
-    <div className="bg-black min-h-screen">
+    <div className="w-screen max-w-[100vw] overflow-x-clip bg-black min-h-[100dvh]">
       <Navbar />
       <Hero />
       <Events />

@@ -42,7 +42,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative bg-black overflow-hidden w-full min-h-screen flex flex-col">
+    <section className="relative flex w-screen max-w-[100vw] min-h-[100dvh] flex-col overflow-hidden bg-black">
       
       {/* Gradient Line at Top */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#970233] to-transparent z-50"></div>

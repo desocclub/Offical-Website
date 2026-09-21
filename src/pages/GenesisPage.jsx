@@ -47,15 +47,11 @@ const faqs = [
   },
   {
     q: 'What is the team size?',
-    a: "Team sizes vary per event. The Hackathon allows teams of 2–4. Individual events are solo. Technical Quiz allows pairs. Check each event's rules for specifics.",
+    a: "Team sizes allows teams of 2–4. Technical Quiz allows pairs. Check each event's rules for specifics.",
   },
   {
     q: 'Is there a registration fee?',
     a: 'Yes, a nominal registration fee applies. The exact amount will be confirmed shortly. Payment is accepted via UPI.',
-  },
-  {
-    q: 'Can I participate in multiple events?',
-    a: 'Yes! You can register for more than one event as long as the schedules do not conflict.',
   },
   {
     q: 'Will certificates be provided?',
