@@ -1,21 +1,21 @@
 import { useEffect } from 'react';
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import './App.css'
-import Home from './pages/Home';
-import PastEventsPage from './pages/PastEventsPage';
-import PastEventDetailPage from './pages/PastEventDetailPage';
-import CommitteePage from './pages/CommitteePage';
-import GenesisPage from './pages/GenesisPage';
-import GenesisEventPage from './pages/GenesisEventPage';
-import SharkverseEventPage from './pages/SharkverseEventPage';
-import BidAndBuildEventPage from './pages/BidAndBuildEventPage';
-import BidAndBuildPage from './pages/BidAndBuildPage';
-import EscapeTheMatrixEventPage from './pages/EscapeTheMatrixEventPage';
-import RegistrationPage from './pages/RegistrationPage';
-import CSDDepartmentPage from './pages/CSDDepartmentPage';
-import ContactPage from './pages/ContactPage';
-import AlumniPage from './pages/AlumniPage';
-import AboutPage from './pages/AboutPage';
+import Home from './views/Home';
+import PastEventsPage from './views/PastEventsPage';
+import PastEventDetailPage from './views/PastEventDetailPage';
+import CommitteePage from './views/CommitteePage';
+import GenesisPage from './views/GenesisPage';
+import GenesisEventPage from './views/GenesisEventPage';
+import SharkverseEventPage from './views/SharkverseEventPage';
+import BidAndBuildEventPage from './views/BidAndBuildEventPage';
+import BidAndBuildPage from './views/BidAndBuildPage';
+import EscapeTheMatrixEventPage from './views/EscapeTheMatrixEventPage';
+import RegistrationPage from './views/RegistrationPage';
+import CSDDepartmentPage from './views/CSDDepartmentPage';
+import ContactPage from './views/ContactPage';
+import AlumniPage from './views/AlumniPage';
+import AboutPage from './views/AboutPage';
 import CustomCursor from './components/CustomCursor';
 
 function ScrollToTop() {
