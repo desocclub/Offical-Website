@@ -7,10 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "vite:dev": "vite",
-    "vite:build": "vite build",
-    "preview": "vite preview"
+    "lint": "next lint"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.3.3",
@@ -18,22 +15,18 @@
     "next": "^15.5.25",
     "postcss": "^8.5.28",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "react-router-dom": "^7.13.0"
+    "react-dom": "^19.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
     "@types/node": "^22.20.4",
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^5.1.1",
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
     "heic-convert": "^2.1.0",
     "tailwindcss": "^4.1.18",
-    "typescript": "^5.8.3",
-    "vite": "^7.2.4"
+    "typescript": "^5.8.3"
   }
 }
