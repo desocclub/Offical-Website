@@ -386,3 +386,13 @@ body {
   animation: scrollWheel 2s ease-in-out infinite;
 }
 
+/* Custom Designer Cursor - Only hide default OS cursor when custom cursor is confirmed active */
+@media (hover: hover) and (pointer: fine) {
+  html.custom-cursor-active,
+  html.custom-cursor-active *,
+  html.custom-cursor-active *::before,
+  html.custom-cursor-active *::after {
+    cursor: none !important;
+  }
+}
+

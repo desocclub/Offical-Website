@@ -1,16 +1,13 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 export default function CustomCursor() {
-  const [mounted, setMounted] = useState(false);
   const cursorRef = useRef<HTMLDivElement>(null);
   const pathRef = useRef<SVGPathElement>(null);
 
   useEffect(() => {
-    setMounted(true);
-
-    // Only enable on desktop with fine mouse pointer
+    // Only enable on devices with hover and fine pointer (mouse/trackpad)
     const isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     if (!isFinePointer) return;
 
@@ -47,7 +44,7 @@ export default function CustomCursor() {
       if (interactive !== isHoveringInteractive) {
         isHoveringInteractive = interactive;
         if (isHoveringInteractive) {
-          // Hovering on link/button -> change color to vibrant blue
+          // Hovering on link/button -> vibrant blue
           path.setAttribute('fill', '#0066ff');
           path.setAttribute('stroke', '#0048cc');
         } else {
@@ -67,6 +64,7 @@ export default function CustomCursor() {
         currentX = targetX;
         currentY = targetY;
         cursor.style.opacity = '1';
+        document.documentElement.classList.add('custom-cursor-active');
       }
 
       updateHoverState(e.target as Element | null);
@@ -75,6 +73,7 @@ export default function CustomCursor() {
     const handlePointerLeave = () => {
       isVisible = false;
       cursor.style.opacity = '0';
+      document.documentElement.classList.remove('custom-cursor-active');
     };
 
     const handleScroll = () => {
@@ -112,18 +111,21 @@ export default function CustomCursor() {
       window.removeEventListener('scroll', handleScroll);
       document.removeEventListener('mouseleave', handlePointerLeave);
       window.removeEventListener('blur', handlePointerLeave);
+      document.documentElement.classList.remove('custom-cursor-active');
       if (animId) cancelAnimationFrame(animId);
     };
   }, []);
-
-  if (!mounted) return null;
 
   return (
     <div
       ref={cursorRef}
       className="pointer-events-none fixed top-0 left-0 hidden md:block opacity-0 transition-opacity duration-150 will-change-transform"
-      style={{ zIndex: 99999 }}
+      style={{
+        zIndex: 99999,
+        transform: 'translate3d(-100px, -100px, 0)',
+      }}
       aria-hidden="true"
+      role="presentation"
     >
       <svg
         width="28"
