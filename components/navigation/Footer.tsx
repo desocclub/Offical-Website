@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Blaze } from '@/components/canvasui/Blaze';
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -23,11 +24,26 @@ export const Footer = () => {
   ];
 
   return (
-    <footer className="relative bg-gradient-to-b from-black via-[#0a0a0a] to-[#1a0a0a] text-white">
-      {/* Top red accent line */}
-      <div className="h-[2px] bg-gradient-to-r from-transparent via-[#bc0034] to-transparent"></div>
+    <footer className="relative bg-black text-white px-2 sm:px-3 pb-2 sm:pb-3 rounded-b-xl sm:rounded-b-2xl overflow-hidden">
+      <Blaze
+        height={0.97}
+        distortion={0.45}
+        distortionScale={0.5}
+        speed={0.85}
+        sparks={0.8}
+        sparkDensity={1.5}
+        sparkSize={1.2}
+        layers={5}
+        smoke={0.6}
+        glow={2.4}
+        sparkColor={[0.6, 0.9, 1.0]}
+        smokeColor={[0.22, 0.62, 1.0]}
+        className="w-full rounded-b-xl sm:rounded-b-2xl overflow-hidden"
+      >
+        {/* Top red accent line */}
+        <div className="h-[2px] bg-gradient-to-r from-transparent via-[#bc0034] to-transparent"></div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
         {/* Top Section - Logo and Tagline */}
         <div className="mb-12">
           <div className="flex items-center gap-3 mb-3">
@@ -168,6 +184,7 @@ export const Footer = () => {
           </p>
         </div>
       </div>
+      </Blaze>
     </footer>
   );
 };
