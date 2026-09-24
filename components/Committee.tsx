@@ -5,13 +5,7 @@ import Link from 'next/link';
 import CommitteeCard from './CommitteeCard';
 import type { StaticImageData } from 'next/image';
 
-import mrunaliMam from '@/src/assets/dept/mrunali_mam.webp';
-import adityaImg from '@/src/assets/members/aditya1.png';
-import ayushiImg from '@/src/assets/members/ayushi.svg';
-import vedantImg from '@/src/assets/members/vedant.svg';
-import jeetImg from '@/src/assets/members/jeet.svg';
-import monishImg from '@/src/assets/members/monish.svg';
-import ishaniImg from '@/src/assets/members/ishani.svg';
+import { committee2025_26 } from '@/lib/data/committee/2025-26';
 
 interface MemberItem {
   id: string | number;
@@ -22,14 +16,15 @@ interface MemberItem {
 
 const Committee = () => {
   const committeeMembers: MemberItem[] = [
-    { id: 0, name: "Prof. Mrunali Pawar", role: "Faculty Incharge", image: mrunaliMam },
-    { id: 1, name: "Aditya Ahirrao", role: "President", image: adityaImg },
-    { id: 2, name: "Ayushi Deore", role: "Vice President", image: ayushiImg },
-    { id: 3, name: "Vedant Sonawane", role: "Event Operation Head", image: vedantImg },
-    { id: 4, name: "Jeet Patil", role: "Tech Head", image: jeetImg },
-    { id: 5, name: "Monish Patil", role: "Design Team Head", image: monishImg },
-    { id: 6, name: "Ishani Mukewar", role: "Secretary", image: ishaniImg }
-  ];
+    ...(committee2025_26.teams?.find((t) => t.id === 'faculty')?.members || []),
+    ...(committee2025_26.teams?.find((t) => t.id === 'core')?.members.slice(0, 6) || []),
+  ].map((m, idx) => ({
+    id: idx,
+    name: m.name,
+    role: m.role,
+    image: m.image!,
+  }));
+
 
   const totalSlides = committeeMembers.length;
   

@@ -3,31 +3,7 @@ import Footer from '@/components/navigation/Footer';
 import type { StaticImageData } from 'next/image';
 import { resolveSrc } from '@/lib/imageUtils';
 
-import adityaImg from '@/src/assets/members/aditya1.png';
-import ayushiImg from '@/src/assets/members/ayushi.svg';
-import vedantImg from '@/src/assets/members/vedant.svg';
-import ishaniImg from '@/src/assets/members/ishani.svg';
-import jeetImg from '@/src/assets/members/jeet.svg';
-import monishImg from '@/src/assets/members/monish.svg';
-import sanskrutiImg from '@/src/assets/members/sanskruti.svg';
-import pranitaImg from '@/src/assets/members/pranita.svg';
-import shrimantImg from '@/src/assets/members/shrimant.svg';
-import omcImg from '@/src/assets/members/omc.jpeg';
-import rajanImg from '@/src/assets/members/rajan.svg';
-import dishaImg from '@/src/assets/members/disha.svg';
-import madhuraImg from '@/src/assets/members/madhura.svg';
-import zaweriyaImg from '@/src/assets/members/zewariya.svg';
-import atharvaImg from '@/src/assets/members/atharva.svg';
-import omImg from '@/src/assets/members/om.svg';
-import kshitijaImg from '@/src/assets/members/kshitija.svg';
-import nehaImg from '@/src/assets/members/neha.svg';
-import parthImg from '@/src/assets/members/parth.svg';
-import sahilImg from '@/src/assets/members/sahil.svg';
-import riyaImg from '@/src/assets/members/riya.svg';
-import swaradaImg from '@/src/assets/members/swarada.svg';
-import shravaniImg from '@/src/assets/members/shravani.svg';
-import prashantImg from '@/src/assets/members/prashant.svg';
-import siddharthImg from '@/src/assets/members/siddharth.svg';
+import { committee2025_26 } from '@/lib/data/committee/2025-26';
 
 export const metadata = {
   title: 'Alumni — DESOC',
@@ -45,59 +21,17 @@ interface CommitteeTeamGroup {
   members: AlumniMember[];
 }
 
-const committeeTeams: CommitteeTeamGroup[] = [
-  {
-    title: 'Core Committee',
-    members: [
-      { name: 'Aditya Ahirrao', role: 'President', image: adityaImg },
-      { name: 'Ayushi Deore', role: 'Vice President', image: ayushiImg },
-      { name: 'Vedant Sonawane', role: 'Event Operations Head', image: vedantImg },
-      { name: 'Ishani Murkewar', role: 'Secretary', image: ishaniImg },
-      { name: 'Jeet Patil', role: 'Technical Head', image: jeetImg },
-      { name: 'Monish Patil', role: 'Creative Head', image: monishImg },
-      { name: 'Sanskruti Gite', role: 'Treasurer', image: sanskrutiImg },
-      { name: 'Pranita Patil', role: 'Co-Treasurer', image: pranitaImg },
-    ],
-  },
-  {
-    title: 'Technical Team',
-    members: [
-      { name: 'Shrimant Marathe', role: 'Technical Team', image: shrimantImg },
-      { name: 'Om Chaudhari', role: 'Technical Team', image: omcImg },
-      { name: 'Piyush Shendge', role: 'Technical Team' },
-      { name: 'Rajan Udapure', role: 'Technical Team', image: rajanImg },
-    ],
-  },
-  {
-    title: 'Editorial Team',
-    members: [
-      { name: 'Disha Kapse', role: 'Editorial Team', image: dishaImg },
-      { name: 'Madhura Katti', role: 'Editorial Team', image: madhuraImg },
-      { name: 'Zaweriya Khan', role: 'Editorial Team', image: zaweriyaImg },
-    ],
-  },
-  {
-    title: 'Event Operations Team',
-    members: [
-      { name: 'Atharva Kulkarni', role: 'Event Operations', image: atharvaImg },
-      { name: 'Om Patil', role: 'Event Operations', image: omImg },
-      { name: 'Kshitija Daware', role: 'Event Operations', image: kshitijaImg },
-      { name: 'Neha Bhamare', role: 'Event Operations', image: nehaImg },
-      { name: 'Parth Waje', role: 'Event Operations', image: parthImg },
-      { name: 'Sahil Batheja', role: 'Event Operations', image: sahilImg },
-    ],
-  },
-  {
-    title: 'Creative Team',
-    members: [
-      { name: 'Riya Sequeira', role: 'Creative Team', image: riyaImg },
-      { name: 'Swarada Joshi', role: 'Creative Team', image: swaradaImg },
-      { name: 'Shravani Bhagwat', role: 'Creative Team', image: shravaniImg },
-      { name: 'Prashant Deokar', role: 'Creative Team', image: prashantImg },
-      { name: 'Siddharth Wade', role: 'Creative Team', image: siddharthImg },
-    ],
-  },
-];
+const committeeTeams: CommitteeTeamGroup[] = (committee2025_26.teams || [])
+  .filter((team) => team.id !== 'faculty')
+  .map((team) => ({
+    title: team.title,
+    members: team.members.map((m) => ({
+      name: m.name,
+      role: m.role,
+      image: m.image,
+    })),
+  }));
+
 
 interface GlassCardProps {
   children: React.ReactNode;
