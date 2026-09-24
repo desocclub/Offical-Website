@@ -12,7 +12,7 @@ export const events: Event[] = [
     description: 'A dynamic MUN-style cybersecurity debate exploring digital governance, cyber policy, and international tech diplomacy.',
     category: 'DIGITAL GOVERNANCE + DEBATE + POLICY MAKING',
     image: cybersabhaImg,
-    location: 'Main Auditorium, KKWIEER',
+    location: 'TBA',
     registrationUrl: '/events/cyber-sabha',
     schedule: {
       status: 'tba',

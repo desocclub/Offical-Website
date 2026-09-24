@@ -23,7 +23,7 @@ export const Navbar = ({ topOffset = 0 }: NavbarProps) => {
   const leftNavItems: NavItem[] = [
     { name: 'Home', path: '/', type: 'route' },
     { name: 'About', path: '/about', type: 'route' },
-    { name: 'Community', path: '/committee', type: 'route' },
+    { name: 'Committee', path: '/committee', type: 'route' },
   ];
 
   const rightNavItems: NavItem[] = [
