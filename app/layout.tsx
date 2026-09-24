@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import CustomCursor from '@/components/CustomCursor';
+import SmoothScroll from '@/components/SmoothScroll';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -26,7 +27,9 @@ export default function RootLayout({
     <html lang="en">
       <body className="bg-black text-[#d0d6e0] min-h-screen selection:bg-[#ff3366]/30 selection:text-white">
         <CustomCursor />
-        {children}
+        <SmoothScroll>
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );
