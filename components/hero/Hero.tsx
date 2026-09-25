@@ -1,25 +1,13 @@
 'use client';
 
 import HeroGrid from './HeroGrid';
-import ParticleField from './ParticleField';
+import DitheringBackground from './DitheringBackground';
 import HeroContent from './HeroContent';
 
 export default function Hero() {
-  const handleScrollDown = () => {
-    const nextSection =
-      document.getElementById('events') ||
-      document.querySelector('section:nth-of-type(2)') ||
-      document.querySelector('main > section:nth-of-type(2)');
-    if (nextSection) {
-      nextSection.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      window.scrollBy({ top: window.innerHeight * 0.9, behavior: 'smooth' });
-    }
-  };
-
   return (
     <section
-      className="relative w-full min-h-[100svh] max-w-full bg-black text-white flex flex-col justify-between items-center overflow-hidden pt-16 sm:pt-20 md:pt-24 pb-3 sm:pb-5 px-3 sm:px-6 select-none font-geist"
+      className="relative w-full min-h-[100svh] max-w-full bg-black text-white flex flex-col justify-center items-center overflow-hidden pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-12 px-3 sm:px-6 select-none font-geist"
     >
       {/* Top-Left Institutional Signature: College Logo (clg_logo.svg) - Hidden completely on mobile, brought closer to navbar and significantly enlarged */}
       <div className="hidden sm:flex absolute top-3 sm:top-4 md:top-4.5 inset-x-0 max-w-5xl mx-auto px-4 sm:px-6 z-30 pointer-events-none items-center justify-start">
@@ -38,29 +26,20 @@ export default function Hero() {
         </a>
       </div>
 
-      {/* Layer 1: Dotted Architectural Structural Grid */}
+      {/* Layer 1: Dynamic Dithering Shader Background (Powered by Cult UI's underlying @paper-design/shaders-react engine) */}
+      <DitheringBackground />
+
+      {/* Layer 2: Subtle Central Readability Vignette (Seamless on desktop; mobile protected locally) */}
+      <div 
+        className="hidden sm:block absolute inset-0 bg-[radial-gradient(circle_at_50%_46%,rgba(0,0,0,0.45)_0%,rgba(0,0,0,0.15)_48%,transparent_80%)] pointer-events-none z-[2]" 
+        aria-hidden="true"
+      />
+
+      {/* Layer 3: Sparse Architectural Structural Grid with Exact Crosshair Alignment */}
       <HeroGrid />
 
-      {/* Layer 2: Dense Inertial Visual Field (Stationary Dots + Dynamic Opacity & Radius) */}
-      <ParticleField />
-
-      {/* Layer 3: Central Editorial Hero Content (Geist Sans + Restrained Geist Pixel) */}
-      <HeroContent onScrollDown={handleScrollDown} />
-
-      {/* Layer 4: Minimalist Bottom Scroll Cue */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto flex items-center justify-center pt-1 pb-1 pointer-events-auto">
-        <button
-          type="button"
-          onClick={handleScrollDown}
-          className="flex items-center gap-2 text-[9px] sm:text-[10px] tracking-[0.25em] uppercase text-zinc-500 hover:text-zinc-300 font-geist-mono transition-colors duration-200 cursor-pointer select-none py-1"
-          aria-label="Scroll to content"
-        >
-          <span className="h-px w-5 sm:w-8 bg-zinc-800" />
-          <span>SCROLL</span>
-          <span className="text-[#c084fc] transition-transform duration-200 hover:translate-y-0.5">↓</span>
-          <span className="h-px w-5 sm:w-8 bg-zinc-800" />
-        </button>
-      </div>
+      {/* Layer 4: Central Editorial Hero Content (Geist Sans + Restrained Geist Pixel) */}
+      <HeroContent />
     </section>
   );
 }

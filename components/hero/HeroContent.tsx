@@ -8,13 +8,13 @@ interface HeroContentProps {
   onScrollDown?: () => void;
 }
 
-export default function HeroContent({ onScrollDown }: HeroContentProps) {
+export default function HeroContent() {
   const [isCtaHovered, setIsCtaHovered] = useState(false);
 
   return (
     <div className="relative z-10 flex flex-col items-center justify-center text-center max-w-5xl mx-auto w-full px-3 sm:px-6 my-auto pt-2 sm:pt-4 pb-2 font-geist">
       
-      {/* Subtle Local Field Attenuation for Text Readability over Excited Dots */}
+      {/* Subtle Local Field Attenuation for Text Readability */}
       <div 
         className="absolute inset-0 -inset-x-8 sm:-inset-x-16 bg-radial from-black/60 via-black/25 to-transparent blur-2xl -z-10 pointer-events-none" 
         aria-hidden="true"
@@ -51,11 +51,9 @@ export default function HeroContent({ onScrollDown }: HeroContentProps) {
         </span>
       </h1>
 
-      {/* 3. Supporting Description (Refined Editorial Hierarchy: #A8A8AD, High Contrast, 600px Max Width) */}
-      <p className="text-[#A8A8AD] font-normal text-[14px] min-[390px]:text-[14.5px] sm:text-[16px] md:text-[17px] max-w-[590px] mx-auto mt-4 sm:mt-5 md:mt-6 leading-[1.58] tracking-normal font-geist">
-        Come innovate with us. Design Society brings students together at the intersection
-        of design and technology. Join projects, workshops, competitions, and collaborations—and
-        transform your ideas into impactful digital experiences.
+      {/* 3. Supporting Description (Refined Editorial Hierarchy: #A8A8AD, High Contrast, Constrained Width) */}
+      <p className="text-[#A8A8AD] font-normal text-[13.5px] min-[390px]:text-[14px] sm:text-[15.5px] md:text-[16.5px] max-w-[580px] mx-auto mt-4 sm:mt-5 md:mt-6 leading-[1.58] tracking-normal font-geist">
+        A community where design meets technology, ideas become experiences, and creativity turns into impact. Build, experiment, and create alongside curious minds shaping what’s next.
       </p>
 
       {/* 4. Primary CTA Button with UI-Layouts Liquid Gradient */}

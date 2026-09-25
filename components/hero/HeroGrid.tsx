@@ -1,79 +1,87 @@
 'use client';
 
 /**
- * HeroGrid component
- * Provides a clearly visible architectural dotted structural grid overlay behind the hero content.
- * Features:
- * - Viewport-aligned vertical and horizontal fine dotted guide lines
- * - Vertical opacity fade: strongest in central hero region (~30-70%), smoothly dissolving to black at top and bottom
- * - CAD/editorial style micro '+' crosshair markers at major line intersections
- * - High-contrast technical aesthetic framing the composition without boxing it in
- * - Pointer-events none
+ * HeroGrid Component
+ *
+ * Deterministic, Sparse Architectural Structural Grid:
+ * - Shared CSS custom properties ensure horizontal and vertical guide lines pass
+ *   directly through the dead center of every '+' intersection marker.
+ * - Sparse, editorial CAD framing: an intentional outer frame with 4 corner crosshairs
+ *   plus a subtle central symmetry axis.
+ * - Zero floating or misaligned markers.
+ * - Pointer-events none.
  */
 export default function HeroGrid() {
   return (
     <div
-      className="absolute inset-0 pointer-events-none select-none z-[1] overflow-hidden"
+      className="absolute inset-0 pointer-events-none select-none z-[3] overflow-hidden [--grid-x-left:6%] sm:[--grid-x-left:8%] md:[--grid-x-left:11%] lg:[--grid-x-left:13%] [--grid-x-right:6%] sm:[--grid-x-right:8%] md:[--grid-x-right:11%] lg:[--grid-x-right:13%] [--grid-y-top:14%] [--grid-y-bottom:86%]"
       style={{
         maskImage:
-          'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.18) 6%, rgba(0,0,0,0.50) 12%, rgba(0,0,0,0.85) 20%, rgba(0,0,0,1) 32%, rgba(0,0,0,1) 68%, rgba(0,0,0,0.85) 80%, rgba(0,0,0,0.50) 88%, rgba(0,0,0,0.18) 94%, transparent 100%)',
+          'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.2) 8%, rgba(0,0,0,0.7) 20%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.7) 82%, rgba(0,0,0,0.2) 94%, transparent 100%)',
         WebkitMaskImage:
-          'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.18) 6%, rgba(0,0,0,0.50) 12%, rgba(0,0,0,0.85) 20%, rgba(0,0,0,1) 32%, rgba(0,0,0,1) 68%, rgba(0,0,0,0.85) 80%, rgba(0,0,0,0.50) 88%, rgba(0,0,0,0.18) 94%, transparent 100%)',
+          'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.2) 8%, rgba(0,0,0,0.7) 20%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.7) 82%, rgba(0,0,0,0.2) 94%, transparent 100%)',
       }}
       aria-hidden="true"
     >
-      {/* Horizontal Dotted Lines (Technical Architectural Framework) */}
-      {/* Primary Upper Hero Frame Guide (moved up for generous breathing room above DESOC logo) */}
-      <div className="absolute top-[13%] sm:top-[14%] md:top-[15%] left-0 right-0 w-full border-t border-dotted border-white/35" />
+      {/* 1. Primary Top Horizontal Guide Line */}
+      <div 
+        className="absolute left-0 right-0 h-px -translate-y-1/2 border-t border-dotted border-white/25 pointer-events-none" 
+        style={{ top: 'var(--grid-y-top)' }}
+      />
 
-      {/* Mid Sub-Guide (framing upper content) */}
-      <div className="hidden md:block absolute top-[36%] sm:top-[38%] left-0 right-0 w-full border-t border-dotted border-purple-300/20" />
+      {/* 2. Primary Bottom Horizontal Guide Line */}
+      <div 
+        className="absolute left-0 right-0 h-px -translate-y-1/2 border-t border-dotted border-white/25 pointer-events-none" 
+        style={{ top: 'var(--grid-y-bottom)' }}
+      />
 
-      {/* Primary Lower Hero Frame Guide (directly below CTA button) */}
-      <div className="absolute bottom-[21%] sm:bottom-[22%] left-0 right-0 w-full border-t border-dotted border-white/35" />
+      {/* 3. Outer Left Vertical Guide Line */}
+      <div 
+        className="absolute top-0 bottom-0 w-px -translate-x-1/2 border-l border-dotted border-white/25 pointer-events-none" 
+        style={{ left: 'var(--grid-x-left)' }}
+      />
 
-      {/* Bottom Scroll Cue Guide */}
-      <div className="hidden sm:block absolute bottom-12 sm:bottom-14 left-0 right-0 w-full border-t border-dotted border-white/20" />
+      {/* 4. Outer Right Vertical Guide Line */}
+      <div 
+        className="absolute top-0 bottom-0 w-px translate-x-1/2 border-r border-dotted border-white/25 pointer-events-none" 
+        style={{ right: 'var(--grid-x-right)' }}
+      />
 
-      {/* Vertical Dotted Lines (Framing Viewport Canvas) */}
-      {/* Outer Left Column Guide */}
-      <div className="absolute top-0 bottom-0 left-[6%] sm:left-[8%] md:left-[12%] lg:left-[15%] w-px border-l border-dotted border-white/35" />
+      {/* 5. Minimal Center Symmetry Axis (Subtle editorial guide) */}
+      <div className="hidden md:block absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px border-l border-dotted border-purple-400/15 pointer-events-none" />
 
-      {/* Inner Left Sub-Guide */}
-      <div className="hidden lg:block absolute top-0 bottom-0 left-[28%] w-px border-l border-dotted border-white/20" />
-
-      {/* Center Symmetry Axis Guide */}
-      <div className="hidden md:block absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px border-l border-dotted border-purple-400/25" />
-
-      {/* Inner Right Sub-Guide */}
-      <div className="hidden lg:block absolute top-0 bottom-0 right-[28%] w-px border-r border-dotted border-white/20" />
-
-      {/* Outer Right Column Guide */}
-      <div className="absolute top-0 bottom-0 right-[6%] sm:right-[8%] md:right-[12%] lg:right-[15%] w-px border-r border-dotted border-white/35" />
-
-      {/* Architectural Intersection Markers (Crosshairs '+' in Geist Mono) */}
-      {/* Top-Left Primary Intersection (aligned with moved-up top horizontal guide) */}
-      <div className="absolute top-[13%] sm:top-[14%] md:top-[15%] left-[6%] sm:left-[8%] md:left-[12%] lg:left-[15%] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
-        <span className="text-[12px] font-geist-mono text-purple-300/80 leading-none select-none font-medium">+</span>
+      {/* 6. Deterministic '+' Crosshair Markers (Center of '+' sits precisely on line intersections) */}
+      {/* Top-Left Intersection */}
+      <div 
+        className="absolute -translate-x-1/2 -translate-y-1/2 w-4 h-4 flex items-center justify-center pointer-events-none"
+        style={{ top: 'var(--grid-y-top)', left: 'var(--grid-x-left)' }}
+      >
+        <span className="text-[12px] font-geist-mono text-purple-300/80 leading-none select-none font-medium text-center">+</span>
       </div>
 
-      {/* Top-Right Primary Intersection (aligned with moved-up top horizontal guide) */}
-      <div className="absolute top-[13%] sm:top-[14%] md:top-[15%] right-[6%] sm:right-[8%] md:right-[12%] lg:right-[15%] translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
-        <span className="text-[12px] font-geist-mono text-purple-300/80 leading-none select-none font-medium">+</span>
+      {/* Top-Right Intersection */}
+      <div 
+        className="absolute translate-x-1/2 -translate-y-1/2 w-4 h-4 flex items-center justify-center pointer-events-none"
+        style={{ top: 'var(--grid-y-top)', right: 'var(--grid-x-right)' }}
+      >
+        <span className="text-[12px] font-geist-mono text-purple-300/80 leading-none select-none font-medium text-center">+</span>
       </div>
 
-      {/* Bottom-Left Primary Intersection */}
-      <div className="absolute bottom-[21%] sm:bottom-[22%] left-[6%] sm:left-[8%] md:left-[12%] lg:left-[15%] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
-        <span className="text-[12px] font-geist-mono text-purple-300/80 leading-none select-none font-medium">+</span>
+      {/* Bottom-Left Intersection */}
+      <div 
+        className="absolute -translate-x-1/2 -translate-y-1/2 w-4 h-4 flex items-center justify-center pointer-events-none"
+        style={{ top: 'var(--grid-y-bottom)', left: 'var(--grid-x-left)' }}
+      >
+        <span className="text-[12px] font-geist-mono text-purple-300/80 leading-none select-none font-medium text-center">+</span>
       </div>
 
-      {/* Bottom-Right Primary Intersection */}
-      <div className="absolute bottom-[21%] sm:bottom-[22%] right-[6%] sm:right-[8%] md:right-[12%] lg:right-[15%] translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
-        <span className="text-[12px] font-geist-mono text-purple-300/80 leading-none select-none font-medium">+</span>
+      {/* Bottom-Right Intersection */}
+      <div 
+        className="absolute translate-x-1/2 -translate-y-1/2 w-4 h-4 flex items-center justify-center pointer-events-none"
+        style={{ top: 'var(--grid-y-bottom)', right: 'var(--grid-x-right)' }}
+      >
+        <span className="text-[12px] font-geist-mono text-purple-300/80 leading-none select-none font-medium text-center">+</span>
       </div>
-
-      {/* Subtle Central Violet Ambient Radial Softening */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_48%,rgba(168,85,247,0.08)_0%,rgba(0,0,0,0)_68%)] pointer-events-none" />
     </div>
   );
 }
