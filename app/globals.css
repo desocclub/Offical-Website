@@ -1,5 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Roboto+Condensed:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Roboto+Condensed:wght@400;500;700&display=swap');
 @import "tailwindcss";
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/Geist-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/Geist-Italic.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Pixel';
+  src: url('/fonts/GeistPixel-Square.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('/fonts/GeistMono-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
 
 @font-face {
   font-family: 'Inter Variable';
@@ -11,12 +43,15 @@
 
 :root {
   /* Centralized Font Stacks */
-  --font-sans: "Inter Variable", "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  --font-editorial-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-geist: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-geist-pixel: 'Geist Pixel', monospace;
+  --font-geist-mono: 'Geist Mono', monospace;
+  --font-sans: var(--font-geist);
+  --font-editorial-sans: var(--font-geist);
   --font-editorial-serif: 'Instrument Serif', Georgia, serif;
-  --font-editorial-mono: 'JetBrains Mono', monospace;
+  --font-editorial-mono: var(--font-geist-mono);
 
-  font-family: var(--font-sans);
+  font-family: var(--font-geist);
 
   /* Linear-inspired Variable Font Weights */
   --font-weight-normal: 400;
@@ -24,11 +59,11 @@
   --font-weight-semibold: 590;
   --font-weight-bold: 680;
 
-  /* Centralized Text Color Tokens */
-  --color-text-primary: #f7f8f8;
-  --color-text-secondary: #d0d6e0;
-  --color-text-tertiary: #8a8f98;
-  --color-text-muted: #62666f;
+  /* Centralized Text Color Tokens (Enhanced Contrast Hierarchy) */
+  --color-text-primary: #F5F5F5;
+  --color-text-secondary: #A8A8AD;
+  --color-text-tertiary: #77777F;
+  --color-text-muted: #77777F;
 
   /* DESOC Brand Accent Preservations */
   --color-accent: #ff3366;
@@ -150,6 +185,19 @@ html {
 
 .text-muted {
   color: var(--color-text-muted);
+}
+
+.font-geist {
+  font-family: var(--font-geist);
+}
+
+.font-geist-pixel {
+  font-family: var(--font-geist-pixel);
+  letter-spacing: 0.06em;
+}
+
+.font-geist-mono {
+  font-family: var(--font-geist-mono);
 }
 
 .font-medium-510 {
