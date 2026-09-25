@@ -44,25 +44,25 @@ export const DEFAULT_LIQUID_COLORS: Colors = {
   color17: '#3F4CC0',
 };
 
-// Rich violet/purple palette tuned for DESOC brand aesthetics
+// Rich crimson/red palette tuned for DESOC visual identity (black + deep crimson + ruby highlights)
 export const DESOC_LIQUID_COLORS: Colors = {
   color1: '#FFFFFF',
-  color2: '#7C3AED', // electric violet
-  color3: '#C084FC', // bright lavender
-  color4: '#FAF5FF',
-  color5: '#F3E8FF',
-  color6: '#D8B4FE',
-  color7: '#9333EA', // purple
-  color8: '#6D28D9', // deep violet
-  color9: '#8B5CF6', // purple accent
-  color10: '#A855F7', // violet
-  color11: '#4C1D95', // deep indigo-violet
-  color12: '#E9D5FF',
-  color13: '#5B21B6',
-  color14: '#DDD6FE',
-  color15: '#EDE9FE',
-  color16: '#7E22CE',
-  color17: '#6B21A8',
+  color2: '#991B1B', // deep crimson
+  color3: '#E11D48', // bright rose-crimson accent
+  color4: '#FFF1F2',
+  color5: '#FFE4E6',
+  color6: '#FDA4AF',
+  color7: '#BE123C', // rich red
+  color8: '#881337', // deep wine
+  color9: '#E11D48', // crimson accent
+  color10: '#F43F5E', // ruby highlight
+  color11: '#4C0519', // deep obsidian burgundy
+  color12: '#FECDD3',
+  color13: '#5C091C',
+  color14: '#FB7185',
+  color15: '#FFE4E6',
+  color16: '#9F1239',
+  color17: '#6B0E1E',
 };
 
 const svgOrder = ['svg1', 'svg2', 'svg3', 'svg4', 'svg3', 'svg2', 'svg1'] as const;

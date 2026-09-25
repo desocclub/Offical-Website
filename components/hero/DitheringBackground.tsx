@@ -114,9 +114,9 @@ function Canvas2DFallback({ isMobile, isReducedMotion }: { isMobile: boolean; is
             for (let dy = 0; dy < step && y + dy < h; dy++) {
               for (let dx = 0; dx < step && x + dx < w; dx++) {
                 const idx = ((y + dy) * w + (x + dx)) * 4;
-                data[idx] = 139;     // R (#8b5cf6)
-                data[idx + 1] = 92;  // G
-                data[idx + 2] = 246; // B
+                data[idx] = 184;     // R (#b81832)
+                data[idx + 1] = 24;  // G
+                data[idx + 2] = 50;  // B
                 data[idx + 3] = 255; // A
               }
             }
@@ -145,8 +145,8 @@ function Canvas2DFallback({ isMobile, isReducedMotion }: { isMobile: boolean; is
 /**
  * DitheringBackground Component
  *
- * Refined Dithering Shader:
- * - Tiny, dense pixel/dither pattern for fine-grained retro-modern texture
+ * Refined Dithering Shader (DESOC Red/Black Visual Identity):
+ * - Deep crimson and dark red palette with subtle selective brighter red highlights in flowing forms
  * - Organic, flowing curved swirl forms radiating from the lower/outer hero foundation
  * - Upward gradual fade/dissolve into pure black empty space around the navbar & DESOC logo
  * - Responsive: Distinct mobile parameters tuned for mobile portrait aspect ratio & high DPR
@@ -224,7 +224,7 @@ function DitheringBackgroundImpl() {
             shape="swirl"
             type="4x4"
             colorBack="#000000"
-            colorFront="#8b5cf6"
+            colorFront="#b81832"
             size={ditherSize}
             scale={scale}
             speed={speed}
@@ -238,13 +238,26 @@ function DitheringBackgroundImpl() {
         <Canvas2DFallback isMobile={isMobile} isReducedMotion={isReducedMotion} />
       )}
 
+      {/* Subtle Selective Depth Highlight Layer:
+          Adds subtle brighter ruby-red luminous depth directly over the core of the flowing forms,
+          while leaving the outer field in deep dark crimson and preserving pure black negative space.
+      */}
+      <div
+        className="absolute inset-0 pointer-events-none mix-blend-screen z-[2]"
+        style={{
+          background: isMobile
+            ? 'radial-gradient(ellipse at 50% 80%, rgba(255, 51, 102, 0.22) 0%, rgba(188, 0, 52, 0.08) 42%, transparent 70%)'
+            : 'radial-gradient(ellipse at 48% 76%, rgba(255, 51, 102, 0.20) 0%, rgba(188, 0, 52, 0.08) 45%, transparent 70%)',
+        }}
+      />
+
       {/* Pure CSS Gradient Dissolve Overlay:
           Eliminates mobile WebKit bugs associated with CSS mask-image on WebGL canvases.
           Dissolves the upper area into pure black around the navbar and DESOC logo while keeping
           the lower foundation vibrant and flowing.
       */}
       <div
-        className="absolute inset-0 pointer-events-none z-[2]"
+        className="absolute inset-0 pointer-events-none z-[3]"
         style={{
           background: isMobile
             ? 'linear-gradient(to bottom, #000000 0%, #000000 14%, rgba(0,0,0,0.85) 28%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.05) 75%, transparent 100%)'

@@ -48,7 +48,7 @@ export default function HeroGrid() {
       />
 
       {/* 5. Minimal Center Symmetry Axis (Subtle editorial guide) */}
-      <div className="hidden md:block absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px border-l border-dotted border-purple-400/15 pointer-events-none" />
+      <div className="hidden md:block absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px border-l border-dotted border-red-500/15 pointer-events-none" />
 
       {/* 6. Deterministic '+' Crosshair Markers (Center of '+' sits precisely on line intersections) */}
       {/* Top-Left Intersection */}
@@ -56,7 +56,7 @@ export default function HeroGrid() {
         className="absolute -translate-x-1/2 -translate-y-1/2 w-4 h-4 flex items-center justify-center pointer-events-none"
         style={{ top: 'var(--grid-y-top)', left: 'var(--grid-x-left)' }}
       >
-        <span className="text-[12px] font-geist-mono text-purple-300/80 leading-none select-none font-medium text-center">+</span>
+        <span className="text-[12px] font-geist-mono text-red-400/75 leading-none select-none font-medium text-center">+</span>
       </div>
 
       {/* Top-Right Intersection */}
@@ -64,7 +64,7 @@ export default function HeroGrid() {
         className="absolute translate-x-1/2 -translate-y-1/2 w-4 h-4 flex items-center justify-center pointer-events-none"
         style={{ top: 'var(--grid-y-top)', right: 'var(--grid-x-right)' }}
       >
-        <span className="text-[12px] font-geist-mono text-purple-300/80 leading-none select-none font-medium text-center">+</span>
+        <span className="text-[12px] font-geist-mono text-red-400/75 leading-none select-none font-medium text-center">+</span>
       </div>
 
       {/* Bottom-Left Intersection */}
@@ -72,7 +72,7 @@ export default function HeroGrid() {
         className="absolute -translate-x-1/2 -translate-y-1/2 w-4 h-4 flex items-center justify-center pointer-events-none"
         style={{ top: 'var(--grid-y-bottom)', left: 'var(--grid-x-left)' }}
       >
-        <span className="text-[12px] font-geist-mono text-purple-300/80 leading-none select-none font-medium text-center">+</span>
+        <span className="text-[12px] font-geist-mono text-red-400/75 leading-none select-none font-medium text-center">+</span>
       </div>
 
       {/* Bottom-Right Intersection */}
@@ -80,7 +80,7 @@ export default function HeroGrid() {
         className="absolute translate-x-1/2 -translate-y-1/2 w-4 h-4 flex items-center justify-center pointer-events-none"
         style={{ top: 'var(--grid-y-bottom)', right: 'var(--grid-x-right)' }}
       >
-        <span className="text-[12px] font-geist-mono text-purple-300/80 leading-none select-none font-medium text-center">+</span>
+        <span className="text-[12px] font-geist-mono text-red-400/75 leading-none select-none font-medium text-center">+</span>
       </div>
     </div>
   );

@@ -21,20 +21,20 @@ export default function HeroContent() {
       />
 
       {/* Micro Editorial Badge (Restrained Geist Pixel Usage) */}
-      <div className="inline-flex items-center gap-2 px-2.5 py-0.5 sm:py-1 rounded-full border border-purple-500/25 bg-purple-950/30 backdrop-blur-sm text-[9.5px] sm:text-[10.5px] text-purple-200/90 font-geist-pixel tracking-wider select-none mb-2.5 sm:mb-3.5">
-        <span className="w-1.5 h-1.5 rounded-full bg-[#a855f7] shadow-[0_0_6px_#a855f7]" />
+      <div className="inline-flex items-center gap-2 px-2.5 py-0.5 sm:py-1 rounded-full border border-red-500/25 bg-red-950/30 backdrop-blur-sm text-[9.5px] sm:text-[10.5px] text-red-200/90 font-geist-pixel tracking-wider select-none mb-2.5 sm:mb-3.5">
+        <span className="w-1.5 h-1.5 rounded-full bg-[#ff3366] shadow-[0_0_6px_#ff3366]" />
         <span>DESOC // EST. 2024</span>
       </div>
 
       {/* 1. Official DESOC Logo (Enlarged Single Cohesive Brand Asset) */}
       <div className="relative mx-auto mb-3 sm:mb-4 md:mb-5 flex items-center justify-center select-none group">
-        {/* Soft Ambient Violet Aura behind Logo */}
-        <div className="absolute inset-0 bg-purple-500/20 blur-2xl rounded-full scale-110 pointer-events-none" />
+        {/* Soft Ambient Crimson Aura behind Logo */}
+        <div className="absolute inset-0 bg-[#bc0034]/20 blur-2xl rounded-full scale-110 pointer-events-none" />
         
         <img
           src="/desoc_logo.png"
           alt="DESOC - Design and Software Development Club"
-          className="w-[250px] min-[390px]:w-[290px] sm:w-[400px] md:w-[490px] lg:w-[570px] xl:w-[620px] h-auto object-contain relative z-10 transition-transform duration-500 group-hover:scale-[1.015] drop-shadow-[0_4px_28px_rgba(168,85,247,0.3)]"
+          className="w-[250px] min-[390px]:w-[290px] sm:w-[400px] md:w-[490px] lg:w-[570px] xl:w-[620px] h-auto object-contain relative z-10 transition-transform duration-500 group-hover:scale-[1.015] drop-shadow-[0_4px_28px_rgba(188,0,52,0.3)]"
         />
       </div>
 
@@ -45,7 +45,7 @@ export default function HeroContent() {
         </span>
         <span className="block mt-0.5 sm:mt-1 text-[#F5F5F5]">
           United by{' '}
-          <span className="italic font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#d8b4fe] via-[#c084fc] to-[#a855f7]">
+          <span className="italic font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#ff758f] via-[#ff3366] to-[#bc0034]">
             Creativity.
           </span>
         </span>
@@ -65,7 +65,7 @@ export default function HeroContent() {
           className="relative inline-flex items-center justify-center group cursor-pointer select-none"
         >
           {/* Core Liquid Capsule Container - Clean, crisp boundaries without excessive outer glow */}
-          <div className="relative overflow-hidden rounded-full px-7 sm:px-9 py-2.5 sm:py-3.5 border border-purple-400/40 group-hover:border-purple-300/80 transition-colors duration-300 flex items-center justify-center shadow-none hover:shadow-[0_0_12px_rgba(168,85,247,0.15)]">
+          <div className="relative overflow-hidden rounded-full px-7 sm:px-9 py-2.5 sm:py-3.5 border border-red-500/35 group-hover:border-red-400/75 transition-colors duration-300 flex items-center justify-center shadow-none hover:shadow-[0_0_16px_rgba(220,38,38,0.25)]">
             
             {/* Dark glass backdrop base */}
             <span className="absolute inset-0 rounded-full bg-black/85 backdrop-blur-md" />
@@ -89,7 +89,7 @@ export default function HeroContent() {
             {/* Button Content */}
             <span className="relative z-10 flex items-center justify-center gap-2 text-[#F5F5F5] text-xs sm:text-sm font-semibold tracking-wide font-geist select-none">
               <span>Explore DESOC</span>
-              <span className="text-[#c084fc] transition-transform duration-300 group-hover:translate-x-1.5">
+              <span className="text-[#ff4d6d] transition-transform duration-300 group-hover:translate-x-1.5">
                 →
               </span>
             </span>
