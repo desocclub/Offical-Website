@@ -13,7 +13,7 @@ export const events: Event[] = [
     category: 'DIGITAL GOVERNANCE + DEBATE + POLICY MAKING',
     image: cybersabhaImg,
     location: 'TBA',
-    registrationUrl: '/events/cyber-sabha',
+    registrationUrl: '/events/cybersabha',
     schedule: {
       status: 'tba',
       startDate: null,
