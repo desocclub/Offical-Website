@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "ui-layouts-mcp": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@ui-layouts/mcp"
+      ]
+    }
+  }
+}

@@ -1,0 +1,464 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Roboto+Condensed:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/Geist-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/Geist-Italic.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Pixel';
+  src: url('/fonts/GeistPixel-Square.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('/fonts/GeistMono-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter Variable';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: local('Inter Variable'), local('Inter');
+}
+
+:root {
+  /* Centralized Font Stacks */
+  --font-geist: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-geist-pixel: 'Geist Pixel', monospace;
+  --font-geist-mono: 'Geist Mono', monospace;
+  --font-sans: var(--font-geist);
+  --font-editorial-sans: var(--font-geist);
+  --font-editorial-serif: 'Instrument Serif', Georgia, serif;
+  --font-editorial-mono: var(--font-geist-mono);
+
+  font-family: var(--font-geist);
+
+  /* Linear-inspired Variable Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 510;
+  --font-weight-semibold: 590;
+  --font-weight-bold: 680;
+
+  /* Centralized Text Color Tokens (Enhanced Contrast Hierarchy) */
+  --color-text-primary: #F5F5F5;
+  --color-text-secondary: #A8A8AD;
+  --color-text-tertiary: #77777F;
+  --color-text-muted: #77777F;
+
+  /* DESOC Brand Accent Preservations */
+  --color-accent: #ff3366;
+  --color-accent-crimson: #bc0034;
+  --color-accent-glow: rgba(255, 51, 102, 0.4);
+
+  /* Centralized Responsive Typography Scale Tokens */
+  --title-display-size: clamp(2.25rem, 5vw, 3.5rem);
+  --title-display-line-height: 1.05;
+  --title-display-letter-spacing: -0.025em;
+
+  /* Title 6 / Large Section Heading (Linear reference: 3rem / 48px on desktop) */
+  --title-6-size: clamp(2rem, 3.8vw + 0.5rem, 3rem);
+  --title-6-line-height: 1.05;
+  --title-6-letter-spacing: -0.022em;
+
+  /* Title H2 / Subsection Headings */
+  --title-h2-size: clamp(1.5rem, 2.5vw + 0.5rem, 2.25rem);
+  --title-h2-line-height: 1.15;
+  --title-h2-letter-spacing: -0.02em;
+
+  /* Title H3 / Card Headings */
+  --title-h3-size: clamp(1.2rem, 1.5vw + 0.4rem, 1.5rem);
+  --title-h3-line-height: 1.25;
+  --title-h3-letter-spacing: -0.015em;
+
+  /* Body Copy */
+  --text-body-size: 1rem;
+  --text-body-line-height: 1.6;
+  --text-body-letter-spacing: -0.005em;
+
+  /* Body Small / Supporting */
+  --text-body-sm-size: 0.875rem;
+  --text-body-sm-line-height: 1.5;
+  --text-body-sm-letter-spacing: -0.002em;
+
+  /* Meta / Labels / Badges */
+  --text-meta-size: 0.75rem;
+  --text-meta-line-height: 1.4;
+  --text-meta-letter-spacing: 0.04em;
+
+  --foreground: #ffffff;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: dark;
+  color: var(--color-text-secondary);
+  background-color: #000000;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Global Smooth Scroll with Accessibility Fallback */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Centralized Typography Scale & Heading Utilities */
+.heading-title-6 {
+  font-family: var(--font-sans);
+  font-size: var(--title-6-size);
+  line-height: var(--title-6-line-height);
+  letter-spacing: var(--title-6-letter-spacing);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.heading-h2 {
+  font-family: var(--font-sans);
+  font-size: var(--title-h2-size);
+  line-height: var(--title-h2-line-height);
+  letter-spacing: var(--title-h2-letter-spacing);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.heading-h3 {
+  font-family: var(--font-sans);
+  font-size: var(--title-h3-size);
+  line-height: var(--title-h3-line-height);
+  letter-spacing: var(--title-h3-letter-spacing);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+/* Emphasized Text Rules (Inherits scale, alters weight and color) */
+.heading-title-6 strong,
+.heading-h2 strong,
+.heading-h3 strong,
+.emphasis-linear {
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+/* Centralized Text Color Utility Classes */
+.text-primary {
+  color: var(--color-text-primary);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-tertiary {
+  color: var(--color-text-tertiary);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.font-geist {
+  font-family: var(--font-geist);
+}
+
+.font-geist-pixel {
+  font-family: var(--font-geist-pixel);
+  letter-spacing: 0.06em;
+}
+
+.font-geist-mono {
+  font-family: var(--font-geist-mono);
+}
+
+.font-medium-510 {
+  font-weight: var(--font-weight-medium);
+}
+
+a {
+  font-weight: 500;
+  color: inherit;
+  text-decoration: inherit;
+}
+a:hover {
+  color: inherit;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #000;
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+}
+
+/* Custom Designer Cursor - hide native OS cursor everywhere on desktop */
+@media (hover: hover) and (pointer: fine) {
+  *, *::before, *::after {
+    cursor: none !important;
+  }
+}
+
+/* Fade-in-up animation for Events */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* Hide scrollbar for horizontal-scroll tabs */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes fomo-soft-blink {
+  0%,
+  100% {
+    opacity: 1;
+    filter: saturate(1);
+  }
+  50% {
+    opacity: 0.8;
+    filter: saturate(1.2);
+  }
+}
+
+@keyframes fomo-card-glow {
+  0%,
+  100% {
+    box-shadow: 0 22px 55px rgba(0, 0, 0, 0.45), 0 0 18px rgba(220, 38, 38, 0.08);
+  }
+  50% {
+    box-shadow: 0 24px 58px rgba(0, 0, 0, 0.5), 0 0 30px rgba(220, 38, 38, 0.24);
+  }
+}
+
+@keyframes fomo-cta-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+}
+
+@keyframes fomo-cta-nudge {
+  0%,
+  90%,
+  100% {
+    transform: translateX(0);
+  }
+  92% {
+    transform: translateX(-1px);
+  }
+  94% {
+    transform: translateX(1px);
+  }
+  96% {
+    transform: translateX(-1px);
+  }
+  98% {
+    transform: translateX(1px);
+  }
+}
+
+.fomo-blink {
+  animation: fomo-soft-blink 1.7s ease-in-out infinite;
+}
+
+.fomo-glow-card {
+  animation: fomo-card-glow 6s ease-in-out infinite;
+}
+
+.fomo-register-btn {
+  animation: fomo-cta-pulse 2.4s ease-in-out infinite, fomo-cta-nudge 7s ease-in-out infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fomo-blink,
+  .fomo-glow-card,
+  .fomo-register-btn {
+    animation: none;
+  }
+}
+
+/* Hero Custom Styles */
+.font-editorial-sans {
+  font-family: var(--font-editorial-sans, 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif);
+}
+
+.font-editorial-serif {
+  font-family: var(--font-editorial-serif, 'Instrument Serif', Georgia, serif);
+}
+
+.font-editorial-mono {
+  font-family: var(--font-editorial-mono, 'JetBrains Mono', monospace);
+}
+
+/* Outlined Stroke Text */
+.hero-stroke-text {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+@media (max-width: 640px) {
+  .hero-stroke-text {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.9);
+  }
+}
+
+.hero-stroke-text:hover {
+  -webkit-text-stroke: 1.5px #ff3366;
+  text-shadow: 0 0 20px rgba(255, 51, 102, 0.4);
+}
+
+/* Figma Corner Handles */
+.figma-handle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background-color: #ff3366;
+  border: 1px solid #ffffff;
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .figma-handle {
+    width: 3.5px;
+    height: 3.5px;
+    border-width: 0.5px;
+  }
+}
+
+.figma-handle-white {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .figma-handle-white {
+    width: 3.5px;
+    height: 3.5px;
+    border-width: 0.5px;
+  }
+}
+
+/* CTA Subtle Pulse Glow */
+.cta-editorial {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cta-editorial:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 0 30px 4px rgba(255, 51, 102, 0.25);
+}
+
+/* Mouse Scroll Animation */
+@keyframes scrollWheel {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.2;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-scroll-wheel {
+  animation: scrollWheel 2s ease-in-out infinite;
+}
+
+/* Custom Designer Cursor - Only hide default OS cursor when custom cursor is confirmed active */
+@media (hover: hover) and (pointer: fine) {
+  html.custom-cursor-active,
+  html.custom-cursor-active *,
+  html.custom-cursor-active *::before,
+  html.custom-cursor-active *::after {
+    cursor: none !important;
+  }
+}
+
+/* Paper Shaders cross-browser canvas sizing & stacking for mobile & desktop */
+[data-paper-shader] {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+}
+
+[data-paper-shader] canvas {
+  display: block !important;
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+}
+
