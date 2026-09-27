@@ -4,9 +4,9 @@ import SmoothScroll from '@/components/SmoothScroll';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'DESOC — Design & Software Development Club',
+  title: 'DESOC — Design Society | KKWIEER',
   description:
-    'Official website of Design and Software Development Club (DESOC) — Engineering excellence at the intersection of design, technology, and student-driven innovation.',
+    'DESOC (Design Society) is the official design and innovation club of the Computer Science and Design Department at K. K. Wagh Institute of Engineering Education and Research. We bring together students passionate about design, technology, and innovation through workshops, competitions, events, and collaborative projects.',
   icons: {
     icon: '/desoc-logo.png',
   },

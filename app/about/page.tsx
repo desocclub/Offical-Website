@@ -3,8 +3,9 @@ import Navbar from '@/components/navigation/Navbar';
 import Footer from '@/components/navigation/Footer';
 
 export const metadata = {
-  title: 'About DESOC — Design & Software Development Club',
-  description: 'DESOC is the official design and innovation club of the Computer Science and Design (CSD) Department at KKWIEER.',
+  title: 'DESOC — Design Society | KKWIEER',
+  description:
+    'DESOC (Design Society) is the official design and innovation club of the Computer Science and Design Department at K. K. Wagh Institute of Engineering Education and Research. We bring together students passionate about design, technology, and innovation through workshops, competitions, events, and collaborative projects.',
 };
 
 const activities = [
