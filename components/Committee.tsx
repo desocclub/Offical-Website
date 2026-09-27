@@ -25,7 +25,6 @@ const Committee = () => {
     image: m.image!,
   }));
 
-
   const totalSlides = committeeMembers.length;
   
   // Clone ALL slides at both ends for seamless infinite loop

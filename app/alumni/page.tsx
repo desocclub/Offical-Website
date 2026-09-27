@@ -2,7 +2,6 @@ import Navbar from '@/components/navigation/Navbar';
 import Footer from '@/components/navigation/Footer';
 import type { StaticImageData } from 'next/image';
 import { resolveSrc } from '@/lib/imageUtils';
-
 import { committee2025_26 } from '@/lib/data/committee/2025-26';
 
 export const metadata = {
@@ -32,7 +31,6 @@ const committeeTeams: CommitteeTeamGroup[] = (committee2025_26.teams || [])
     })),
   }));
 
-
 interface GlassCardProps {
   children: React.ReactNode;
   delay?: number;
@@ -45,8 +43,9 @@ const GlassCard = ({ children, delay = 0, isLoaded }: GlassCardProps) => (
     style={{ transitionDelay: `${delay}ms` }}
   >
     <div className="pointer-events-none absolute -right-40 -top-40 h-80 w-80 rounded-full bg-[#bc0034]/10 blur-3xl" />
-    <div className="pointer-events-none absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-[#7a001f]/10 blur-3xl" />
-    <div className="relative z-10">{children}</div>
+    <div className="relative z-10">
+      {children}
+    </div>
   </section>
 );
 
@@ -155,6 +154,7 @@ export default function AlumniPage() {
                   {[
                     { label: 'LinkedIn', description: 'Professional updates, community news, and opportunities.', href: 'https://www.linkedin.com/in/desoc-club-of-csd-kkwieer-94232b2ba/' },
                     { label: 'Instagram', description: 'Alumni highlights, memories, and DESOC event updates.', href: 'https://www.instagram.com/desoc.kkwieer/' },
+                    { label: 'GitHub', description: 'Explore DESOC projects and continue collaborating.', href: 'https://github.com/DESOC-CSD' },
                   ].map((link) => (
                     <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer" className="group block rounded-xl border border-white/10 bg-white/5 p-4 transition-all duration-300 hover:border-[#bc0034]/40 hover:bg-white/10">
                       <h3 className="font-semibold text-white transition-colors group-hover:text-[#ef3b67]">{link.label}</h3>
