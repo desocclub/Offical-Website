@@ -36,6 +36,7 @@ const EventCard = ({ event, index = 0 }: EventCardProps) => {
   };
 
   const isLive = state === 'live';
+  const isCyberSabha = event.id === 'cybersabha-2';
   const ctaLabel = isLive ? 'JOIN NOW' : 'LEARN MORE';
   const coverImg = event.image || event.coverImage;
 
@@ -148,28 +149,39 @@ const EventCard = ({ event, index = 0 }: EventCardProps) => {
             </div>
 
             {/* CTA Action */}
-            <div className="pt-2 flex items-center justify-between">
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleNavigate();
-                }}
-                style={{ fontWeight: 'var(--font-weight-medium)' }}
-                className={`group/btn inline-flex items-center gap-2.5 px-5 py-2.5 border text-xs font-mono uppercase tracking-wider transition-all duration-200 cursor-pointer rounded-none ${
-                  isLive
-                    ? 'bg-[#ff3366] hover:bg-white text-black border-[#ff3366] hover:border-white'
-                    : 'bg-neutral-900 hover:bg-white text-primary hover:text-black border-white/20 hover:border-white'
-                }`}
-              >
-                <span>{ctaLabel}</span>
-                <span 
-                  className="inline-block transition-transform duration-200 group-hover/btn:translate-x-0.5"
-                  aria-hidden="true"
+            <div className="pt-2 flex flex-wrap items-center justify-between gap-3">
+              <div className={`flex items-center gap-2 ${isCyberSabha ? 'flex-nowrap' : 'flex-wrap'}`}>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleNavigate();
+                  }}
+                  style={{ fontWeight: 'var(--font-weight-medium)' }}
+                  className={`group/btn inline-flex items-center gap-2.5 px-3 py-2.5 border text-xs font-mono uppercase tracking-wider transition-all duration-200 cursor-pointer rounded-none sm:px-5 ${
+                    isLive
+                      ? 'bg-[#ff3366] hover:bg-white text-black border-[#ff3366] hover:border-white'
+                      : 'bg-neutral-900 hover:bg-white text-primary hover:text-black border-white/20 hover:border-white'
+                  }`}
                 >
-                  ↗
-                </span>
-              </button>
+                  <span>{ctaLabel}</span>
+                  <span className="inline-block transition-transform duration-200 group-hover/btn:translate-x-0.5" aria-hidden="true">↗</span>
+                </button>
+                {isCyberSabha && (
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      router.push('/cybersabha-2/register');
+                    }}
+                    style={{ fontWeight: 'var(--font-weight-medium)' }}
+                    className="group/register inline-flex items-center gap-2.5 border border-[#ff3366] bg-[#ff3366] px-3 py-2.5 text-xs font-mono uppercase tracking-wider text-black transition-colors duration-200 hover:border-white hover:bg-white sm:px-5"
+                  >
+                    <span>Register team</span>
+                    <span className="inline-block transition-transform duration-200 group-hover/register:translate-x-0.5" aria-hidden="true">↗</span>
+                  </button>
+                )}
+              </div>
 
               <span className="text-[11px] font-mono text-muted uppercase tracking-wider hidden sm:inline-block">
                 SYS.EVT // 0{index + 1}
