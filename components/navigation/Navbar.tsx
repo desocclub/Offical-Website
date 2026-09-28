@@ -18,7 +18,7 @@ export const Navbar = ({ topOffset = 0 }: NavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMoreOpen, setIsMoreOpen] = useState(false);
   const moreDropdownRef = useRef<HTMLDivElement>(null);
-  const pathname = usePathname();
+  const pathname = usePathname() ?? '';
 
   const leftNavItems: NavItem[] = [
     { name: 'Home', path: '/', type: 'route' },
