@@ -12,12 +12,12 @@ export const events: Event[] = [
     description: 'A dynamic MUN-style cybersecurity debate exploring digital governance, cyber policy, and international tech diplomacy.',
     category: 'DIGITAL GOVERNANCE + DEBATE + POLICY MAKING',
     image: cybersabhaImg,
-    location: 'TBA',
-    registrationUrl: '/events/cybersabha',
+    location: 'JVN Hall, 4th Floor, CSD Department',
+    registrationUrl: '/cybersabha',
     schedule: {
-      status: 'tba',
-      startDate: null,
-      endDate: null,
+      status: 'confirmed',
+      startDate: '2026-10-07T09:00:00+05:30',
+      endDate: '2026-10-07T17:00:00+05:30',
     },
   },
   {

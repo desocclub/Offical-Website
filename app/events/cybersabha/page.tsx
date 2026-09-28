@@ -72,7 +72,10 @@ export default function CyberSabhaPage() {
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-red-200 sm:text-base">Governing the Digital Frontier</p>
               </div>
               <p className="mt-7 max-w-2xl text-base leading-relaxed text-stone-300 sm:text-xl">A technology and policy simulation where students represent leading organizations, debate real digital challenges, negotiate ideas, and shape practical solutions.</p>
-              <div className="mt-10 flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.25em] text-stone-400 sm:text-xs"><span className="h-9 w-px bg-red-600" />Scroll to enter the assembly</div>
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                <Link href="/cybersabha-2/register" className="inline-flex border border-red-600 bg-red-700 px-6 py-3 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:border-red-800 hover:bg-red-800">Register your team</Link>
+                <span className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.25em] text-stone-400 sm:text-xs"><span className="h-9 w-px bg-red-600" />7 October 2026 · 21 teams</span>
+              </div>
             </div>
 
             <aside className="relative mx-auto hidden w-full max-w-sm lg:block">
@@ -184,7 +187,10 @@ export default function CyberSabhaPage() {
             <p className="text-xs font-bold uppercase tracking-[0.3em] text-red-400">CYBERSABHA — The Grand Tech Assembly</p>
             <h2 className="mt-6 font-serif text-5xl font-black uppercase leading-[0.86] sm:text-7xl">Shape technology that is responsible, inclusive, and resilient.</h2>
             <p className="mx-auto mt-7 max-w-2xl text-lg leading-relaxed text-stone-400">The digital frontier belongs to those ready to question, collaborate, and lead with purpose.</p>
-            <Link href="/" className="mt-9 inline-flex border border-[#f5f1e9]/50 px-6 py-3 text-sm font-bold uppercase tracking-wider transition hover:bg-[#f5f1e9] hover:text-[#17120f]">Back to DESOC</Link>
+            <div className="mt-9 flex flex-wrap justify-center gap-3">
+              <Link href="/cybersabha-2/register" className="inline-flex border border-red-600 bg-red-700 px-6 py-3 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:border-red-800 hover:bg-red-800">Register your team</Link>
+              <Link href="/" className="inline-flex border border-[#f5f1e9]/50 px-6 py-3 text-sm font-bold uppercase tracking-wider transition hover:bg-[#f5f1e9] hover:text-[#17120f]">Back to DESOC</Link>
+            </div>
           </div>
         </section>
       </main>

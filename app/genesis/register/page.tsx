@@ -6,7 +6,7 @@ import { useSearchParams } from 'next/navigation';
 import Navbar from '@/components/navigation/Navbar';
 import Footer from '@/components/navigation/Footer';
 import { resolveSrc } from '@/lib/imageUtils';
-import upiqrImg from '@/src/assets/upiqr.jpeg';
+import upiqrImg from '@/src/assets/DeSoc_QR.jpeg';
 import { API_ROUTES } from '@/lib/api';
 
 const EVENT_CONFIG: Record<string, { date: string; teamSize: string; fee: string }> = {
@@ -50,7 +50,7 @@ interface RegistrationFormData {
 
 function RegistrationFormContent() {
   const searchParams = useSearchParams();
-  const preSelectedEvent = searchParams.get('event') || 'Sharkverse';
+  const preSelectedEvent = searchParams?.get('event') || 'Sharkverse';
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
