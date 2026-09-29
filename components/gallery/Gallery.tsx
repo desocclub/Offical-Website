@@ -4,6 +4,7 @@ import { useState } from 'react';
 import GalleryTabs from './GalleryTabs';
 import GalleryGrid from './GalleryGrid';
 import type { GalleryCategory, GalleryItem } from '@/types/gallery';
+import ScrollText from '@/components/ui/scroll-text';
 
 // Import Aura E Sport images
 import aura1 from '@/src/assets/img/aura1.jpeg';
@@ -152,7 +153,7 @@ const Gallery = () => {
       {/* Section Title */}
       <div className="text-center mb-10">
         <h2 className="heading-title-6 uppercase">
-          Gallery
+          <ScrollText as="span" text="Gallery" direction="down" className="text-white" />
         </h2>
         {/* Decorative underline */}
         <div className="flex items-center justify-center gap-3 mt-4">
