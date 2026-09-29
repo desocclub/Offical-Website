@@ -10,8 +10,8 @@
 ## Email
 
 1. Create a Resend account and verify the sending domain used by `CYBERSABHA_EMAIL_FROM`.
-2. Set `RESEND_API_KEY` and `CYBERSABHA_EMAIL_FROM` in the deployment environment. Without a Resend key, registrations and payment decisions still persist but emails are skipped. Provider errors are logged and never roll back saved registrations or payment decisions.
-3. Registration email goes to the selected team leader. Admin status updates send the verified or rejected email; the admin can resend the current reviewed-status email.
+2. Set `RESEND_API_KEY` and `CYBERSABHA_EMAIL_FROM` in the deployment environment. The sender domain must be verified with Resend; `desoc.club@gmail.com` is configured as reply-to and the registration notification inbox, not as an unverified sender address. Without a Resend key, registrations and payment decisions still persist but emails are skipped. Provider errors are logged and never roll back saved registrations or payment decisions.
+3. Registration receipts go to the selected team leader and a separate new-registration notice goes to `CYBERSABHA_NOTIFICATION_EMAIL` (defaults to `desoc.club@gmail.com`). Admin status updates send the verified or rejected email to the team leader; the admin can resend the current reviewed-status email.
 
 ## Routes
 
