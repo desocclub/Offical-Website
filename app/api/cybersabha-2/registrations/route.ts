@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { after, NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/cybersabha/supabase';
 import { sendCyberSabhaEmail, type CyberSabhaEmailDetails } from '@/lib/cybersabha/email';
 
@@ -119,11 +119,13 @@ export async function POST(request: NextRequest) {
       leaderEmail: membersResult[leaderMemberIndex].email,
       members: membersResult.map((member, index) => ({ fullName: member.full_name, email: member.email, isLeader: index === leaderMemberIndex })),
     };
-    try {
-      await sendCyberSabhaEmail('received', emailDetails);
-    } catch (emailError) {
-      console.error('CyberSabha registration email failed:', emailError);
-    }
+    after(async () => {
+      try {
+        await sendCyberSabhaEmail('received', emailDetails);
+      } catch (emailError) {
+        console.error('CyberSabha registration email failed:', emailError);
+      }
+    });
 
     return NextResponse.json({
       registrationNumber: registration.registration_number,

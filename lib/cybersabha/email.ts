@@ -12,6 +12,7 @@ export interface CyberSabhaEmailDetails {
 }
 
 const eventDetails = '7 October 2026, 9:00 AM–5:00 PM IST · JVN Hall, 4th Floor, CSD Department';
+const clubEmail = process.env.CYBERSABHA_NOTIFICATION_EMAIL || 'desoc.club@gmail.com';
 const escapeHtml = (value: string) => value.replace(/[&<>"']/g, (char) => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
 }[char] || char));
@@ -35,6 +36,21 @@ export async function sendCyberSabhaEmail(kind: 'received' | 'verified' | 'rejec
     body = `${greeting}<p>Payment for registration <strong>${escapeHtml(details.registrationNumber)}</strong> could not be verified.</p><p><strong>Reason:</strong> ${escapeHtml(details.reason || 'Please contact the organizers.')}</p><p>Contact desoc.club@gmail.com for help.</p>`;
   }
 
-  const { error } = await resend.emails.send({ from, to: details.leaderEmail, subject, html: body });
-  if (error) throw new Error(error.message);
+  const replyTo = process.env.CYBERSABHA_REPLY_TO || 'desoc.club@gmail.com';
+  const deliveries = [
+    resend.emails.send({ from, to: details.leaderEmail, replyTo, subject, html: body }),
+  ];
+
+  if (kind === 'received') {
+    deliveries.push(resend.emails.send({ from, to: clubEmail, replyTo, subject: `New CyberSabha 2.0 registration: ${details.registrationNumber}`, html: body }));
+  }
+
+  const results = await Promise.allSettled(deliveries);
+  const failures = results
+    .filter((result): result is PromiseRejectedResult => result.status === 'rejected')
+    .map((result) => result.reason instanceof Error ? result.reason.message : 'Email delivery failed');
+  if (failures.length) throw new Error(failures.join('; '));
+  for (const result of results) {
+    if (result.status === 'fulfilled' && result.value.error) throw new Error(result.value.error.message);
+  }
 }
