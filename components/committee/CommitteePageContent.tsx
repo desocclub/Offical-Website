@@ -5,6 +5,7 @@ import Navbar from '@/components/navigation/Navbar';
 import Footer from '@/components/navigation/Footer';
 import YearSelector from './YearSelector';
 import CommitteeRevealedView from './CommitteeRevealedView';
+import Committee2026View from './Committee2026View';
 import { ALL_COMMITTEE_YEARS } from '@/lib/data/committee';
 
 export default function CommitteePageContent() {
@@ -97,7 +98,11 @@ export default function CommitteePageContent() {
         )}
 
         {/* Revealed Full Grid View */}
-        {activeYearData.status === 'revealed' && (
+        {activeYearData.status === 'revealed' && activeYearData.year === '2026-27' && (
+          <Committee2026View yearData={activeYearData} />
+        )}
+
+        {activeYearData.status === 'revealed' && activeYearData.year !== '2026-27' && (
           <section className="py-8 space-y-8 animate-fadeIn">
             <header className="text-center space-y-3">
               <h1 className="heading-title-6 text-primary">
