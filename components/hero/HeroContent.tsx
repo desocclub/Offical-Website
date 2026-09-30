@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Liquid, DESOC_LIQUID_COLORS } from '@/components/ui/liquid-gradient';
+import ScrollText from '@/components/ui/scroll-text';
 
 interface HeroContentProps {
   onScrollDown?: () => void;
@@ -53,7 +54,12 @@ export default function HeroContent() {
 
       {/* 3. Supporting Description (Refined Editorial Hierarchy: #A8A8AD, High Contrast, Constrained Width) */}
       <p className="text-[#A8A8AD] font-normal text-[13.5px] min-[390px]:text-[14px] sm:text-[15.5px] md:text-[16.5px] max-w-[580px] mx-auto mt-4 sm:mt-5 md:mt-6 leading-[1.58] tracking-normal font-geist">
-        A community where design meets technology, ideas become experiences, and creativity turns into impact. Build, experiment, and create alongside curious minds shaping what’s next.
+        <ScrollText
+          as="span"
+          text="A community where design meets technology, ideas become experiences, and creativity turns into impact. Build, experiment, and create alongside curious minds shaping what’s next."
+          direction="down"
+          className="text-[#A8A8AD]"
+        />
       </p>
 
       {/* 4. Primary CTA Button with UI-Layouts Liquid Gradient */}

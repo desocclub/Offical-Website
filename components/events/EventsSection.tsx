@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import EventList from './EventList';
 import { events } from '@/lib/data/events';
+import ScrollText from '@/components/ui/scroll-text';
 
 /**
  * EventsSection Component
@@ -27,12 +28,17 @@ const EventsSection = () => {
 
             {/* Editorial Title */}
             <h2 className="heading-title-6 uppercase">
-              Events
+              <ScrollText as="span" text="Events" direction="down" className="text-white" />
             </h2>
 
             {/* Secondary subtitle */}
             <p className="text-tertiary text-sm sm:text-base max-w-xl font-normal leading-relaxed">
-              Curated hackathons, design sprints, technical summits, and venture arenas organized by DESOC.
+              <ScrollText
+                as="span"
+                text="Curated hackathons, design sprints, technical summits, and venture arenas organized by DESOC."
+                direction="down"
+                className="text-tertiary"
+              />
             </p>
           </div>
 
