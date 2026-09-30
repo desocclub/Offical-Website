@@ -1,111 +1,148 @@
 'use client';
 
-import React from 'react';
+import React, { useRef } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import ScrollText from '@/components/ui/scroll-text';
-import { PerspectiveCarousel, type PerspectiveCarouselItem } from '@/components/ui/perspective-carousel';
 import { committee2026_27 } from '@/lib/data/committee/2026-27';
 import { resolveSrc } from '@/lib/imageUtils';
+import TimelineAnimation from '@/components/ui/timeline-animation';
+import ScrollText from '@/components/ui/scroll-text';
 
 export default function CoreCommitteeSection() {
-  const coreMembers = committee2026_27.teams?.find((t) => t.id === 'core')?.members || [];
+  const introRef = useRef<HTMLDivElement | null>(null);
 
-  // Construct carousel items starting with President Ishani Mukewar at index 0, ending with "Meet All" card
-  const carouselItems: PerspectiveCarouselItem[] = [
-    ...coreMembers.map((m) => ({
-      src: resolveSrc(m.image),
-      title: m.name,
-      role: m.role,
-      alt: `${m.name} - ${m.role}`,
-    })),
-    {
-      src: '',
-      title: 'Meet All',
-      role: 'Explore Full 2026–27 Committee',
-      isMeetAll: true,
-      href: '/committee',
-    },
-  ];
+  // Get 2026-27 Core Committee members (exactly 9 members)
+  const coreMembers = committee2026_27.teams?.find((t) => t.id === 'core')?.members || [];
 
   return (
     <section
       id="core-committee"
-      className="relative py-20 sm:py-28 bg-black text-white overflow-hidden border-t border-b border-white/10 select-none"
+      className="relative py-24 sm:py-32 bg-black text-white overflow-hidden border-t border-b border-white/10 select-none"
     >
-      {/* Background ambient radial glow */}
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_50%_30%,rgba(188,0,52,0.14),transparent_60%)]" />
+      {/* Editorial Background: Subtle Dotted Canvas Pattern */}
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:24px_24px] opacity-70" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Editorial Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3">
+      {/* Ambient Red Glow */}
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_50%_35%,rgba(188,0,52,0.12),transparent_70%)]" />
+
+      {/* Main Editorial Canvas Wrapper */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        {/* Subtle Horizontal Dotted Guideline Top */}
+        <div className="absolute -top-6 left-4 right-4 border-t border-dotted border-white/15 pointer-events-none hidden sm:block" />
+
+        {/* Section Intro Container */}
+        <div ref={introRef} className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-4">
           {/* Eyebrow */}
-          <div className="flex items-center justify-center gap-2">
+          <TimelineAnimation
+            timelineRef={introRef}
+            animationNum={0}
+            className="flex items-center justify-center gap-2"
+          >
             <span className="h-1.5 w-1.5 rounded-full bg-[#ef3b67] shadow-[0_0_8px_#ef3b67]" />
-            <ScrollText
-              as="span"
-              text="2026–27"
-              direction="down"
-              className="text-xs font-mono text-[#ef3b67] uppercase tracking-[0.25em] font-semibold"
-            />
-          </div>
+            <span className="text-xs font-mono text-[#ef3b67] uppercase tracking-[0.25em] font-semibold">
+              2026–27
+            </span>
+          </TimelineAnimation>
 
-          {/* Heading */}
-          <h2 className="heading-title-6 uppercase block text-primary">
-            <ScrollText
-              as="span"
-              text="Meet the Core Committee"
-              direction="down"
-              className="text-[#F5F5F5] leading-tight"
-            />
-          </h2>
+          {/* Heading with ScrollText reveal animation */}
+          <TimelineAnimation timelineRef={introRef} animationNum={1}>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight text-white leading-tight">
+              <ScrollText
+                as="span"
+                text="Meet the Core Committee"
+                direction="down"
+                className="text-white"
+              />
+            </h2>
+          </TimelineAnimation>
 
-          {/* Supporting Text */}
-          <p className="text-tertiary text-sm sm:text-base max-w-xl mx-auto font-normal leading-relaxed">
-            <ScrollText
-              as="span"
-              text="The people shaping the ideas, experiences, and community behind DESOC."
-              direction="down"
-              className="text-tertiary"
-            />
-          </p>
+          {/* Description with ScrollText reveal animation */}
+          <TimelineAnimation timelineRef={introRef} animationNum={2}>
+            <p className="text-neutral-400 text-sm sm:text-base max-w-xl mx-auto font-normal leading-relaxed">
+              <ScrollText
+                as="span"
+                text="The people shaping the ideas, experiences, and community behind DESOC."
+                direction="down"
+                className="text-neutral-400"
+              />
+            </p>
+          </TimelineAnimation>
         </div>
 
-        {/* Perspective Carousel Wrapper (Reveals smoothly with blur -> sharp transition) */}
-        <motion.div
-          initial={{ opacity: 0, y: 28, filter: 'blur(8px)' }}
-          whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-          viewport={{ once: true, amount: 0.15 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.215, 0.61, 0.355, 1] }}
-          className="relative w-full my-4"
-        >
-          <PerspectiveCarousel
-            items={carouselItems}
-            defaultActiveIndex={0}
-            loop={true}
-            slideWidth={210}
-            rotationStep={60}
-            inactiveScale={0.85}
-            showControls={true}
-            showDots={false}
-            autoAdvance={true}
-            autoAdvanceInterval={2800}
-            className="w-full"
-          />
-        </motion.div>
+        {/* Editorial Canvas Frame with Dotted Boundaries and Corner Marks */}
+        <div className="relative p-3 sm:p-6 md:p-8 rounded-2xl border border-dashed border-white/15 bg-black/50 backdrop-blur-xs">
+          {/* Decorative Editorial Plus Marks at Corners */}
+          <span className="absolute -top-2.5 -left-2.5 text-white/30 text-xs font-mono select-none pointer-events-none">+</span>
+          <span className="absolute -top-2.5 -right-2.5 text-white/30 text-xs font-mono select-none pointer-events-none">+</span>
+          <span className="absolute -bottom-2.5 -left-2.5 text-white/30 text-xs font-mono select-none pointer-events-none">+</span>
+          <span className="absolute -bottom-2.5 -right-2.5 text-white/30 text-xs font-mono select-none pointer-events-none">+</span>
 
-        {/* Prominent CTA below carousel */}
-        <div className="mt-10 sm:mt-14 flex justify-center">
+          {/* 3x3 Grid on Desktop, 2-column on mobile. Each card monitors its own viewport entrance so photo rows trigger row by row */}
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+            {coreMembers.map((member, index) => {
+              const imageSrc = resolveSrc(member.image);
+              // Stagger within each row (0, 1, 2)
+              const colStaggerIndex = index % 3;
+
+              return (
+                <TimelineAnimation
+                  key={member.id}
+                  animationNum={colStaggerIndex}
+                  margin="0px 0px -12% 0px"
+                  amount={0.1}
+                  className="group flex flex-col"
+                >
+                  {/* Square Image Box (1:1 Aspect Ratio) */}
+                  <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-gradient-to-b from-[#1a1a1a] via-[#121212] to-[#090909] border border-white/10 group-hover:border-[#bc0034]/50 transition-all duration-300 shadow-md">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(255,255,255,0.04),transparent_65%)] pointer-events-none" />
+                    
+                    {imageSrc ? (
+                      <img
+                        src={imageSrc}
+                        alt={member.name}
+                        loading="lazy"
+                        className="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-neutral-600 font-mono text-sm">
+                        {member.name}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Member Name and Position */}
+                  <div className="mt-3 sm:mt-3.5 space-y-0.5">
+                    <h3 className="text-base sm:text-lg font-semibold text-white tracking-tight leading-snug group-hover:text-[#ef3b67] transition-colors duration-200">
+                      {member.name}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-neutral-400 font-normal">
+                      {member.role}
+                    </p>
+                  </div>
+                </TimelineAnimation>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Subtle Horizontal Dotted Guideline Bottom */}
+        <div className="absolute -bottom-6 left-4 right-4 border-b border-dotted border-white/15 pointer-events-none hidden sm:block" />
+
+        {/* Prominent CTA */}
+        <TimelineAnimation
+          margin="0px 0px -10% 0px"
+          amount={0.1}
+          className="mt-14 sm:mt-18 flex justify-center"
+        >
           <Link
             href="/committee"
-            className="group relative inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-full border border-[#bc0034]/50 bg-[#bc0034]/15 hover:bg-[#bc0034] text-white text-sm font-semibold tracking-wide transition-all duration-300 hover:shadow-[0_0_30px_rgba(188,0,52,0.45)] active:scale-95"
+            className="group relative inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full border border-[#bc0034]/50 bg-[#bc0034]/15 hover:bg-[#bc0034] text-white text-sm font-semibold tracking-wide transition-all duration-300 hover:shadow-[0_0_30px_rgba(188,0,52,0.45)] active:scale-95"
           >
             <span>Meet the Full Committee</span>
             <span className="transition-transform duration-300 group-hover:translate-x-1.5">
               →
             </span>
           </Link>
-        </div>
+        </TimelineAnimation>
       </div>
     </section>
   );
