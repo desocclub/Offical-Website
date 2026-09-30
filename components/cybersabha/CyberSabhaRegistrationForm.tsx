@@ -24,7 +24,7 @@ interface RegistrationResult {
 const emptyMember = (): MemberForm => ({ fullName: '', email: '', phone: '', college: '', department: '', academicYear: '' });
 const details = [
   ['Date', '7 October 2026'],
-  ['Time', '9:00 AM – 5:00 PM'],
+  ['Time', '8:00 AM – 3:00 PM'],
   ['Venue', 'JVN Hall, 4th Floor, CSD Department'],
   ['Registration deadline', '5 October 2026'],
   ['Team size', '2–4 members'],

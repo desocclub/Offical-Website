@@ -11,7 +11,7 @@ export interface CyberSabhaEmailDetails {
   reason?: string;
 }
 
-const eventDetails = '7 October 2026, 9:00 AM–5:00 PM IST · JVN Hall, 4th Floor, CSD Department';
+const eventDetails = '7 October 2026, 8:00 AM–3:00 PM IST · JVN Hall, 4th Floor, CSD Department';
 const clubEmail = process.env.CYBERSABHA_NOTIFICATION_EMAIL || 'desoc.club@gmail.com';
 const escapeHtml = (value: string) => value.replace(/[&<>"']/g, (char) => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
