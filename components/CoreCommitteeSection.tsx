@@ -1,11 +1,11 @@
 'use client';
 
 import React, { useRef } from 'react';
-import Link from 'next/link';
 import { committee2026_27 } from '@/lib/data/committee/2026-27';
 import { resolveSrc } from '@/lib/imageUtils';
 import TimelineAnimation from '@/components/ui/timeline-animation';
 import ScrollText from '@/components/ui/scroll-text';
+import AnimatedShinyButton from '@/components/ui/animated-shiny-button';
 
 export default function CoreCommitteeSection() {
   const introRef = useRef<HTMLDivElement | null>(null);
@@ -127,21 +127,15 @@ export default function CoreCommitteeSection() {
         {/* Subtle Horizontal Dotted Guideline Bottom */}
         <div className="absolute -bottom-6 left-4 right-4 border-b border-dotted border-white/15 pointer-events-none hidden sm:block" />
 
-        {/* Prominent CTA */}
+        {/* Prominent Eldora UI Animated Shiny Button CTA */}
         <TimelineAnimation
           margin="0px 0px -10% 0px"
           amount={0.1}
           className="mt-14 sm:mt-18 flex justify-center"
         >
-          <Link
-            href="/committee"
-            className="group relative inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full border border-[#bc0034]/50 bg-[#bc0034]/15 hover:bg-[#bc0034] text-white text-sm font-semibold tracking-wide transition-all duration-300 hover:shadow-[0_0_30px_rgba(188,0,52,0.45)] active:scale-95"
-          >
-            <span>Meet the Full Committee</span>
-            <span className="transition-transform duration-300 group-hover:translate-x-1.5">
-              →
-            </span>
-          </Link>
+          <AnimatedShinyButton url="/committee">
+            Meet the Full Committee
+          </AnimatedShinyButton>
         </TimelineAnimation>
       </div>
     </section>
