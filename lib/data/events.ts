@@ -16,8 +16,8 @@ export const events: Event[] = [
     registrationUrl: '/cybersabha',
     schedule: {
       status: 'confirmed',
-      startDate: '2026-10-07T09:00:00+05:30',
-      endDate: '2026-10-07T17:00:00+05:30',
+      startDate: '2026-10-07T08:00:00+05:30',
+      endDate: '2026-10-07T17:00:00+07:30',
     },
   },
   {
