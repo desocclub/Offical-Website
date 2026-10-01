@@ -66,6 +66,14 @@ export default function PastEventsPage() {
                       <h3 className="text-xl text-primary" style={{ fontWeight: 'var(--font-weight-medium)', letterSpacing: '-0.015em' }}>{event.title}</h3>
                       <p className="mt-1 text-xs font-mono text-tertiary">{schedule.fullSchedule}</p>
                       <p className="mt-3 text-sm text-secondary">{event.description}</p>
+                      {event.id === 'cybersabha-2' && (
+                        <Link
+                          href="/cybersabha-2/register"
+                          className="mt-4 inline-flex items-center gap-2 border border-[#ff3366] bg-[#ff3366] px-4 py-2.5 text-xs font-mono font-medium uppercase tracking-wider text-black transition-colors hover:border-white hover:bg-white"
+                        >
+                          Register team <span aria-hidden="true">↗</span>
+                        </Link>
+                      )}
                     </div>
                   );
                 })}
