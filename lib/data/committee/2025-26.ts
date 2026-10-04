@@ -1,6 +1,7 @@
 import type { YearCommittee } from '@/types/committee';
 
-import mrunaliMam from '@/src/assets/committee/2025-26/faculty/mrunali-pawar.webp';
+import mrunaliMam from '@/src/assets/committee/2026-27/faculty&leadership/mrunali-pawar.png';
+import bhiseMam from '@/src/assets/committee/2026-27/faculty&leadership/bhise-mam.png';
 import adityaImg from '@/src/assets/committee/2025-26/core/aditya-ahirrao.png';
 import ayushiImg from '@/src/assets/committee/2025-26/core/ayushi-deore.svg';
 import vedantImg from '@/src/assets/committee/2025-26/core/vedant-sonawane.svg';
@@ -37,13 +38,24 @@ export const committee2025_26: YearCommittee = {
   label: '2025–26',
   status: 'revealed',
   teams: [
+   {
+  id: 'faculty',
+  title: 'Faculty & Leadership',
+  members: [
     {
-      id: 'faculty',
-      title: 'Faculty Incharge',
-      members: [
-        { id: 'mrunali-pawar', name: 'Prof. Mrunali Pawar', role: 'Faculty Incharge', image: mrunaliMam },
-      ],
+      id: 'yd-bhise',
+      name: 'Dr. Prof. Y. D. Bhise',
+      role: 'Departmental Coordinator',
+      image: bhiseMam,
     },
+    {
+      id: 'mrunali-pawar',
+      name: 'Prof. Mrunali Pawar',
+      role: 'Faculty Coordinator',
+      image: mrunaliMam,
+    },
+  ],
+},
     {
       id: 'core',
       title: 'Core Committee',
