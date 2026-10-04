@@ -262,18 +262,99 @@ body {
 }
 
 @keyframes committee-wordmark-float {
-  0%, 100% { filter: drop-shadow(0 0 0 rgba(188, 0, 52, 0)); opacity: 0.88; transform: translateY(0) scale(1); }
-  50% { filter: drop-shadow(0 0 30px rgba(188, 0, 52, 0.2)); opacity: 1; transform: translateY(-8px) scale(1.015); }
+  0%,
+  100% {
+    filter: drop-shadow(0 0 0 rgba(188, 0, 52, 0));
+    opacity: 0.88;
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    filter: drop-shadow(0 0 30px rgba(188, 0, 52, 0.2));
+    opacity: 1;
+    transform: translateY(-8px) scale(1.015);
+  }
 }
 
-.committee-wordmark { animation: committee-wordmark-float 8s ease-in-out infinite; transform-origin: center; }
-.committee-flip-container { width: 210px; height: 210px; perspective: 1200px; flex-shrink: 0; }
-.committee-flip-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 600ms cubic-bezier(0.4, 0.1, 0.2, 1); }
-.committee-flip-inner.is-photo { transform: rotateY(180deg); }
-.committee-flip-face { position: absolute; inset: 0; overflow: hidden; border: 2px solid rgba(255,255,255,0.14); border-radius: 9999px; backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; align-items: center; justify-content: center; background: #000; }
-.committee-flip-face img, .committee-flip-face canvas { width: 100%; height: 100%; object-fit: cover; display: block; }
-.committee-flip-logo img { object-position: center; }
-.committee-flip-photo { transform: rotateY(180deg); }
+.committee-wordmark {
+  animation: committee-wordmark-float 8s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.committee-flip-container {
+  width: 210px;
+  height: 210px;
+  flex-shrink: 0;
+  perspective: 1200px;
+}
+
+.committee-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 600ms cubic-bezier(0.4, 0.1, 0.2, 1);
+}
+
+.committee-flip-inner.is-photo {
+  transform: rotateY(180deg);
+}
+
+.committee-flip-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.14);
+  border-radius: 9999px;
+  background: #000;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.committee-flip-face img,
+.committee-flip-face canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.committee-flip-logo img {
+  object-position: center;
+}
+
+.committee-flip-photo {
+  transform: rotateY(180deg);
+}
+
+/* Mobile: static images and names only — no hover or flip animation */
+@media (max-width: 767px) {
+  .committee-wordmark {
+    animation: none;
+  }
+
+  .committee-flip-container {
+    width: 184px;
+    height: 184px;
+  }
+
+  .committee-flip-inner {
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .committee-wordmark {
+    animation: none;
+  }
+
+  .committee-flip-inner {
+    transition: none;
+  }
+}
 
 @media (max-width: 767px) { .committee-wordmark { animation: none; } .committee-flip-container { width: 184px; height: 184px; } }
 @media (prefers-reduced-motion: reduce) { .committee-wordmark { animation: none; } .committee-flip-inner { transition: none; } }

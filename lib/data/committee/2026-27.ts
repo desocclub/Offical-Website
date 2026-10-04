@@ -100,7 +100,7 @@ export const committee2026_27: YearCommittee = {
       title: 'Technical Team',
       members: [
         { id: 'bhushan-baskar', name: 'Bhushan Baskar', role: 'Technical Co-Head', image: bhushanImg },
-        { id: 'abhinandan-salunke', name: 'Abhinandan Salunke', role: 'Technical Team', image: abhinandanImg },
+        { id: 'abhinandan-salunke', name: 'Abhinandan Salunke', role: 'Technical Team', image: abhinandanImg ,linkedin: 'https://www.linkedin.com/in/abhinandan-salunke-30058725b/' },
         { id: 'achal-raut', name: 'Achal Raut', role: 'Technical Team', image: achalImg },
         { id: 'sarthak-barhate', name: 'Sarthak Barhate', role: 'Technical Team', image: sarthakImg },
       ],
