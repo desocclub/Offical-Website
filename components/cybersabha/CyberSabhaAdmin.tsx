@@ -11,7 +11,7 @@ interface AdminMember { member_index: number; full_name: string; email: string; 
 interface AdminRegistration {
   id: string; registration_number: string; team_name: string; team_size: number; leader_member_index: number;
   total_amount: number; status: RegistrationStatus; created_at: string; members: AdminMember[];
-  payment: null | { utr: string; status: RegistrationStatus; rejection_reason: string | null; screenshot_url: string | null };
+  payment: null | { utr: string | null; status: RegistrationStatus; rejection_reason: string | null; screenshot_url: string | null };
 }
 
 const statuses: { label: string; value: RegistrationStatus | 'all' }[] = [
@@ -143,11 +143,11 @@ export default function CyberSabhaAdmin() {
     setError('');
     try {
       const data = await apiFetch('/api/admin/cybersabha-2/registrations?status=all');
-      const headers = ['Registration ID', 'Team', 'Status', 'Amount INR', 'UTR', 'Leader', 'Leader email', 'Members', 'Created'];
+      const headers = ['Registration ID', 'Team', 'Status', 'Amount INR', 'UTR', 'Leader', 'Leader email', 'Leader phone', 'Members', 'Created'];
       const lines = data.registrations.map((registration: AdminRegistration) => {
         const leader = registration.members[registration.leader_member_index];
         return [registration.registration_number, registration.team_name, registration.status, registration.total_amount,
-          registration.payment?.utr || '', leader?.full_name || '', leader?.email || '',
+          registration.payment?.utr || '', leader?.full_name || '', leader?.email || '', leader?.phone || '',
           registration.members.map((member) => `${member.full_name} (${member.email}, ${member.phone})`).join(' | '), registration.created_at];
       });
       const csv = [headers, ...lines].map((line: unknown[]) => line.map((value: unknown) => `"${String(value ?? '').replace(/"/g, '""')}"`).join(',')).join('\r\n');

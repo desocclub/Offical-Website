@@ -36,7 +36,6 @@ export default function CyberSabhaRegistrationForm() {
   const [teamName, setTeamName] = useState('');
   const [members, setMembers] = useState<MemberForm[]>([emptyMember(), emptyMember()]);
   const [leaderMemberIndex, setLeaderMemberIndex] = useState(0);
-  const [utr, setUtr] = useState('');
   const [screenshot, setScreenshot] = useState<File | null>(null);
   const [declaration, setDeclaration] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -71,7 +70,6 @@ export default function CyberSabhaRegistrationForm() {
       form.set('teamName', teamName);
       form.set('members', JSON.stringify(members));
       form.set('leaderMemberIndex', String(leaderMemberIndex));
-      form.set('utr', utr);
       form.set('declaration', String(declaration));
       form.set('paymentScreenshot', screenshot);
       const response = await fetch('/api/cybersabha-2/registrations', { method: 'POST', body: form });
@@ -183,8 +181,6 @@ export default function CyberSabhaRegistrationForm() {
 
           <section>
             <SectionHeading number="03" title="Payment details" />
-            <label className="mt-5 block text-sm font-bold" htmlFor="utr">UTR / transaction ID</label>
-            <input id="utr" required minLength={6} maxLength={40} value={utr} onChange={(event) => setUtr(event.target.value.toUpperCase())} className={`${fieldClass} mt-2 font-mono uppercase`} placeholder="Payment reference number" />
             <label className="mt-5 block text-sm font-bold" htmlFor="proof">Payment screenshot <span className="font-normal text-stone-600">(JPG, PNG, WebP · max 5 MB)</span></label>
             <input id="proof" required type="file" accept="image/jpeg,image/png,image/webp" onChange={(event) => setScreenshot(event.target.files?.[0] || null)} className="mt-2 block w-full border border-dashed border-stone-400 bg-[#eee9df] p-3 text-sm file:mr-3 file:border-0 file:bg-[#17120f] file:px-3 file:py-2 file:text-xs file:font-bold file:uppercase file:text-white" />
             {screenshot && <p className="mt-2 text-xs text-stone-600">Selected: {screenshot.name}</p>}
