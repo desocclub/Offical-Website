@@ -2,7 +2,7 @@
 
 ## Supabase
 
-1. Create a Supabase project and apply `supabase/migrations/202609290001_cybersabha_registration.sql` using the Supabase SQL editor or Supabase CLI.
+1. Create a Supabase project and apply all migrations in `supabase/migrations/` using the Supabase SQL editor or Supabase CLI.
 2. Enable Supabase Auth email/password sign-in. Create accounts only for DESOC admins; put each administrator's email in `CYBERSABHA_ADMIN_EMAILS` as a comma-separated allowlist.
 3. Keep the `cybersabha-payment-proofs` bucket private. The migration grants no `anon` or `authenticated` Storage policies; server routes upload through the service role, and admins receive signed links that expire after 10 minutes.
 4. Set the environment variables listed in `.env.example` in local development and the deployment environment. Never expose `SUPABASE_SERVICE_ROLE_KEY` to browser code.
@@ -27,7 +27,7 @@ Run `npm run build` after applying the migration and setting the public Supabase
 1. Register valid 2-member and 4-member teams; confirm totals are ₹140 and ₹280 and IDs follow `CS2-0001` format.
 2. Re-submit a member email or phone for this event; expect HTTP 409.
 3. Upload a non-image renamed `.jpg`, an unsupported image type, and a file over 5 MB; expect HTTP 400 and no registration row.
-4. Re-submit an existing UTR; expect HTTP 409 and no extra registration row.
+4. Submit a registration without a UTR and confirm the screenshot is still required and available for admin payment review.
 5. Submit 21 distinct teams concurrently; all should succeed, and a 22nd should receive HTTP 409. The database RPC serializes capacity checks per event.
 6. Submit after 5 October 2026 11:59 PM IST (or temporarily lower the event deadline in the test project); expect HTTP 410.
 7. Without a session, request the admin API; expect HTTP 401. Sign in with an allowlisted Supabase Auth user to review/verify/reject and resend email; verify an authenticated non-allowlisted user receives HTTP 403.

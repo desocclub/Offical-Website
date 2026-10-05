@@ -58,7 +58,6 @@ export async function POST(request: NextRequest) {
     }
     const membersResult = validateMembers(membersInput);
     const leaderMemberIndex = Number(form.get('leaderMemberIndex'));
-    const utr = String(form.get('utr') || '').trim().toUpperCase();
     const declaration = form.get('declaration') === 'true';
     const screenshot = form.get('paymentScreenshot');
 
@@ -67,7 +66,6 @@ export async function POST(request: NextRequest) {
     if (!Number.isInteger(leaderMemberIndex) || leaderMemberIndex < 0 || leaderMemberIndex >= membersResult.length) {
       return NextResponse.json({ error: 'Select a team leader.' }, { status: 400 });
     }
-    if (!/^[A-Z0-9-]{6,40}$/.test(utr)) return NextResponse.json({ error: 'Enter a valid UTR / transaction ID (6–40 letters or numbers).' }, { status: 400 });
     if (!declaration) return NextResponse.json({ error: 'Confirm the declaration before registering.' }, { status: 400 });
     if (!(screenshot instanceof File) || screenshot.size === 0) return NextResponse.json({ error: 'Payment screenshot is required.' }, { status: 400 });
     if (screenshot.size > MAX_UPLOAD_BYTES) return NextResponse.json({ error: 'Screenshot must be 5 MB or smaller.' }, { status: 400 });
@@ -86,7 +84,7 @@ export async function POST(request: NextRequest) {
       p_team_name: teamName,
       p_leader_member_index: leaderMemberIndex,
       p_members: rpcMembers,
-      p_utr: utr,
+      p_utr: null,
       p_screenshot_path: screenshotPath,
     });
 
@@ -95,11 +93,9 @@ export async function POST(request: NextRequest) {
       screenshotPath = '';
       const message = error.message || '';
       if (error.code === '23505') {
-        const duplicateMessage = message.includes('payments_utr')
-          ? 'This UTR / transaction ID has already been submitted.'
-          : message.includes('phone')
-            ? 'A team member phone number is already registered for this event.'
-            : 'A team member email is already registered for this event.';
+        const duplicateMessage = message.includes('phone')
+          ? 'A team member phone number is already registered for this event.'
+          : 'A team member email is already registered for this event.';
         return NextResponse.json({ error: duplicateMessage }, { status: 409 });
       }
       if (message.includes('CAPACITY_REACHED')) return NextResponse.json({ error: 'All 21 team places are filled.' }, { status: 409 });
