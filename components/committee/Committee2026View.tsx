@@ -163,7 +163,11 @@ function formatFacultyName(name: string) {
   const parts = name.split(' ');
 
   if (name.startsWith('Dr. Prof.')) {
-    return ['Dr.', parts.slice(1, -1).join(' '), parts.at(-1) ?? ''];
+    return [
+      parts[0],
+      parts.slice(1, -1).join(' '),
+      parts.at(-1) ?? '',
+    ];
   }
 
   return parts;
@@ -336,7 +340,6 @@ function DepartmentMember({
     </article>
   );
 }
-
 function TeamFrame({
   team,
   isCore = false,
@@ -351,6 +354,14 @@ function TeamFrame({
   const isFaculty = team.id === 'faculty';
   const isThreeMemberRow = THREE_MEMBER_ROW_TEAMS.includes(team.id);
   const isDepartment = !isCore && !isFaculty;
+
+  const treasuryMembers = isCore
+    ? team.members.filter((member) => /treasurer/i.test(member.role))
+    : [];
+
+  const regularCoreMembers = isCore
+    ? team.members.filter((member) => !/treasurer/i.test(member.role))
+    : team.members;
 
   const revealSection = () => {
     if (isMobile) return;
@@ -412,15 +423,17 @@ function TeamFrame({
           </div>
         ) : (
           <div className="grid grid-cols-1 gap-x-8 gap-y-4 md:grid-cols-2 md:gap-x-10">
-            {team.members.map((member, index) => {
-              const isLastCoreMember =
-                isCore && index === team.members.length - 1;
+            {regularCoreMembers.map((member, index) => {
+              const isSingleRegularCoreMember =
+                isCore &&
+                regularCoreMembers.length % 2 === 1 &&
+                index === regularCoreMembers.length - 1;
 
               return (
                 <div
                   key={member.id}
                   className={
-                    isLastCoreMember
+                    isSingleRegularCoreMember
                       ? 'md:col-span-2 md:w-1/2 md:justify-self-center'
                       : ''
                   }
@@ -428,7 +441,7 @@ function TeamFrame({
                   <CoreMember
                     member={member}
                     index={index}
-                    nameBelow={isLastCoreMember}
+                    nameBelow={isSingleRegularCoreMember}
                     faculty={isFaculty}
                     namesVisible={namesVisible}
                     flipTrigger={flipTrigger}
@@ -436,6 +449,21 @@ function TeamFrame({
                 </div>
               );
             })}
+
+            {isCore && treasuryMembers.length > 0 && (
+              <div className="grid grid-cols-1 gap-x-8 gap-y-4 md:col-span-2 md:grid-cols-2 md:gap-x-10">
+                {treasuryMembers.map((member, index) => (
+                  <CoreMember
+                    key={member.id}
+                    member={member}
+                    index={index}
+                    nameBelow={false}
+                    namesVisible={namesVisible}
+                    flipTrigger={flipTrigger}
+                  />
+                ))}
+              </div>
+            )}
           </div>
         )}
       </div>
@@ -450,6 +478,22 @@ export default function Committee2026View({
 }) {
   const teams = yearData.teams ?? [];
 
+const quickNavItems = [
+  { label: 'Top', id: 'committee-top' },
+  ...teams.map((team) => ({
+    label: team.title
+      .replace('Faculty & Leadership', 'Faculty')
+      .replace('Core Committee', 'Core')
+      .replace('Event Operations Team', 'Events')
+      .replace('Event Management Team', 'Events')
+      .replace('Technical Team', 'Technical')
+      .replace('Design Team', 'Design')
+      .replace('Editorial Team', 'Editorial')
+      .replace('Creative Team', 'Creative'),
+    id: team.id,
+  })),
+];
+
   const faculty = teams.find((team) => team.id === 'faculty');
   const core = teams.find((team) => team.id === 'core');
   const departments = teams.filter(
@@ -458,7 +502,7 @@ export default function Committee2026View({
 
   return (
     <div className="overflow-x-clip bg-black pb-12 text-white">
-      <CommitteeQuickNav />
+      <CommitteeQuickNav items={quickNavItems} />
 
       <header
         id="committee-top"

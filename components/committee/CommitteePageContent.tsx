@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import Navbar from '@/components/navigation/Navbar';
 import Footer from '@/components/navigation/Footer';
 import YearSelector from './YearSelector';
-import CommitteeRevealedView from './CommitteeRevealedView';
 import Committee2026View from './Committee2026View';
 import { ALL_COMMITTEE_YEARS } from '@/lib/data/committee';
 
@@ -97,25 +96,12 @@ export default function CommitteePageContent() {
           </section>
         )}
 
-        {/* Revealed Full Grid View */}
-        {activeYearData.status === 'revealed' && activeYearData.year === '2026-27' && (
-          <Committee2026View yearData={activeYearData} />
-        )}
+       
 
-        {activeYearData.status === 'revealed' && activeYearData.year !== '2026-27' && (
-          <section className="py-8 space-y-8 animate-fadeIn">
-            <header className="text-center space-y-3">
-              <h1 className="heading-title-6 text-primary">
-                Committee <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#bc0034] to-orange-500">{activeYearData.label}</span>
-              </h1>
-              <p className="text-secondary max-w-xl mx-auto text-sm sm:text-base">
-                Meet the minds, creators, and builders who shaped DESOC during {activeYearData.label}.
-              </p>
-            </header>
-
-            <CommitteeRevealedView yearData={activeYearData} />
-          </section>
-        )}
+     
+      {activeYearData.status === 'revealed' && (
+  <Committee2026View yearData={activeYearData} />
+)}
       </main>
 
       <Footer />

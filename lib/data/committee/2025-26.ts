@@ -13,7 +13,7 @@ import pranitaImg from '@/src/assets/committee/2025-26/core/pranita-patil.svg';
 
 import shrimantImg from '@/src/assets/committee/2025-26/technical/shrimant-marathe.svg';
 import omcImg from '@/src/assets/committee/2025-26/technical/om-chaudhari.jpeg';
-import piyushImg from '@/src/assets/committee/2025-26/technical/piyush-shendge.svg';
+import piyushImg from '@/src/assets/committee/2025-26/technical/piyush-shendge.png';
 import rajanImg from '@/src/assets/committee/2025-26/technical/rajan-udapure.svg';
 
 import dishaImg from '@/src/assets/committee/2025-26/editorial/disha-kapse.svg';
