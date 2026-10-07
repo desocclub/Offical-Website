@@ -26,7 +26,7 @@ const details = [
   ['Date', '7 October 2026'],
   ['Time', '8:00 AM – 3:00 PM'],
   ['Venue', 'JVN Hall, 4th Floor, CSD Department'],
-  ['Registration deadline', '5 October 2026'],
+  ['Registration deadline', '7 October 2026 · 9:00 AM'],
   ['Team size', '2–4 members'],
 ];
 const themes = ['Technological Advancement', 'Data Sovereignty', 'Inclusive Growth', 'Responsible AI in the Digital Age'];

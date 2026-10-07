@@ -29,7 +29,7 @@ Run `npm run build` after applying the migration and setting the public Supabase
 3. Upload a non-image renamed `.jpg`, an unsupported image type, and a file over 5 MB; expect HTTP 400 and no registration row.
 4. Submit a registration without a UTR and confirm the screenshot is still required and available for admin payment review.
 5. Submit 21 distinct teams concurrently; all should succeed, and a 22nd should receive HTTP 409. The database RPC serializes capacity checks per event.
-6. Submit after 5 October 2026 11:59 PM IST (or temporarily lower the event deadline in the test project); expect HTTP 410.
+6. Submit after 7 October 2026 9:00 AM IST (or temporarily lower the event deadline in the test project); expect HTTP 410.
 7. Without a session, request the admin API; expect HTTP 401. Sign in with an allowlisted Supabase Auth user to review/verify/reject and resend email; verify an authenticated non-allowlisted user receives HTTP 403.
 8. Confirm anon and authenticated clients cannot select registration/payment/member rows or read objects in `cybersabha-payment-proofs`; verify admin screenshot links expire after 10 minutes.
 
