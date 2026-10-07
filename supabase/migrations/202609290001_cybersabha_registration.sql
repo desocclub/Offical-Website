@@ -24,7 +24,7 @@ insert into public.events (
 ) values (
   'cybersabha-2', 'CyberSabha 2.0 - The Grand Tech Assembly', '2026-10-07',
   '09:00', '17:00', 'JVN Hall, 4th Floor, CSD Department',
-  '2026-10-05 23:59:59+05:30', 21, 2, 4, 70
+  '2026-10-07 09:00:00+05:30', 21, 2, 4, 70
 ) on conflict (slug) do update set
   title = excluded.title,
   event_date = excluded.event_date,

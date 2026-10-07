@@ -99,7 +99,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: duplicateMessage }, { status: 409 });
       }
       if (message.includes('CAPACITY_REACHED')) return NextResponse.json({ error: 'All 21 team places are filled.' }, { status: 409 });
-      if (message.includes('REGISTRATION_CLOSED')) return NextResponse.json({ error: 'Registration closed on 5 October 2026.' }, { status: 410 });
+      if (message.includes('REGISTRATION_CLOSED')) return NextResponse.json({ error: 'Registration is closed.' }, { status: 410 });
       if (message.includes('INVALID_TEAM_SIZE')) return NextResponse.json({ error: 'Team size must be between 2 and 4.' }, { status: 400 });
       throw error;
     }
