@@ -109,6 +109,18 @@ export default function PastEventsPage() {
             </div>
           )}
 
+          {/* Section: NO LIVE OR UPCOMING SESSIONS */}
+          {groups.live.length === 0 && groups.upcoming.length === 0 && groups.tba.length === 0 && (
+            <div className="mb-16 border border-dashed border-white/20 p-10 sm:p-12 text-center bg-[#0a0a0a] rounded-none space-y-4">
+              <p className="text-neutral-400 font-mono text-xs sm:text-sm uppercase tracking-wider">
+                [ NO LIVE OR UPCOMING SESSIONS CURRENTLY ANNOUNCED ]
+              </p>
+              <p className="text-neutral-500 text-xs max-w-md mx-auto">
+                Explore previous hackathons, departmental summits, and design challenges in the DESOC archive.
+              </p>
+            </div>
+          )}
+
           {/* Section: PAST EVENTS */}
           <div>
             <div className="flex items-center gap-3 mb-8 pb-3 border-b border-dashed border-white/20">

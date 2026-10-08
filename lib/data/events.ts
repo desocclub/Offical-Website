@@ -1,25 +1,9 @@
 import type { Event } from '@/types/events';
-import cybersabhaImg from '@/src/assets/cybersabha.jpeg';
 import sharkverseImg from '@/src/assets/genesis/sharkverse1.jpg';
 import escapeMatrixImg from '@/src/assets/genesis/escape1.jpg';
 import bidnBuildImg from '@/src/assets/genesis/bidnbuild1.jpg';
 
 export const events: Event[] = [
-  {
-    id: 'cybersabha-2',
-    slug: 'cyber-sabha',
-    title: 'Cyber Sabha 2.0',
-    description: 'A dynamic MUN-style cybersecurity debate exploring digital governance, cyber policy, and international tech diplomacy.',
-    category: 'DIGITAL GOVERNANCE + DEBATE + POLICY MAKING',
-    image: cybersabhaImg,
-    location: 'JVN Hall, 4th Floor, CSD Department',
-    registrationUrl: '/cybersabha',
-    schedule: {
-      status: 'confirmed',
-      startDate: '2026-10-07T08:00:00+05:30',
-      endDate: '2026-10-07T17:00:00+07:30',
-    },
-  },
   {
     id: 'sharkverse-2026',
     slug: 'sharkverse',

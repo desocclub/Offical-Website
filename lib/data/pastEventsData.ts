@@ -110,7 +110,24 @@ import sharkverse4 from '@/src/assets/genesis/sharkverse4.jpg';
 import sharkverse5 from '@/src/assets/genesis/sharkverse5.jpg';
 import sharkverse6 from '@/src/assets/genesis/sharkverse6.jpg';
 
+import cybersabhaImg from '@/src/assets/cybersabha.jpeg';
+
 export const pastEvents: PastEvent[] = [
+  {
+    id: 'cybersabha-2',
+    title: 'CyberSabha 2.0',
+    date: '7 October 2026',
+    time: '8:00 AM - 5:00 PM',
+    venue: 'JVN Hall, 4th Floor, CSD Department',
+    shortDescription:
+      'A dynamic MUN-style cybersecurity debate exploring digital governance, cyber policy, and international tech diplomacy.',
+    description:
+      'CyberSabha 2.0 was a Model United Nations-style cybersecurity debate giving students the opportunity to step into the roles of major technology companies and policy institutions. Delegations presented organization perspectives, engaged in structured debate, negotiated with peers, and drafted resolutions for contemporary digital challenges.',
+    coverImage: cybersabhaImg,
+    gallery: [
+      cybersabhaImg,
+    ],
+  },
   {
     id: 'sharkverse-2026',
     title: 'Sharkverse - Genesis 2026',
