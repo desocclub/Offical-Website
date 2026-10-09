@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import type { CommitteeMember, CommitteeTeam, YearCommittee } from '@/types/committee';
 import { resolveSrc } from '@/lib/imageUtils';
 import CommitteeQuickNav from './CommitteeQuickNav';
@@ -343,42 +343,79 @@ function DepartmentMember({
 function TeamFrame({
   team,
   isCore = false,
+  separateTreasuryPair = false,
 }: {
   team: CommitteeTeam;
   isCore?: boolean;
+  separateTreasuryPair?: boolean;
 }) {
   const [namesVisible, setNamesVisible] = useState(false);
   const [flipTrigger, setFlipTrigger] = useState(0);
   const isMobile = useMobileView();
+  const frameRef = useRef<HTMLDivElement>(null);
+  const isSectionActiveRef = useRef(false);
+  const cursorPositionRef = useRef({ x: -1, y: -1 });
 
   const isFaculty = team.id === 'faculty';
   const isThreeMemberRow = THREE_MEMBER_ROW_TEAMS.includes(team.id);
   const isDepartment = !isCore && !isFaculty;
 
-  const treasuryMembers = isCore
+  const treasuryMembers = isCore && separateTreasuryPair
     ? team.members.filter((member) => /treasurer/i.test(member.role))
     : [];
 
-  const regularCoreMembers = isCore
+  const regularCoreMembers = isCore && separateTreasuryPair
     ? team.members.filter((member) => !/treasurer/i.test(member.role))
     : team.members;
 
-  const revealSection = () => {
-    if (isMobile) return;
+  const setSectionActive = useCallback((shouldReveal: boolean) => {
+    if (isMobile || isSectionActiveRef.current === shouldReveal) return;
 
-    setNamesVisible(true);
-    setFlipTrigger((value) => value + 1);
-  };
+    isSectionActiveRef.current = shouldReveal;
+    setNamesVisible(shouldReveal);
 
-  const hideSection = () => {
-    if (!isMobile) setNamesVisible(false);
-  };
+    if (shouldReveal) {
+      setFlipTrigger((value) => value + 1);
+    }
+  }, [isMobile]);
+
+  useEffect(() => {
+    if (isMobile) {
+      isSectionActiveRef.current = false;
+      setNamesVisible(false);
+      return undefined;
+    }
+
+    const revealSectionUnderCursor = () => {
+      const { x, y } = cursorPositionRef.current;
+      if (x < 0 || y < 0) return;
+
+      const elementUnderCursor = document.elementFromPoint(x, y);
+      setSectionActive(Boolean(elementUnderCursor && frameRef.current?.contains(elementUnderCursor)));
+    };
+
+    const rememberCursorPosition = (event: PointerEvent) => {
+      cursorPositionRef.current = { x: event.clientX, y: event.clientY };
+      revealSectionUnderCursor();
+    };
+
+    window.addEventListener('pointermove', rememberCursorPosition);
+    window.addEventListener('scroll', revealSectionUnderCursor, { passive: true });
+    window.addEventListener('resize', revealSectionUnderCursor);
+
+    return () => {
+      window.removeEventListener('pointermove', rememberCursorPosition);
+      window.removeEventListener('scroll', revealSectionUnderCursor);
+      window.removeEventListener('resize', revealSectionUnderCursor);
+    };
+  }, [isMobile, setSectionActive]);
 
   return (
     <section id={team.id} className="scroll-mt-28 px-5 py-12 sm:px-8 md:py-16 lg:px-12">
       <div
-        onMouseEnter={revealSection}
-        onMouseLeave={hideSection}
+        ref={frameRef}
+        onMouseEnter={() => setSectionActive(true)}
+        onMouseLeave={() => setSectionActive(false)}
         className="mx-auto max-w-[90rem] overflow-hidden border border-[#bc0034]/45 bg-[linear-gradient(135deg,rgba(188,0,52,0.07),transparent_36%,rgba(255,255,255,0.018))] px-5 py-7 sm:px-8 md:px-10"
       >
         <header className="mb-7 border-l-2 border-[#bc0034] pl-5 sm:mb-8 sm:pl-7">
@@ -536,7 +573,13 @@ const quickNavItems = [
       </header>
 
       {faculty && <TeamFrame team={faculty} />}
-      {core && <TeamFrame team={core} isCore />}
+      {core && (
+        <TeamFrame
+          team={core}
+          isCore
+          separateTreasuryPair={yearData.year === '2025-26'}
+        />
+      )}
 
       {departments.map((team) => (
         <TeamFrame key={team.id} team={team} />
