@@ -63,7 +63,7 @@ export const committee2025_26: YearCommittee = {
         { id: 'aditya-ahirrao', name: 'Aditya Ahirrao', role: 'President', image: adityaImg },
         { id: 'ayushi-deore', name: 'Ayushi Deore', role: 'Vice President', image: ayushiImg },
         { id: 'vedant-sonawane', name: 'Vedant Sonawane', role: 'Event Operations Head', image: vedantImg },
-        { id: 'ishani-mukewar', name: 'Ishani Mukewar', role: 'Secretary', image: ishaniImg },
+        { id: 'ishani-mukewar', name: 'Ishani Murkewar', role: 'Secretary', image: ishaniImg },
         { id: 'jeet-patil', name: 'Jeet Patil', role: 'Technical Head', image: jeetImg },
         { id: 'monish-patil', name: 'Monish Patil', role: 'Creative Head', image: monishImg },
         { id: 'sanskruti-gite', name: 'Sanskruti Gite', role: 'Treasurer', image: sanskrutiImg },

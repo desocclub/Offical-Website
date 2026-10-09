@@ -70,7 +70,7 @@ export const committee2026_27: YearCommittee = {
       id: 'core',
       title: 'Core Committee',
       members: [
-        { id: 'ishani-mukewar', name: 'Ishani Mukewar', role: 'President', image: ishaniImg },
+        { id: 'ishani-mukewar', name: 'Ishani Murkewar', role: 'President', image: ishaniImg },
         { id: 'yash-kedari', name: 'Yash Kedari', role: 'Vice President', image: yashImg },
         { id: 'shravani-bhagwat', name: 'Shravani Bhagwat', role: 'Secretary', image: shravaniBhagwatImg },
         { id: 'drishti-lad', name: 'Drishti Lad', role: 'Joint Secretary', image: drishtiImg },
