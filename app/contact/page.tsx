@@ -365,6 +365,20 @@ export default function ContactPage() {
             </span>
           </a>
         </div>
+
+        {/* Responsive Google Maps */}
+        <div className="relative w-full h-[300px] sm:h-[380px] md:h-auto md:aspect-[16/9] md:max-h-[520px] overflow-hidden mt-8 sm:mt-10 bg-black">
+          {/* Google Maps Iframe */}
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3748.8790261307313!2d73.81968647500271!3d20.01359138139366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddebab15555555%3A0xdb01367e9d5cf969!2sK.K%20Wagh%20Institute%20Of%20Engineering%20Education%20and%20Research!5e0!3m2!1sen!2sin!4v1792436387966!5m2!1sen!2sin"
+            title="Map showing K. K. Wagh Institute of Engineering Education & Research"
+            className="w-full h-full border-0 [filter:grayscale(1)_invert(0.92)_contrast(0.85)]"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="strict-origin-when-cross-origin"
+          />
+        </div>
       </main>
 
       {/* Existing Footer preserved, rendered in clean minimal mode without WebGL noise shaders */}
