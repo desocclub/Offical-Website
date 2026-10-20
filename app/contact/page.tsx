@@ -142,21 +142,6 @@ export default function ContactPage() {
               </div>
 
               <div className="space-y-4">
-                {/* Shubham Chaudhari */}
-                <div>
-                  <h3 className="text-white font-medium text-sm sm:text-base">Shubham Chaudhari</h3>
-                  <p className="text-xs sm:text-sm text-neutral-400 mt-0.5">Technical Co-head</p>
-                  <a
-                    href="tel:+919146761423"
-                    className="inline-block text-xs sm:text-sm text-neutral-300 hover:text-white transition-colors duration-200 mt-1"
-                  >
-                    +91 91467 61423
-                  </a>
-                </div>
-
-                {/* Thin, subtle horizontal divider between the two contacts */}
-                <div className="w-full h-px bg-neutral-900" aria-hidden="true" />
-
                 {/* Yash Kedari */}
                 <div>
                   <h3 className="text-white font-medium text-sm sm:text-base">Yash Kedari</h3>
@@ -166,6 +151,21 @@ export default function ContactPage() {
                     className="inline-block text-xs sm:text-sm text-neutral-300 hover:text-white transition-colors duration-200 mt-1"
                   >
                     +91 93074 30574
+                  </a>
+                </div>
+
+                {/* Thin, subtle horizontal divider between the two contacts */}
+                <div className="w-full h-px bg-neutral-900" aria-hidden="true" />
+
+                {/* Shubham Chaudhari */}
+                <div>
+                  <h3 className="text-white font-medium text-sm sm:text-base">Shubham Chaudhari</h3>
+                  <p className="text-xs sm:text-sm text-neutral-400 mt-0.5">Technical Head</p>
+                  <a
+                    href="tel:+919146761423"
+                    className="inline-block text-xs sm:text-sm text-neutral-300 hover:text-white transition-colors duration-200 mt-1"
+                  >
+                    +91 91467 61423
                   </a>
                 </div>
               </div>
