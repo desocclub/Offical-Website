@@ -306,7 +306,7 @@ export default function CSDDepartmentPage() {
               </h2>
             </div>
             <span className="font-geist-mono text-xs text-neutral-400 uppercase tracking-widest">
-              ACADEMIC &amp; RESEARCH STAFF // 8 MEMBERS
+              ACADEMIC &amp; RESEARCH STAFF
             </span>
           </div>
 
@@ -314,25 +314,19 @@ export default function CSDDepartmentPage() {
           <div className="hidden md:block">
             {/* Table Header */}
             <div className="grid grid-cols-12 items-center py-3 px-4 border-b border-neutral-800 text-[11px] font-geist-mono uppercase tracking-wider text-neutral-400">
-              <div className="col-span-1">#</div>
               <div className="col-span-2">Portrait</div>
-              <div className="col-span-4">Faculty Member</div>
+              <div className="col-span-5">Faculty Member</div>
               <div className="col-span-3">Designation</div>
               <div className="col-span-2 text-right">Connect</div>
             </div>
 
             {/* Table Rows (8 faculty members in exact order) */}
             <div className="divide-y divide-neutral-800/70">
-              {FACULTY_MEMBERS.map((faculty, idx) => (
+              {FACULTY_MEMBERS.map((faculty) => (
                 <div
                   key={faculty.imageTitle}
                   className="grid grid-cols-12 items-center py-3.5 px-4 hover:bg-neutral-900/30 transition-colors duration-150 group"
                 >
-                  {/* Row index */}
-                  <div className="col-span-1 font-geist-pixel text-xs text-neutral-400">
-                    {String(idx + 1).padStart(2, '0')}
-                  </div>
-
                   {/* Rectangular Photograph (Original natural colours preserved) */}
                   <div className="col-span-2">
                     <div className="w-14 h-16 sm:w-16 sm:h-20 border border-neutral-800 bg-neutral-950 overflow-hidden">
@@ -346,7 +340,7 @@ export default function CSDDepartmentPage() {
                   </div>
 
                   {/* Faculty Name */}
-                  <div className="col-span-4 pr-4">
+                  <div className="col-span-5 pr-4">
                     <div className="text-white font-medium text-base sm:text-lg group-hover:text-white transition-colors">
                       {faculty.name}
                     </div>
@@ -379,7 +373,7 @@ export default function CSDDepartmentPage() {
 
           {/* Mobile Directory View (Stacked compact rows) */}
           <div className="md:hidden divide-y divide-neutral-800/80">
-            {FACULTY_MEMBERS.map((faculty, idx) => (
+            {FACULTY_MEMBERS.map((faculty) => (
               <div key={faculty.imageTitle} className="py-4 flex items-center gap-4">
                 {/* Rectangular photo */}
                 <div className="w-14 h-16 flex-shrink-0 border border-neutral-800 bg-neutral-950 overflow-hidden">
@@ -393,14 +387,9 @@ export default function CSDDepartmentPage() {
 
                 {/* Details */}
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-0.5">
-                    <span className="font-geist-pixel text-[10px] text-neutral-400 flex-shrink-0">
-                      {String(idx + 1).padStart(2, '0')}
-                    </span>
-                    <h3 className="text-white font-medium text-sm sm:text-base truncate">
-                      {faculty.name}
-                    </h3>
-                  </div>
+                  <h3 className="text-white font-medium text-sm sm:text-base truncate mb-0.5">
+                    {faculty.name}
+                  </h3>
                   <p className="text-neutral-400 text-xs truncate">
                     {faculty.position}
                   </p>
