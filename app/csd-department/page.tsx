@@ -1,254 +1,473 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import React from 'react';
+import type { StaticImageData } from 'next/image';
 import Navbar from '@/components/navigation/Navbar';
 import Footer from '@/components/navigation/Footer';
-import type { StaticImageData } from 'next/image';
 import { resolveSrc } from '@/lib/imageUtils';
 
-// Import faculty photos
-import bhiseMam from '@/src/assets/dept/bhise_mam.jpg';
-import induMam from '@/src/assets/dept/indu_mam.jpg';
-import vrushaliMam from '@/src/assets/dept/vrushali_mam.webp';
-import mrunaliMam from '@/src/assets/dept/mrunali_mam.webp';
-import reshmaMam from '@/src/assets/dept/reshma_dhurjad.jpeg';
-import nilimaMam from '@/src/assets/dept/nilima_gaidhani.jpeg';
+// College Lab Banner
+import csdBanner from '@/src/assets/img/csd-department-banner.jpg';
 
-interface FacultyMember {
+// Faculty Photographs from src/assets/dept/faculty
+import photoBhise from '@/src/assets/dept/faculty/dr-y-d-bhise.jpg';
+import photoSeethanathan from '@/src/assets/dept/faculty/ms-indu-seethanathan.jpg';
+import photoChanne from '@/src/assets/dept/faculty/vrushali-channe.webp';
+import photoDhurjad from '@/src/assets/dept/faculty/ms-r-k-dhurjad.jpg';
+import photoPawar from '@/src/assets/dept/faculty/mrunali-pawar.png';
+import photoGaidhani from '@/src/assets/dept/faculty/n-h-gaidhani.webp';
+import photoShete from '@/src/assets/dept/faculty/ruchika-shete.webp';
+import photoSalve from '@/src/assets/dept/faculty/purnankita-salve.webp';
+
+interface FacultyRecord {
   name: string;
-  designation: string;
-  specialization: string;
-  image: string | StaticImageData;
+  position: string;
+  imageTitle: string;
+  image: StaticImageData | string;
+  linkedin: string;
 }
 
+const FACULTY_MEMBERS: FacultyRecord[] = [
+  {
+    name: 'Dr. Y. D. Bhise',
+    position: 'Department Coordinator',
+    imageTitle: 'dr-y-d-bhise',
+    image: photoBhise,
+    linkedin: 'https://www.linkedin.com/in/dr-yogita-pagar-bhise-198428224/',
+  },
+  {
+    name: 'Ms. Indu Seethanathan',
+    position: 'Assistant Professor',
+    imageTitle: 'ms-indu-seethanathan',
+    image: photoSeethanathan,
+    linkedin: 'https://www.linkedin.com/in/indu-s-37b3b2174/',
+  },
+  {
+    name: 'Ms. V. P. Channe',
+    position: 'Assistant Professor',
+    imageTitle: 'vrushali-channe',
+    image: photoChanne,
+    linkedin: 'https://www.linkedin.com/in/vrushali-channe-99b421346/',
+  },
+  {
+    name: 'Ms. R. K. Dhurjad',
+    position: 'Assistant Professor',
+    imageTitle: 'ms-r-k-dhurjad',
+    image: photoDhurjad,
+    linkedin: 'https://www.linkedin.com/in/reshma-dhurjad-0b029a209/',
+  },
+  {
+    name: 'Ms. M. C. Pawar',
+    position: 'Assistant Professor',
+    imageTitle: 'mrunali-pawar',
+    image: photoPawar,
+    linkedin: 'https://www.linkedin.com/in/mrunali-pawar-b4b5232ab/',
+  },
+  {
+    name: 'Ms. N. H. Gaidhani',
+    position: 'Assistant Professor',
+    imageTitle: 'n-h-gaidhani',
+    image: photoGaidhani,
+    linkedin: 'https://www.linkedin.com/in/nileema-gaidhani-76415b3b3/',
+  },
+  {
+    name: 'Ms. R. S. Shete',
+    position: 'Assistant Professor',
+    imageTitle: 'ruchika-shete',
+    image: photoShete,
+    linkedin: 'https://www.linkedin.com/in/ruchika-shete-shendre-6522603b3/',
+  },
+  {
+    name: 'Ms. P. R. Salve',
+    position: 'Assistant Professor',
+    imageTitle: 'purnankita-salve',
+    image: photoSalve,
+    linkedin: 'https://linkedin.com/in/purnankita-salve-479353227',
+  },
+];
+
 export default function CSDDepartmentPage() {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    setIsLoaded(true);
-    window.scrollTo(0, 0);
-  }, []);
-
-  const facultyMembers: FacultyMember[] = [
-    { name: 'Dr. Y D Bhise', designation: 'Department Coordinator', specialization: 'Computer Science & Design', image: bhiseMam },
-    { name: 'Indu Seethanathan', designation: 'Assistant Professor', specialization: 'Computer Science & Design', image: induMam },
-    { name: 'Vrushali Chane', designation: 'Assistant Professor', specialization: 'Computer Science & Design', image: vrushaliMam },
-    { name: 'Mrunali Pawar', designation: 'Assistant Professor', specialization: 'Computer Science & Design', image: mrunaliMam },
-    { name: 'Reshma Dhurjad', designation: 'Assistant Professor', specialization: 'Computer Science & Design', image: reshmaMam },
-    { name: 'Nilima Gaidhani', designation: 'Assistant Professor', specialization: 'Computer Science & Design', image: nilimaMam },
-  ];
-
-  // Glass card wrapper used throughout
-  const GlassCard = ({ children, className = '', delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
-    <div
-      className={`
-        relative overflow-hidden rounded-2xl sm:rounded-3xl backdrop-blur-2xl border border-white/10
-        p-4 sm:p-6 md:p-10
-        transition-all duration-700 ease-out
-        ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
-        ${className}
-      `}
-      style={{
-        transitionDelay: `${delay}ms`,
-        background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)',
-        boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)'
-      }}
-    >
-      {/* Background glow */}
-      <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full blur-3xl" style={{ background: 'rgba(220,38,38,0.08)' }} />
-      <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full blur-3xl" style={{ background: 'rgba(127,29,29,0.08)' }} />
-      <div className="relative z-10">{children}</div>
-    </div>
-  );
-
-  // Section title with red accent bar
-  const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-    <div className="flex items-center mb-8 sm:mb-10">
-      <div
-        className="w-1 h-10 rounded-full mr-4 flex-shrink-0"
-        style={{
-          background: 'linear-gradient(to bottom, #ef4444, #b91c1c)',
-          boxShadow: '0 0 10px rgba(220,38,38,0.5)'
-        }}
-      />
-      <h2 className="heading-h2 text-primary">{children}</h2>
-    </div>
-  );
-
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-[#080808] text-neutral-200 font-geist antialiased selection:bg-neutral-800 selection:text-white">
+      {/* 3. Existing Navbar Preserved Exactly */}
       <Navbar />
 
-      {/* ===== Background gradients ===== */}
-      <div className="relative">
-        <div className="fixed inset-0 -z-10" style={{ background: 'linear-gradient(135deg, black, rgba(127,29,29,0.3) 50%, black)' }} />
-        <div className="fixed inset-0 -z-10" style={{ background: 'radial-gradient(ellipse at top right, rgba(127,29,29,0.15), transparent 50%)' }} />
-        <div className="fixed inset-0 -z-10" style={{ background: 'radial-gradient(ellipse at bottom left, rgba(153,27,27,0.1), transparent 50%)' }} />
-        <div className="fixed inset-0 opacity-5 -z-10" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)', backgroundSize: '50px 50px' }} />
+      <main className="relative z-10 pt-28 sm:pt-36 pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* ========================================================= */}
+        {/* HERO SECTION                                              */}
+        {/* ========================================================= */}
+        <section className="relative">
+          {/* Top metadata ticker */}
+          <div className="flex items-center justify-between text-[11px] sm:text-xs font-geist-mono text-neutral-400 uppercase tracking-widest pb-4 sm:pb-6 border-b border-neutral-800">
+            <span className="flex items-center gap-2">
+              <span className="inline-block w-1.5 h-1.5 bg-neutral-400" aria-hidden="true" />
+              <span>Academic Department</span>
+            </span>
+            <span className="font-geist-pixel text-neutral-400">
+              KKWIEER // EST. 2021
+            </span>
+          </div>
 
-        {/* ===== Main Content ===== */}
-        <main className="relative px-4 sm:px-6 lg:px-8 pt-24 pb-16 max-w-7xl mx-auto">
+          {/* Hero Main Heading: On a single line on desktop */}
+          <div className="pt-8 sm:pt-12 pb-4 overflow-visible">
+            <h1 className="font-geist-pixel text-white font-normal tracking-tight text-3xl sm:text-4xl md:text-5xl lg:text-[clamp(2.15rem,4.15vw,4.4rem)] xl:text-[clamp(2.65rem,4.35vw,4.85rem)] lg:whitespace-nowrap leading-[1.08] select-none">
+              Computer Science and Design
+            </h1>
+          </div>
 
-          {/* ===== Page Header ===== */}
-          <header className={`text-center mb-12 sm:mb-16 md:mb-20 transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}>
-            <div className="relative inline-block">
-              <h1 className="heading-title-6 text-primary mb-4">
-                Department of Computer Science & Design
-              </h1>
-              <p className="text-secondary text-base sm:text-lg max-w-3xl mx-auto leading-relaxed">
+          {/* Hero Description & Call to Action */}
+          <div className="mt-6 pt-6 sm:pt-8 border-t border-neutral-800 grid grid-cols-1 lg:grid-cols-12 gap-6 items-baseline">
+            <div className="lg:col-span-8">
+              <p className="text-neutral-400 text-base sm:text-lg lg:text-xl font-normal leading-relaxed max-w-3xl">
                 Shaping the future at the intersection of Computer Science and Design — nurturing innovators, creators, and technology leaders since inception.
               </p>
             </div>
-          </header>
-
-          <div className="space-y-10 sm:space-y-14">
-
-            {/* 1. DEPARTMENT OVERVIEW */}
-            <GlassCard delay={100}>
-              <SectionTitle>Department Overview</SectionTitle>
-              <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 md:gap-10">
-                <div className="lg:col-span-3 space-y-5">
-                  <p className="text-gray-300 leading-relaxed">
-                    The Department of Computer Science & Design (CSD) at K K Wagh Institute of Engineering Education & Research, Nashik, is a pioneering program that blends core computer science principles with creative design methodologies. Established to address the growing demand for professionals who can bridge technology and user experience, the department offers a unique curriculum that prepares students for roles in software engineering, product design, UI/UX, and beyond.
-                  </p>
-                  <p className="text-gray-300 leading-relaxed">
-                    With a strong emphasis on hands-on learning, industry collaboration, and interdisciplinary thinking, CSD equips students with both analytical rigor and creative problem-solving abilities. The department is home to state-of-the-art laboratories, experienced faculty, and a vibrant student community driven by the Design Society (DESOC).
-                  </p>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4">
-                    {[
-                      { label: 'Students', value: '240+' },
-                      { label: 'Faculty', value: '8+' },
-                      { label: 'Labs', value: '6' },
-                    ].map((stat) => (
-                      <div key={stat.label} className="text-center p-3 rounded-xl border border-white/10 bg-white/5">
-                        <p className="text-2xl sm:text-3xl font-bold text-red-400">{stat.value}</p>
-                        <p className="text-gray-400 text-xs sm:text-sm mt-1 uppercase tracking-wider">{stat.label}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div className="lg:col-span-2 flex items-center justify-center">
-                  <div className="relative w-full aspect-square max-w-xs">
-                    {/* Decorative concentric rings */}
-                    <div className="absolute inset-0 rounded-full border border-red-500/20 animate-pulse" />
-                    <div className="absolute inset-4 rounded-full border border-red-500/15" />
-                    <div className="absolute inset-8 rounded-full border border-red-500/10" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center">
-                        <p className="text-5xl sm:text-6xl font-extrabold text-white">CSD</p>
-                        <p className="text-red-400 text-sm sm:text-base uppercase tracking-widest mt-2">Est. 2021</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </GlassCard>
-
-            {/* 2. VISION & MISSION */}
-            <GlassCard delay={200}>
-              <SectionTitle>Vision & Mission</SectionTitle>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
-                {/* Vision */}
-                <div className="relative p-5 sm:p-8 rounded-2xl border border-white/10 bg-white/5 group hover:border-red-500/30 transition-all duration-500">
-                  <div className="absolute top-0 left-0 w-full h-1 rounded-t-2xl" style={{ background: 'linear-gradient(to right, #ef4444, #b91c1c)' }} />
-                  <div className="flex items-center gap-3 mb-4">
-                    <svg className="w-8 h-8 text-red-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                    <h3 className="text-xl sm:text-2xl font-bold text-white">Our Vision</h3>
-                  </div>
-                  <p className="text-gray-300 leading-relaxed">
-                    To be a nationally recognized center of excellence that produces innovative professionals capable of creating technology solutions that are both functionally robust and aesthetically impactful — transforming the way humans interact with technology.
-                  </p>
-                </div>
-
-                {/* Mission */}
-                <div className="relative p-5 sm:p-8 rounded-2xl border border-white/10 bg-white/5 group hover:border-red-500/30 transition-all duration-500">
-                  <div className="absolute top-0 left-0 w-full h-1 rounded-t-2xl" style={{ background: 'linear-gradient(to right, #b91c1c, #ef4444)' }} />
-                  <div className="flex items-center gap-3 mb-4">
-                    <svg className="w-8 h-8 text-red-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.58-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
-                    </svg>
-                    <h3 className="text-xl sm:text-2xl font-bold text-white">Our Mission</h3>
-                  </div>
-                  <ul className="space-y-3 text-gray-300 leading-relaxed">
-                    <li className="flex items-start gap-2">
-                      <span className="mt-1.5 w-2 h-2 rounded-full bg-red-500 flex-shrink-0" />
-                      Provide a curriculum that integrates computer science fundamentals with design principles and creative thinking.
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="mt-1.5 w-2 h-2 rounded-full bg-red-500 flex-shrink-0" />
-                      Foster industry-academia partnerships through internships, workshops, and collaborative projects.
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="mt-1.5 w-2 h-2 rounded-full bg-red-500 flex-shrink-0" />
-                      Cultivate an environment of research, innovation, and entrepreneurial spirit among students and faculty.
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="mt-1.5 w-2 h-2 rounded-full bg-red-500 flex-shrink-0" />
-                      Develop socially responsible graduates who contribute meaningfully to the technology and design ecosystem.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </GlassCard>
-
-            {/* 3. FACULTY MEMBERS */}
-            <GlassCard delay={300}>
-              <SectionTitle>Faculty Members</SectionTitle>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-                {facultyMembers.map((faculty, index) => (
-                  <div
-                    key={index}
-                    className="group relative p-4 sm:p-5 rounded-2xl border border-white/10 bg-white/5 hover:border-red-500/40 hover:bg-white/10 transition-all duration-500"
-                  >
-                    {/* Faculty photo */}
-                    <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden mx-auto mb-4 border-2 border-red-600/40 group-hover:border-red-500 group-hover:scale-110 transition-all duration-500" style={{ boxShadow: '0 0 20px rgba(220,38,38,0.2)' }}>
-                      <img
-                        src={resolveSrc(faculty.image)}
-                        alt={faculty.name}
-                        className="w-full h-full object-cover object-top"
-                      />
-                    </div>
-                    <div className="text-center">
-                      <h3 className="text-white font-bold text-base sm:text-lg mb-1">{faculty.name}</h3>
-                      <p className="text-red-400 text-xs sm:text-sm font-medium uppercase tracking-wider mb-2">{faculty.designation}</p>
-                      <p className="text-gray-400 text-xs leading-relaxed">{faculty.specialization}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </GlassCard>
-
-            {/* 4. LABORATORIES */}
-            <GlassCard delay={400}>
-              <SectionTitle>Laboratories</SectionTitle>
-              <div className="rounded-2xl border border-dashed border-red-500/30 bg-red-500/5 px-6 py-10 text-center">
-                <p className="text-white text-xl sm:text-2xl font-semibold mb-2">Coming Soon</p>
-                <p className="text-gray-400 max-w-2xl mx-auto">
-                  The Laboratories section is currently being updated and will be available soon.
-                </p>
-              </div>
-            </GlassCard>
-
-            {/* 5. ALUMNI */}
-            <GlassCard delay={500}>
-              <SectionTitle>Alumni</SectionTitle>
-              <div className="rounded-2xl border border-dashed border-red-500/30 bg-red-500/5 px-6 py-10 text-center">
-                <p className="text-white text-xl sm:text-2xl font-semibold mb-2">Coming Soon</p>
-                <p className="text-gray-400 max-w-2xl mx-auto">
-                  The Alumni section is under maintenance and will be published soon.
-                </p>
-              </div>
-            </GlassCard>
-
+            <div className="lg:col-span-4 lg:text-right">
+              <a
+                href="#overview"
+                className="inline-flex items-center gap-2 text-xs sm:text-sm font-geist-mono uppercase tracking-wider text-neutral-400 hover:text-white transition-colors duration-200 group py-1.5 border-b border-neutral-700 hover:border-white"
+              >
+                <span>Explore the department</span>
+                <span className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true">
+                  ↗
+                </span>
+              </a>
+            </div>
           </div>
 
-        </main>
-      </div>
+          {/* Hero Image: Wide rectangular crop, original colours, tactile film grain */}
+          <div className="mt-10 sm:mt-14">
+            <div className="relative w-full aspect-[16/10] sm:aspect-[16/7] lg:aspect-[21/9] border border-neutral-800 bg-neutral-950 overflow-hidden">
+              <img
+                src={resolveSrc(csdBanner)}
+                alt="Computer Science and Design department laboratory facility"
+                className="w-full h-full object-cover object-center"
+              />
+              {/* Subtle tactile film grain overlay */}
+              <div
+                className="pointer-events-none absolute inset-0 z-10 opacity-[0.06] mix-blend-overlay"
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+                  backgroundRepeat: 'repeat',
+                }}
+                aria-hidden="true"
+              />
+            </div>
+            <div className="mt-3 flex items-center justify-between text-[11px] font-geist-mono text-neutral-400 uppercase tracking-wider">
+              <span>FIG. 01 — COMPUTING & DESIGN LABORATORY FACILITY</span>
+              <span className="hidden sm:inline">CAMPUS ARCHIVE // K. K. WAGH</span>
+            </div>
+          </div>
+        </section>
 
-      <Footer />
+        {/* ========================================================= */}
+        {/* 01. DEPARTMENT OVERVIEW                                    */}
+        {/* ========================================================= */}
+        <section id="overview" className="mt-24 sm:mt-32 pt-12 sm:pt-16 border-t border-neutral-800 scroll-mt-24">
+          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-10 sm:mb-12">
+            <div className="flex items-center gap-3">
+              <span className="font-geist-pixel text-neutral-400 text-sm sm:text-base">
+                [ 01 ]
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-medium tracking-tight text-white">
+                Department Overview
+              </h2>
+            </div>
+            <span className="font-geist-mono text-xs text-neutral-400 uppercase tracking-widest">
+              PROGRAM DIRECTORY // 2021–PRESENT
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14">
+            {/* Left column: Architectural highlight statement + metrics */}
+            <div className="lg:col-span-5 space-y-8">
+              <p className="text-xl sm:text-2xl font-light text-white leading-snug tracking-tight">
+                An interdisciplinary curriculum uniting computational rigor with human-centered product craft.
+              </p>
+
+              {/* Minimal metrics matrix */}
+              <div className="grid grid-cols-2 gap-3 pt-2">
+                <div className="p-4 sm:p-5 border border-neutral-800 bg-neutral-900/20">
+                  <div className="font-geist-pixel text-2xl sm:text-3xl text-white">240+</div>
+                  <div className="text-[11px] font-geist-mono text-neutral-400 uppercase tracking-wider mt-2">
+                    Students Enrolled
+                  </div>
+                </div>
+                <div className="p-4 sm:p-5 border border-neutral-800 bg-neutral-900/20">
+                  <div className="font-geist-pixel text-2xl sm:text-3xl text-white">08+</div>
+                  <div className="text-[11px] font-geist-mono text-neutral-400 uppercase tracking-wider mt-2">
+                    Faculty Staff
+                  </div>
+                </div>
+                <div className="p-4 sm:p-5 border border-neutral-800 bg-neutral-900/20">
+                  <div className="font-geist-pixel text-2xl sm:text-3xl text-white">06</div>
+                  <div className="text-[11px] font-geist-mono text-neutral-400 uppercase tracking-wider mt-2">
+                    Specialized Labs
+                  </div>
+                </div>
+                <div className="p-4 sm:p-5 border border-neutral-800 bg-neutral-900/20">
+                  <div className="font-geist-pixel text-2xl sm:text-3xl text-white">2021</div>
+                  <div className="text-[11px] font-geist-mono text-neutral-400 uppercase tracking-wider mt-2">
+                    Established Year
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right column: Exact factual description */}
+            <div className="lg:col-span-7 space-y-6 text-neutral-300 text-base sm:text-lg leading-relaxed font-normal">
+              <p>
+                The Department of Computer Science &amp; Design (CSD) at K K Wagh Institute of Engineering Education &amp; Research, Nashik, is a pioneering program that blends core computer science principles with creative design methodologies. Established to address the growing demand for professionals who can bridge technology and user experience, the department offers a unique curriculum that prepares students for roles in software engineering, product design, UI/UX, and beyond.
+              </p>
+              <p className="text-neutral-400">
+                With a strong emphasis on hands-on learning, industry collaboration, and interdisciplinary thinking, CSD equips students with both analytical rigor and creative problem-solving abilities. The department is home to state-of-the-art laboratories, experienced faculty, and a vibrant student community driven by the Design Society (DESOC).
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================= */}
+        {/* 02. VISION & MISSION                                      */}
+        {/* ========================================================= */}
+        <section id="vision-mission" className="mt-24 sm:mt-32 pt-12 sm:pt-16 border-t border-neutral-800 scroll-mt-24">
+          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-10 sm:mb-12">
+            <div className="flex items-center gap-3">
+              <span className="font-geist-pixel text-neutral-400 text-sm sm:text-base">
+                [ 02 ]
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-medium tracking-tight text-white">
+                Vision &amp; Mission
+              </h2>
+            </div>
+            <span className="font-geist-mono text-xs text-neutral-400 uppercase tracking-widest">
+              FOUNDATIONAL CHARTER
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+            {/* Vision */}
+            <div className="space-y-6 border-b lg:border-b-0 lg:border-r border-neutral-800 pb-10 lg:pb-0 lg:pr-12">
+              <div className="flex items-center justify-between pb-3 border-b border-neutral-800">
+                <h3 className="text-base sm:text-lg font-medium text-white tracking-wide uppercase font-geist-mono">
+                  Our Vision
+                </h3>
+                <span className="text-[11px] font-geist-pixel text-neutral-400 uppercase tracking-widest">
+                  [ STATEMENT ]
+                </span>
+              </div>
+              <p className="text-neutral-300 text-base sm:text-lg leading-relaxed font-light">
+                To be a nationally recognized center of excellence that produces innovative professionals capable of creating technology solutions that are both functionally robust and aesthetically impactful — transforming the way humans interact with technology.
+              </p>
+            </div>
+
+            {/* Mission */}
+            <div className="space-y-6">
+              <div className="flex items-center justify-between pb-3 border-b border-neutral-800">
+                <h3 className="text-base sm:text-lg font-medium text-white tracking-wide uppercase font-geist-mono">
+                  Our Mission
+                </h3>
+                <span className="text-[11px] font-geist-pixel text-neutral-400 uppercase tracking-widest">
+                  [ 04 PILLARS ]
+                </span>
+              </div>
+              <ul className="space-y-4">
+                {[
+                  'Provide a curriculum that integrates computer science fundamentals with design principles and creative thinking.',
+                  'Foster industry-academia partnerships through internships, workshops, and collaborative projects.',
+                  'Cultivate an environment of research, innovation, and entrepreneurial spirit among students and faculty.',
+                  'Develop socially responsible graduates who contribute meaningfully to the technology and design ecosystem.',
+                ].map((item, index) => (
+                  <li key={index} className="flex items-start gap-4 pt-3 border-t border-neutral-800/60 first:border-0 first:pt-0">
+                    <span className="font-geist-pixel text-xs text-neutral-400 mt-1 flex-shrink-0">
+                      0{index + 1}
+                    </span>
+                    <p className="text-neutral-300 text-sm sm:text-base leading-relaxed">
+                      {item}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================= */}
+        {/* 03. FACULTY DIRECTORY                                     */}
+        {/* ========================================================= */}
+        <section id="faculty" className="mt-24 sm:mt-32 pt-12 sm:pt-16 border-t border-neutral-800 scroll-mt-24">
+          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-8 sm:mb-12">
+            <div className="flex items-center gap-3">
+              <span className="font-geist-pixel text-neutral-400 text-sm sm:text-base">
+                [ 03 ]
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-medium tracking-tight text-white">
+                Faculty Directory
+              </h2>
+            </div>
+            <span className="font-geist-mono text-xs text-neutral-400 uppercase tracking-widest">
+              ACADEMIC &amp; RESEARCH STAFF // 8 MEMBERS
+            </span>
+          </div>
+
+          {/* Desktop Table View */}
+          <div className="hidden md:block">
+            {/* Table Header */}
+            <div className="grid grid-cols-12 items-center py-3 px-4 border-b border-neutral-800 text-[11px] font-geist-mono uppercase tracking-wider text-neutral-400">
+              <div className="col-span-1">#</div>
+              <div className="col-span-2">Portrait</div>
+              <div className="col-span-4">Faculty Member</div>
+              <div className="col-span-3">Designation</div>
+              <div className="col-span-2 text-right">Connect</div>
+            </div>
+
+            {/* Table Rows (8 faculty members in exact order) */}
+            <div className="divide-y divide-neutral-800/70">
+              {FACULTY_MEMBERS.map((faculty, idx) => (
+                <div
+                  key={faculty.imageTitle}
+                  className="grid grid-cols-12 items-center py-3.5 px-4 hover:bg-neutral-900/30 transition-colors duration-150 group"
+                >
+                  {/* Row index */}
+                  <div className="col-span-1 font-geist-pixel text-xs text-neutral-400">
+                    {String(idx + 1).padStart(2, '0')}
+                  </div>
+
+                  {/* Rectangular Photograph (Original natural colours preserved) */}
+                  <div className="col-span-2">
+                    <div className="w-14 h-16 sm:w-16 sm:h-20 border border-neutral-800 bg-neutral-950 overflow-hidden">
+                      <img
+                        src={resolveSrc(faculty.image)}
+                        alt={`Photograph of ${faculty.name}`}
+                        className="w-full h-full object-cover object-top"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Faculty Name */}
+                  <div className="col-span-4 pr-4">
+                    <div className="text-white font-medium text-base sm:text-lg group-hover:text-white transition-colors">
+                      {faculty.name}
+                    </div>
+                  </div>
+
+                  {/* Official Position */}
+                  <div className="col-span-3 pr-4">
+                    <div className="text-neutral-400 text-sm font-normal">
+                      {faculty.position}
+                    </div>
+                  </div>
+
+                  {/* LinkedIn Destination */}
+                  <div className="col-span-2 text-right">
+                    <a
+                      href={faculty.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-geist-mono text-neutral-400 hover:text-white px-2.5 py-1.5 border border-neutral-800 hover:border-neutral-600 transition-colors duration-150"
+                      aria-label={`LinkedIn profile of ${faculty.name}`}
+                    >
+                      <span>LinkedIn</span>
+                      <span className="text-[10px]" aria-hidden="true">↗</span>
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile Directory View (Stacked compact rows) */}
+          <div className="md:hidden divide-y divide-neutral-800/80">
+            {FACULTY_MEMBERS.map((faculty, idx) => (
+              <div key={faculty.imageTitle} className="py-4 flex items-center gap-4">
+                {/* Rectangular photo */}
+                <div className="w-14 h-16 flex-shrink-0 border border-neutral-800 bg-neutral-950 overflow-hidden">
+                  <img
+                    src={resolveSrc(faculty.image)}
+                    alt={`Photograph of ${faculty.name}`}
+                    className="w-full h-full object-cover object-top"
+                    loading="lazy"
+                  />
+                </div>
+
+                {/* Details */}
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-0.5">
+                    <span className="font-geist-pixel text-[10px] text-neutral-400 flex-shrink-0">
+                      {String(idx + 1).padStart(2, '0')}
+                    </span>
+                    <h3 className="text-white font-medium text-sm sm:text-base truncate">
+                      {faculty.name}
+                    </h3>
+                  </div>
+                  <p className="text-neutral-400 text-xs truncate">
+                    {faculty.position}
+                  </p>
+                </div>
+
+                {/* LinkedIn link button */}
+                <a
+                  href={faculty.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-shrink-0 p-2.5 border border-neutral-800 hover:border-neutral-600 text-neutral-400 hover:text-white transition-colors"
+                  aria-label={`LinkedIn profile of ${faculty.name}`}
+                >
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                  </svg>
+                </a>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ========================================================= */}
+        {/* 04. LABORATORIES & 05. ALUMNI (Understated Editorial)     */}
+        {/* ========================================================= */}
+        <section className="mt-24 sm:mt-32 pt-12 sm:pt-16 border-t border-neutral-800">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            {/* 04. Laboratories */}
+            <div className="border border-neutral-800 p-6 sm:p-8 bg-neutral-900/10">
+              <div className="flex items-center justify-between pb-4 border-b border-neutral-800 mb-6">
+                <div className="flex items-center gap-3">
+                  <span className="font-geist-pixel text-neutral-400 text-xs">[ 04 ]</span>
+                  <h3 className="text-lg font-medium text-white font-geist">Laboratories</h3>
+                </div>
+                <span className="font-geist-mono text-[10px] uppercase tracking-wider text-neutral-400 px-2 py-0.5 border border-neutral-800 bg-neutral-950">
+                  Coming Soon
+                </span>
+              </div>
+              <p className="text-neutral-400 text-sm sm:text-base leading-relaxed">
+                The Laboratories section is currently being updated and will be available soon.
+              </p>
+            </div>
+
+            {/* 05. Alumni */}
+            <div className="border border-neutral-800 p-6 sm:p-8 bg-neutral-900/10">
+              <div className="flex items-center justify-between pb-4 border-b border-neutral-800 mb-6">
+                <div className="flex items-center gap-3">
+                  <span className="font-geist-pixel text-neutral-400 text-xs">[ 05 ]</span>
+                  <h3 className="text-lg font-medium text-white font-geist">Alumni</h3>
+                </div>
+                <span className="font-geist-mono text-[10px] uppercase tracking-wider text-neutral-400 px-2 py-0.5 border border-neutral-800 bg-neutral-950">
+                  Coming Soon
+                </span>
+              </div>
+              <p className="text-neutral-400 text-sm sm:text-base leading-relaxed">
+                The Alumni section is under maintenance and will be published soon.
+              </p>
+            </div>
+
+          </div>
+        </section>
+
+      </main>
+
+      {/* 9. Existing Footer Preserved */}
+      <Footer showBlaze={false} />
     </div>
   );
 }
