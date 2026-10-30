@@ -466,7 +466,7 @@ export default function CSDDepartmentPage() {
 
       </main>
 
-      {/* 9. Existing Footer Preserved (showBlaze=false for clean monochrome finish) */}
+      {/* 9. Existing Footer Preserved */}
       <Footer showBlaze={false} />
     </div>
   );

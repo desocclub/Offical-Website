@@ -1,12 +1,32 @@
-import Link from 'next/link';
-import { Blaze } from '@/components/canvasui/Blaze';
+'use client';
 
-interface FooterProps {
+import React from 'react';
+import Link from 'next/link';
+import AsciiWave from '@/components/shaders/ascii-wave';
+
+export interface FooterProps {
+  /** @deprecated Blaze component has been removed in favor of AsciiWave */
   showBlaze?: boolean;
+  showAsciiWave?: boolean;
+  asciiWaveColor?: string;
+  asciiWaveSpeed?: number;
 }
 
-export const Footer = ({ showBlaze = true }: FooterProps = {}) => {
+export const Footer = ({
+  showAsciiWave = true,
+  asciiWaveColor = '#FF4500',
+  asciiWaveSpeed = 1,
+}: FooterProps = {}) => {
   const currentYear = new Date().getFullYear();
+
+  const isMonochrome =
+    asciiWaveColor.toLowerCase().startsWith('#a') ||
+    asciiWaveColor.toLowerCase().startsWith('#8') ||
+    asciiWaveColor.toLowerCase().startsWith('#7') ||
+    asciiWaveColor.toLowerCase().startsWith('#e') ||
+    asciiWaveColor.toLowerCase().startsWith('#f') ||
+    asciiWaveColor.toLowerCase() === '#ffffff' ||
+    asciiWaveColor.toLowerCase() === 'white';
 
   const quickLinks = [
     { name: 'Home', href: '/' },
@@ -29,10 +49,6 @@ export const Footer = ({ showBlaze = true }: FooterProps = {}) => {
 
   const footerContent = (
     <>
-      {showBlaze && (
-        <div className="h-[2px] bg-gradient-to-r from-transparent via-[#bc0034] to-transparent"></div>
-      )}
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
         {/* Top Section - Logo and Tagline */}
         <div className="mb-12">
@@ -49,7 +65,7 @@ export const Footer = ({ showBlaze = true }: FooterProps = {}) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Address Column */}
           <div>
-            <h4 className="text-[#bc0034] text-base mb-4 uppercase tracking-wide" style={{ fontWeight: 'var(--font-weight-semibold)' }}>
+            <h4 className={`${isMonochrome ? 'text-neutral-300' : 'text-[#bc0034]'} text-base mb-4 uppercase tracking-wide`} style={{ fontWeight: 'var(--font-weight-semibold)' }}>
               Address
             </h4>
             <address className="not-italic text-secondary text-sm leading-relaxed space-y-1">
@@ -61,7 +77,7 @@ export const Footer = ({ showBlaze = true }: FooterProps = {}) => {
 
           {/* Quick Links Column */}
           <div>
-            <h4 className="text-[#bc0034] text-base mb-4 uppercase tracking-wide" style={{ fontWeight: 'var(--font-weight-semibold)' }}>
+            <h4 className={`${isMonochrome ? 'text-neutral-300' : 'text-[#bc0034]'} text-base mb-4 uppercase tracking-wide`} style={{ fontWeight: 'var(--font-weight-semibold)' }}>
               Quick Links
             </h4>
             <ul className="space-y-2">
@@ -80,7 +96,7 @@ export const Footer = ({ showBlaze = true }: FooterProps = {}) => {
 
           {/* Support Column */}
           <div>
-            <h4 className="text-[#bc0034] text-base mb-4 uppercase tracking-wide" style={{ fontWeight: 'var(--font-weight-semibold)' }}>
+            <h4 className={`${isMonochrome ? 'text-neutral-300' : 'text-[#bc0034]'} text-base mb-4 uppercase tracking-wide`} style={{ fontWeight: 'var(--font-weight-semibold)' }}>
               Support
             </h4>
             <ul className="space-y-2">
@@ -99,7 +115,7 @@ export const Footer = ({ showBlaze = true }: FooterProps = {}) => {
 
           {/* Policies Column */}
           <div>
-            <h4 className="text-[#bc0034] text-base mb-4 uppercase tracking-wide" style={{ fontWeight: 'var(--font-weight-semibold)' }}>
+            <h4 className={`${isMonochrome ? 'text-neutral-300' : 'text-[#bc0034]'} text-base mb-4 uppercase tracking-wide`} style={{ fontWeight: 'var(--font-weight-semibold)' }}>
               Policies
             </h4>
             <ul className="space-y-2">
@@ -118,7 +134,11 @@ export const Footer = ({ showBlaze = true }: FooterProps = {}) => {
         </div>
 
         {/* Divider */}
-        <div className="h-[1px] bg-gradient-to-r from-transparent via-[#7a001f]/50 to-transparent mb-8"></div>
+        <div
+          className={`h-[1px] bg-gradient-to-r from-transparent ${
+            isMonochrome ? 'via-neutral-800' : 'via-[#7a001f]/50'
+          } to-transparent mb-8`}
+        />
 
         {/* Bottom Section - Social Icons and Copyright */}
         <div className="text-center">
@@ -132,7 +152,7 @@ export const Footer = ({ showBlaze = true }: FooterProps = {}) => {
               className="group"
               aria-label="DESOC Instagram"
             >
-              <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center transition-all duration-300 group-hover:bg-[#bc0034] group-hover:shadow-lg group-hover:shadow-[#bc0034]/50">
+              <div className={`w-12 h-12 rounded-full bg-white/5 flex items-center justify-center transition-all duration-300 ${isMonochrome ? 'group-hover:bg-neutral-800' : 'group-hover:bg-[#bc0034] group-hover:shadow-lg group-hover:shadow-[#bc0034]/50'}`}>
                 <svg className="w-6 h-6 text-tertiary group-hover:text-primary transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                 </svg>
@@ -147,7 +167,7 @@ export const Footer = ({ showBlaze = true }: FooterProps = {}) => {
               className="group"
               aria-label="DESOC LinkedIn"
             >
-              <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center transition-all duration-300 group-hover:bg-[#bc0034] group-hover:shadow-lg group-hover:shadow-[#bc0034]/50">
+              <div className={`w-12 h-12 rounded-full bg-white/5 flex items-center justify-center transition-all duration-300 ${isMonochrome ? 'group-hover:bg-neutral-800' : 'group-hover:bg-[#bc0034] group-hover:shadow-lg group-hover:shadow-[#bc0034]/50'}`}>
                 <svg className="w-6 h-6 text-tertiary group-hover:text-primary transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                 </svg>
@@ -160,7 +180,7 @@ export const Footer = ({ showBlaze = true }: FooterProps = {}) => {
               className="group"
               aria-label="DESOC Email"
             >
-              <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center transition-all duration-300 group-hover:bg-[#bc0034] group-hover:shadow-lg group-hover:shadow-[#bc0034]/50">
+              <div className={`w-12 h-12 rounded-full bg-white/5 flex items-center justify-center transition-all duration-300 ${isMonochrome ? 'group-hover:bg-neutral-800' : 'group-hover:bg-[#bc0034] group-hover:shadow-lg group-hover:shadow-[#bc0034]/50'}`}>
                 <svg className="w-6 h-6 text-tertiary group-hover:text-primary transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 12.713l-11.985-9.713h23.97l-11.985 9.713zm0 2.574l-12-9.725v15.438h24v-15.438l-12 9.725z"/>
                 </svg>
@@ -174,34 +194,27 @@ export const Footer = ({ showBlaze = true }: FooterProps = {}) => {
           </p>
         </div>
       </div>
+
+      {/* Clean ASCII Wave visualization at the very end of the footer */}
+      {showAsciiWave && (
+        <div className="relative w-full h-28 sm:h-36 md:h-48 overflow-hidden pointer-events-none select-none">
+          {/* Top gradient blend seamlessly into black background */}
+          <div className="absolute top-0 left-0 right-0 h-16 sm:h-20 bg-gradient-to-b from-black via-black/80 to-transparent z-10 pointer-events-none" />
+          <AsciiWave
+            className="w-full h-full"
+            color={asciiWaveColor}
+            speed={asciiWaveSpeed}
+          />
+        </div>
+      )}
     </>
   );
 
   return (
     <footer className="relative bg-black text-white px-2 sm:px-3 pb-2 sm:pb-3 rounded-b-xl sm:rounded-b-2xl overflow-hidden">
-      {showBlaze ? (
-        <Blaze
-          height={0.97}
-          distortion={0.45}
-          distortionScale={0.5}
-          speed={0.85}
-          sparks={0.8}
-          sparkDensity={1.5}
-          sparkSize={1.2}
-          layers={5}
-          smoke={0.6}
-          glow={2.4}
-          sparkColor={[0.6, 0.9, 1.0]}
-          smokeColor={[0.22, 0.62, 1.0]}
-          className="w-full rounded-b-xl sm:rounded-b-2xl overflow-hidden"
-        >
-          {footerContent}
-        </Blaze>
-      ) : (
-        <div className="w-full rounded-b-xl sm:rounded-b-2xl overflow-hidden bg-black">
-          {footerContent}
-        </div>
-      )}
+      <div className="w-full rounded-b-xl sm:rounded-b-2xl overflow-hidden bg-black">
+        {footerContent}
+      </div>
     </footer>
   );
 };
